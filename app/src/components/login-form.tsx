@@ -52,7 +52,7 @@ export function LoginForm({
         <CardContent>
           <form onSubmit={onSubmit} className="space-y-4">
             {error && (
-              <p className="text-red-600 text-sm text-center">{error}</p>
+              <p className="text-error text-sm text-center">{error}</p>
             )}
 
             <div className="grid gap-1">

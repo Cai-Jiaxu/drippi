@@ -848,7 +848,7 @@ function LoginForm({ className, ...props }) {
                         className: "space-y-4",
                         children: [
                             error && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                className: "text-red-600 text-sm text-center",
+                                className: "text-error text-sm text-center",
                                 children: error
                             }, void 0, false, {
                                 fileName: "[project]/src/components/login-form.tsx",
@@ -1010,7 +1010,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$login$2
 ;
 function Login() {
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "flex min-h-screen items-center justify-center bg-background p-6",
+        className: "flex min-h-screen items-center justify-center bg-base-100 text-base-content p-6",
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
             className: "w-full max-w-sm",
             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$login$2d$form$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["LoginForm"], {}, void 0, false, {

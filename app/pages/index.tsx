@@ -1,4 +1,3 @@
-// pages/index.tsx
 'use client'
 
 import { useRouter } from 'next/router'
@@ -11,7 +10,7 @@ export default function Home() {
   const navLinks = [
     { name: 'Home', link: '/' },
     { name: 'Listings', link: '/listings' },
-    { name: 'Post', link: '/upload' },
+    { name: 'Upload', link: '/upload' },
   ]
 
   const handleGetStarted = () => {
@@ -19,13 +18,13 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-white">
-      <Navbar className="sticky top-0 z-50 bg-white shadow-md">
+    <div className="min-h-screen bg-base-100 text-base-content">
+      <Navbar className="sticky top-0 z-50 bg-base-100 shadow-md">
         <NavBody className="max-w-7xl mx-auto px-4 py-2 flex items-center">
           <div className="w-8" />
           <NavItems
             items={navLinks}
-            className="space-x-8 text-gray-700 hover:text-blue-600 transition"
+            className="space-x-8 text-base-content hover:text-primary transition"
           />
           <div className="ml-auto">
             <AuthControls className="text-sm font-medium" />
@@ -41,7 +40,7 @@ export default function Home() {
         </p>
         <button
           onClick={handleGetStarted}
-          className="px-6 py-3 rounded-full bg-blue-600 text-white font-semibold hover:bg-blue-700 transition"
+          className="px-6 py-3 rounded-full btn btn-primary font-semibold transition"
         >
           Get Started
         </button>

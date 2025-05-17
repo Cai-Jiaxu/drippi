@@ -26,7 +26,7 @@ export function AuthControls({ className = '' }: AuthControlsProps) {
         as="button"
         onClick={handleLogout}
         variant="secondary"
-        className={`${baseStyles} ${className} bg-red-500 text-white hover:bg-red-600`}
+        className={`${baseStyles} ${className} btn btn-secondary`}
       >
         <LogOut className="w-5 h-5" />
         <span>Logout</span>
@@ -39,7 +39,7 @@ export function AuthControls({ className = '' }: AuthControlsProps) {
       as="button"
       onClick={() => router.push('/login')}
       variant="primary"
-      className={`${baseStyles} ${className} bg-blue-600 text-white hover:bg-blue-700`}
+      className={`${baseStyles} ${className} btn btn-primary`}
     >
       <LogIn className="w-5 h-5" />
       <span>Login</span>

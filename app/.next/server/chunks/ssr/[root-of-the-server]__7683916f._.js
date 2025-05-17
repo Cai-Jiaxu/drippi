@@ -136,14 +136,13 @@ const Navbar = ({ children, className })=>{
     });
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$externals$5d2f$motion$2f$react__$5b$external$5d$__$28$motion$2f$react$2c$__esm_import$29$__["motion"].div, {
         ref: ref,
-        // IMPORTANT: Change this to class of `fixed` if you want the navbar to be fixed
         className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$utils$2e$ts__$5b$ssr$5d$__$28$ecmascript$29$__["cn"])("sticky inset-x-0 top-20 z-40 w-full", className),
         children: __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["default"].Children.map(children, (child)=>/*#__PURE__*/ __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["default"].isValidElement(child) ? /*#__PURE__*/ __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["default"].cloneElement(child, {
                 visible
             }) : child)
     }, void 0, false, {
         fileName: "[project]/src/components/ui/resizable-navbar.tsx",
-        lineNumber: 69,
+        lineNumber: 68,
         columnNumber: 5
     }, this);
 };
@@ -157,17 +156,17 @@ const NavBody = ({ children, className, visible })=>{
         },
         transition: {
             type: "spring",
-            stiffness: 200,
-            damping: 50
+            stiffness: 400,
+            damping: 5
         },
         style: {
             minWidth: "800px"
         },
-        className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$utils$2e$ts__$5b$ssr$5d$__$28$ecmascript$29$__["cn"])("relative z-[60] mx-auto hidden w-full max-w-7xl flex-row items-center justify-between self-start rounded-full bg-transparent px-4 py-2 lg:flex dark:bg-transparent", visible && "bg-white/80 dark:bg-neutral-950/80", className),
+        className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$utils$2e$ts__$5b$ssr$5d$__$28$ecmascript$29$__["cn"])("relative z-[60] mx-auto hidden w-full max-w-7xl flex-row items-center justify-between self-start rounded-full bg-transparent px-4 py-2 lg:flex lg:space-x-2", visible ? "bg-base-100/80 dark:bg-base-200/80" : "", className),
         children: children
     }, void 0, false, {
         fileName: "[project]/src/components/ui/resizable-navbar.tsx",
-        lineNumber: 88,
+        lineNumber: 86,
         columnNumber: 5
     }, this);
 };
@@ -175,19 +174,19 @@ const NavItems = ({ items, className, onItemClick })=>{
     const [hovered, setHovered] = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useState"])(null);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$externals$5d2f$motion$2f$react__$5b$external$5d$__$28$motion$2f$react$2c$__esm_import$29$__["motion"].div, {
         onMouseLeave: ()=>setHovered(null),
-        className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$utils$2e$ts__$5b$ssr$5d$__$28$ecmascript$29$__["cn"])("absolute inset-0 hidden flex-1 flex-row items-center justify-center space-x-2 text-sm font-medium text-zinc-600 transition duration-200 hover:text-zinc-800 lg:flex lg:space-x-2", className),
+        className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$utils$2e$ts__$5b$ssr$5d$__$28$ecmascript$29$__["cn"])("absolute inset-0 hidden flex-1 flex-row items-center justify-center space-x-2 text-base-content/70 transition duration-200 hover:text-base-content lg:flex lg:space-x-2", className),
         children: items.map((item, idx)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("a", {
                 onMouseEnter: ()=>setHovered(idx),
                 onClick: onItemClick,
-                className: "relative px-4 py-2 text-neutral-600 dark:text-neutral-300",
+                className: "relative px-4 py-2 text-base-content dark:text-base-content/80",
                 href: item.link,
                 children: [
                     hovered === idx && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$externals$5d2f$motion$2f$react__$5b$external$5d$__$28$motion$2f$react$2c$__esm_import$29$__["motion"].div, {
                         layoutId: "hovered",
-                        className: "absolute inset-0 h-full w-full rounded-full bg-gray-100 dark:bg-neutral-800"
+                        className: "absolute inset-0 h-full w-full rounded-full bg-base-200 dark:bg-base-300"
                     }, void 0, false, {
                         fileName: "[project]/src/components/ui/resizable-navbar.tsx",
-                        lineNumber: 136,
+                        lineNumber: 138,
                         columnNumber: 13
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("span", {
@@ -195,18 +194,18 @@ const NavItems = ({ items, className, onItemClick })=>{
                         children: item.name
                     }, void 0, false, {
                         fileName: "[project]/src/components/ui/resizable-navbar.tsx",
-                        lineNumber: 141,
+                        lineNumber: 143,
                         columnNumber: 11
                     }, this)
                 ]
             }, `link-${idx}`, true, {
                 fileName: "[project]/src/components/ui/resizable-navbar.tsx",
-                lineNumber: 128,
+                lineNumber: 130,
                 columnNumber: 9
             }, this))
     }, void 0, false, {
         fileName: "[project]/src/components/ui/resizable-navbar.tsx",
-        lineNumber: 120,
+        lineNumber: 122,
         columnNumber: 5
     }, this);
 };
@@ -226,11 +225,11 @@ const MobileNav = ({ children, className, visible })=>{
             stiffness: 200,
             damping: 50
         },
-        className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$utils$2e$ts__$5b$ssr$5d$__$28$ecmascript$29$__["cn"])("relative z-50 mx-auto flex w-full max-w-[calc(100vw-2rem)] flex-col items-center justify-between bg-transparent px-0 py-2 lg:hidden", visible && "bg-white/80 dark:bg-neutral-950/80", className),
+        className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$utils$2e$ts__$5b$ssr$5d$__$28$ecmascript$29$__["cn"])("relative z-50 mx-auto flex w-full max-w-[calc(100vw-2rem)] flex-col items-center justify-between bg-transparent px-0 py-2 lg:hidden", visible ? "bg-base-100/80 dark:bg-base-200/80" : "", className),
         children: children
     }, void 0, false, {
         fileName: "[project]/src/components/ui/resizable-navbar.tsx",
-        lineNumber: 150,
+        lineNumber: 152,
         columnNumber: 5
     }, this);
 };
@@ -240,11 +239,11 @@ const MobileNavHeader = ({ children, className })=>{
         children: children
     }, void 0, false, {
         fileName: "[project]/src/components/ui/resizable-navbar.tsx",
-        lineNumber: 183,
+        lineNumber: 187,
         columnNumber: 5
     }, this);
 };
-const MobileNavMenu = ({ children, className, isOpen, onClose })=>{
+const MobileNavMenu = ({ children, className, isOpen })=>{
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$externals$5d2f$motion$2f$react__$5b$external$5d$__$28$motion$2f$react$2c$__esm_import$29$__["AnimatePresence"], {
         children: isOpen && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$externals$5d2f$motion$2f$react__$5b$external$5d$__$28$motion$2f$react$2c$__esm_import$29$__["motion"].div, {
             initial: {
@@ -256,40 +255,45 @@ const MobileNavMenu = ({ children, className, isOpen, onClose })=>{
             exit: {
                 opacity: 0
             },
-            className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$utils$2e$ts__$5b$ssr$5d$__$28$ecmascript$29$__["cn"])("absolute inset-x-0 top-16 z-50 flex w-full flex-col items-start justify-start gap-4 rounded-lg bg-white px-4 py-8 shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] dark:bg-neutral-950", className),
+            transition: {
+                duration: 0.3,
+                ease: "easeInOut"
+            },
+            className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$utils$2e$ts__$5b$ssr$5d$__$28$ecmascript$29$__["cn"])("absolute inset-x-0 top-16 z-50 flex w-full flex-col items-start justify-start gap-4 rounded-lg bg-base-100 px-4 py-8 shadow-lg dark:bg-base-200", className),
             children: children
         }, void 0, false, {
             fileName: "[project]/src/components/ui/resizable-navbar.tsx",
-            lineNumber: 203,
+            lineNumber: 206,
             columnNumber: 9
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/components/ui/resizable-navbar.tsx",
-        lineNumber: 201,
+        lineNumber: 204,
         columnNumber: 5
     }, this);
 };
 const MobileNavToggle = ({ isOpen, onClick })=>{
+    const iconClasses = "text-base-content";
     return isOpen ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$tabler$2f$icons$2d$react$2f$dist$2f$esm$2f$icons$2f$IconX$2e$mjs__$5b$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__IconX$3e$__["IconX"], {
-        className: "text-black dark:text-white",
+        className: iconClasses,
         onClick: onClick
     }, void 0, false, {
         fileName: "[project]/src/components/ui/resizable-navbar.tsx",
-        lineNumber: 227,
+        lineNumber: 232,
         columnNumber: 5
     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$tabler$2f$icons$2d$react$2f$dist$2f$esm$2f$icons$2f$IconMenu2$2e$mjs__$5b$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__IconMenu2$3e$__["IconMenu2"], {
-        className: "text-black dark:text-white",
+        className: iconClasses,
         onClick: onClick
     }, void 0, false, {
         fileName: "[project]/src/components/ui/resizable-navbar.tsx",
-        lineNumber: 229,
+        lineNumber: 234,
         columnNumber: 5
     }, this);
 };
 const NavbarLogo = ()=>{
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("a", {
         href: "#",
-        className: "relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal text-black",
+        className: "relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal text-base-content",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("img", {
                 src: "https://assets.aceternity.com/logo-dark.png",
@@ -298,31 +302,31 @@ const NavbarLogo = ()=>{
                 height: 30
             }, void 0, false, {
                 fileName: "[project]/src/components/ui/resizable-navbar.tsx",
-                lineNumber: 239,
+                lineNumber: 244,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("span", {
-                className: "font-medium text-black dark:text-white",
+                className: "font-medium text-base-content",
                 children: "Startup"
             }, void 0, false, {
                 fileName: "[project]/src/components/ui/resizable-navbar.tsx",
-                lineNumber: 245,
+                lineNumber: 250,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/ui/resizable-navbar.tsx",
-        lineNumber: 235,
+        lineNumber: 240,
         columnNumber: 5
     }, this);
 };
 const NavbarButton = ({ href, as: Tag = "a", children, className, variant = "primary", ...props })=>{
-    const baseStyles = "px-4 py-2 rounded-md bg-white button bg-white text-black text-sm font-bold relative cursor-pointer hover:-translate-y-0.5 transition duration-200 inline-block text-center";
+    const baseStyles = "px-4 py-2 rounded-md bg-base-100 text-base-content text-sm font-bold relative cursor-pointer hover:-translate-y-0.5 transition duration-200 inline-block text-center";
     const variantStyles = {
-        primary: "shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]",
-        secondary: "bg-transparent shadow-none dark:text-white",
-        dark: "bg-black text-white shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]",
-        gradient: "bg-gradient-to-b from-blue-500 to-blue-700 text-white shadow-[0px_2px_0px_0px_rgba(255,255,255,0.3)_inset]"
+        primary: "bg-primary text-primary-content shadow",
+        secondary: "bg-transparent text-base-content",
+        dark: "bg-base-300 text-base-content shadow",
+        gradient: "bg-gradient-to-b from-primary to-primary-dark text-primary-content shadow"
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(Tag, {
         href: href || undefined,
@@ -331,7 +335,7 @@ const NavbarButton = ({ href, as: Tag = "a", children, className, variant = "pri
         children: children
     }, void 0, false, {
         fileName: "[project]/src/components/ui/resizable-navbar.tsx",
-        lineNumber: 280,
+        lineNumber: 283,
         columnNumber: 5
     }, this);
 };
@@ -394,7 +398,7 @@ function AuthControls({ className = '' }) {
             as: "button",
             onClick: handleLogout,
             variant: "secondary",
-            className: `${baseStyles} ${className} bg-red-500 text-white hover:bg-red-600`,
+            className: `${baseStyles} ${className} btn btn-secondary`,
             children: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$log$2d$out$2e$js__$5b$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__LogOut$3e$__["LogOut"], {
                     className: "w-5 h-5"
@@ -421,7 +425,7 @@ function AuthControls({ className = '' }) {
         as: "button",
         onClick: ()=>router.push('/login'),
         variant: "primary",
-        className: `${baseStyles} ${className} bg-blue-600 text-white hover:bg-blue-700`,
+        className: `${baseStyles} ${className} btn btn-primary`,
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$log$2d$in$2e$js__$5b$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__LogIn$3e$__["LogIn"], {
                 className: "w-5 h-5"
@@ -451,7 +455,6 @@ __turbopack_async_result__();
 
 var { g: global, __dirname, a: __turbopack_async_module__ } = __turbopack_context__;
 __turbopack_async_module__(async (__turbopack_handle_async_dependencies__, __turbopack_async_result__) => { try {
-// pages/index.tsx
 __turbopack_context__.s({
     "default": (()=>Home)
 });
@@ -481,7 +484,7 @@ function Home() {
             link: '/listings'
         },
         {
-            name: 'Post',
+            name: 'Upload',
             link: '/upload'
         }
     ];
@@ -489,10 +492,10 @@ function Home() {
         router.push('/listings');
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
-        className: "min-h-screen bg-white",
+        className: "min-h-screen bg-base-100 text-base-content",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$resizable$2d$navbar$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__["Navbar"], {
-                className: "sticky top-0 z-50 bg-white shadow-md",
+                className: "sticky top-0 z-50 bg-base-100 shadow-md",
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$resizable$2d$navbar$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__["NavBody"], {
                     className: "max-w-7xl mx-auto px-4 py-2 flex items-center",
                     children: [
@@ -500,15 +503,15 @@ function Home() {
                             className: "w-8"
                         }, void 0, false, {
                             fileName: "[project]/pages/index.tsx",
-                            lineNumber: 25,
+                            lineNumber: 24,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$resizable$2d$navbar$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__["NavItems"], {
                             items: navLinks,
-                            className: "space-x-8 text-gray-700 hover:text-blue-600 transition"
+                            className: "space-x-8 text-base-content hover:text-primary transition"
                         }, void 0, false, {
                             fileName: "[project]/pages/index.tsx",
-                            lineNumber: 26,
+                            lineNumber: 25,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -517,23 +520,23 @@ function Home() {
                                 className: "text-sm font-medium"
                             }, void 0, false, {
                                 fileName: "[project]/pages/index.tsx",
-                                lineNumber: 31,
+                                lineNumber: 30,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/pages/index.tsx",
-                            lineNumber: 30,
+                            lineNumber: 29,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/pages/index.tsx",
-                    lineNumber: 24,
+                    lineNumber: 23,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/pages/index.tsx",
-                lineNumber: 23,
+                lineNumber: 22,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("main", {
@@ -544,7 +547,7 @@ function Home() {
                         children: "DripDaddy"
                     }, void 0, false, {
                         fileName: "[project]/pages/index.tsx",
-                        lineNumber: 37,
+                        lineNumber: 36,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
@@ -552,28 +555,28 @@ function Home() {
                         children: "Peer-to-peer outfit rental and sharing made easy. Browse, rent, and refresh your wardrobe without the commitment of purchase."
                     }, void 0, false, {
                         fileName: "[project]/pages/index.tsx",
-                        lineNumber: 38,
+                        lineNumber: 37,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("button", {
                         onClick: handleGetStarted,
-                        className: "px-6 py-3 rounded-full bg-blue-600 text-white font-semibold hover:bg-blue-700 transition",
+                        className: "px-6 py-3 rounded-full btn btn-primary font-semibold transition",
                         children: "Get Started"
                     }, void 0, false, {
                         fileName: "[project]/pages/index.tsx",
-                        lineNumber: 42,
+                        lineNumber: 41,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/pages/index.tsx",
-                lineNumber: 36,
+                lineNumber: 35,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/pages/index.tsx",
-        lineNumber: 22,
+        lineNumber: 21,
         columnNumber: 5
     }, this);
 }

@@ -27,5 +27,9 @@
 // }
 
 export default function Listings(){
+
+    <div className="min-h-screen bg-base-100 text-base-content p-8">
+      {/* Listings */}
+    </div>
   
 }
