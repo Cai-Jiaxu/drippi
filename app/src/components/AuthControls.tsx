@@ -1,14 +1,17 @@
 'use client'
+
 import { useRouter } from 'next/router'
 import { useAuth } from '../../hooks/useAuth'
-import { NavbarButton } from './ui/resizable-navbar'
-import { LogIn, LogOut } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+} from '@/components/ui/dropdown-menu'
+import { LogIn, LogOut, UserCircle } from 'lucide-react'
 
-export interface AuthControlsProps {
-  className?: string
-}
-
-export function AuthControls({ className = '' }: AuthControlsProps) {
+export function AuthControls() {
   const { user, logout } = useAuth()
   const router = useRouter()
 
@@ -17,32 +20,39 @@ export function AuthControls({ className = '' }: AuthControlsProps) {
     router.push('/')
   }
 
-  const baseStyles =
-    'flex items-center space-x-2 px-4 py-2 rounded-md transition hover:opacity-90'
 
-  if (user) {
+  if (!user) {
     return (
-      <NavbarButton
-        as="button"
-        onClick={handleLogout}
+      <Button
         variant="secondary"
-        className={`${baseStyles} ${className} btn btn-secondary`}
+        size="sm"
+        onClick={() => router.push('/login')}
       >
-        <LogOut className="w-5 h-5" />
-        <span>Logout</span>
-      </NavbarButton>
+        <LogIn className="mr-2 h-4 w-4" />
+        Login
+      </Button>
     )
   }
 
+
   return (
-    <NavbarButton
-      as="button"
-      onClick={() => router.push('/login')}
-      variant="primary"
-      className={`${baseStyles} ${className} btn btn-primary`}
-    >
-      <LogIn className="w-5 h-5" />
-      <span>Login</span>
-    </NavbarButton>
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="ghost" size="icon" aria-label="User menu">
+          <UserCircle className="h-6 w-6" />
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end">
+        {/* <div className="px-4 py-2">
+          <p className="text-sm font-medium">
+            Hello, {user.username}
+          </p>
+        </div> */}
+        <DropdownMenuItem onSelect={handleLogout}>
+          <LogOut className="mr-2 h-4 w-4" />
+          Logout
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
   )
 }

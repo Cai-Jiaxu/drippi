@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 25, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/feget/OneDrive/Desktop/drippi/app/pages/_app.tsx"],"sourcesContent":["// pages/_app.tsx\nimport '@/styles/globals.css'\nimport type { AppProps } from 'next/app'\nimport { ThemeProvider } from 'next-themes'\nimport { AuthProvider } from '@/context/AuthProvider'\n\nexport default function App({ Component, pageProps }: AppProps) {\n  return (\n    <ThemeProvider\n      attribute=\"data-theme\"\n      defaultTheme=\"system\"\n      enableSystem={true}\n      themes={['nord', 'dim']}\n    >\n      <AuthProvider>\n        <Component {...pageProps} />\n      </AuthProvider>\n    </ThemeProvider>\n  )\n}\n"],"names":[],"mappings":"AAAA,iBAAiB;;;;;;;;;;AAGjB;;;;;;;;;;;;;;AAGe,SAAS,IAAI,EAAE,SAAS,EAAE,SAAS,EAAY;IAC5D,qBACE,qKAAC,4HAAA,CAAA,gBAAa;QACZ,WAAU;QACV,cAAa;QACb,cAAc;QACd,QAAQ;YAAC;YAAQ;SAAM;kBAEvB,cAAA,qKAAC;sBACC,cAAA,qKAAC;gBAAW,GAAG,SAAS;;;;;;;;;;;;;;;;AAIhC","debugId":null}}]
+}

@@ -11,7 +11,9 @@ __turbopack_context__.s({
 var __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__ = __turbopack_context__.i("[externals]/react/jsx-dev-runtime [external] (react/jsx-dev-runtime, cjs)");
 ;
 function Upload() {
-    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {}, void 0, false, {
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
+        className: "min-h-screen bg-base-100 text-base-content p-6"
+    }, void 0, false, {
         fileName: "[project]/pages/upload.tsx",
         lineNumber: 3,
         columnNumber: 5
@@ -101,8 +103,8 @@ function hoist(module, name) {
 "[project]/node_modules/next/dist/esm/build/templates/pages.js { INNER_PAGE => \"[project]/pages/upload.tsx [ssr] (ecmascript)\", INNER_DOCUMENT => \"[project]/pages/_document.tsx [ssr] (ecmascript)\", INNER_APP => \"[project]/pages/_app.tsx [ssr] (ecmascript)\" } [ssr] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
 
-var { g: global, __dirname } = __turbopack_context__;
-{
+var { g: global, __dirname, a: __turbopack_async_module__ } = __turbopack_context__;
+__turbopack_async_module__(async (__turbopack_handle_async_dependencies__, __turbopack_async_result__) => { try {
 __turbopack_context__.s({
     "config": (()=>config),
     "default": (()=>__TURBOPACK__default__export__),
@@ -125,6 +127,10 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$pages$2f$_document$2e$tsx__$
 var __TURBOPACK__imported__module__$5b$project$5d2f$pages$2f$_app$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/pages/_app.tsx [ssr] (ecmascript)");
 // Import the userland code.
 var __TURBOPACK__imported__module__$5b$project$5d2f$pages$2f$upload$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/pages/upload.tsx [ssr] (ecmascript)");
+var __turbopack_async_dependencies__ = __turbopack_handle_async_dependencies__([
+    __TURBOPACK__imported__module__$5b$project$5d2f$pages$2f$_app$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__
+]);
+([__TURBOPACK__imported__module__$5b$project$5d2f$pages$2f$_app$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__] = __turbopack_async_dependencies__.then ? (await __turbopack_async_dependencies__)() : __turbopack_async_dependencies__);
 ;
 ;
 ;
@@ -158,7 +164,8 @@ const routeModule = new __TURBOPACK__imported__module__$5b$project$5d2f$node_mod
     },
     userland: __TURBOPACK__imported__module__$5b$project$5d2f$pages$2f$upload$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__
 }); //# sourceMappingURL=pages.js.map
-}}),
+__turbopack_async_result__();
+} catch(e) { __turbopack_async_result__(e); } }, false);}),
 
 };
 

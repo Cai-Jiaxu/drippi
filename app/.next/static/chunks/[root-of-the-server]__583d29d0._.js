@@ -809,7 +809,7 @@ function LoginForm({ className, ...props }) {
         setLoading(true);
         try {
             await login(username, password);
-            router.push('/listings');
+            router.push('/');
         } catch  {
             setError('Invalid username or password.');
             setLoading(false);

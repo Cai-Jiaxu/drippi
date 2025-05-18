@@ -424,8 +424,8 @@ function AuthControls({ className = '' }) {
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$resizable$2d$navbar$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__["NavbarButton"], {
         as: "button",
         onClick: ()=>router.push('/login'),
-        variant: "primary",
-        className: `${baseStyles} ${className} btn btn-primary`,
+        variant: "secondary",
+        className: `${baseStyles} ${className} btn btn-secondary`,
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$log$2d$in$2e$js__$5b$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__LogIn$3e$__["LogIn"], {
                 className: "w-5 h-5"
