@@ -2,6 +2,7 @@ import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import { ThemeProvider } from 'next-themes'
 import { AuthProvider } from '../context/AuthProvider'
+import Layout from '@/components/Layout'
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -12,7 +13,10 @@ export default function App({ Component, pageProps }: AppProps) {
       themes={['nord', 'dim']}
     >
       <AuthProvider>
-        <Component {...pageProps} />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+        
       </AuthProvider>
     </ThemeProvider>
   )

@@ -487,105 +487,6 @@ img, video {
   scroll-snap-align: end;
 }
 
-.dropdown {
-  position-area: var(--anchor-v, bottom) var(--anchor-h, span-right);
-  display: inline-block;
-  position: relative;
-}
-
-.dropdown > :not(summary):focus {
-  --tw-outline-style: none;
-  outline-style: none;
-}
-
-@media (forced-colors: active) {
-  .dropdown > :not(summary):focus {
-    outline-offset: 2px;
-    outline: 2px solid #0000;
-  }
-}
-
-.dropdown .dropdown-content {
-  position: absolute;
-}
-
-.dropdown:not(details, .dropdown-open, .dropdown-hover:hover, :focus-within) .dropdown-content {
-  transform-origin: top;
-  opacity: 0;
-  display: none;
-  scale: 95%;
-}
-
-.dropdown[popover], .dropdown .dropdown-content {
-  z-index: 999;
-  transition-behavior: allow-discrete;
-  transition-property: opacity, scale, display;
-  transition-duration: .2s;
-  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
-  animation: .2s dropdown;
-}
-
-@starting-style {
-  .dropdown[popover], .dropdown .dropdown-content {
-    opacity: 0;
-    scale: 95%;
-  }
-}
-
-.dropdown.dropdown-open > [tabindex]:first-child, .dropdown:not(.dropdown-hover):focus > [tabindex]:first-child, .dropdown:focus-within > [tabindex]:first-child {
-  pointer-events: none;
-}
-
-.dropdown.dropdown-open .dropdown-content, .dropdown:not(.dropdown-hover):focus .dropdown-content, .dropdown:focus-within .dropdown-content {
-  opacity: 1;
-}
-
-.dropdown.dropdown-hover:hover .dropdown-content {
-  opacity: 1;
-  scale: 100%;
-}
-
-.dropdown:is(details) summary::-webkit-details-marker {
-  display: none;
-}
-
-.dropdown.dropdown-open .dropdown-content, .dropdown:focus .dropdown-content, .dropdown:focus-within .dropdown-content {
-  scale: 100%;
-}
-
-.dropdown:where([popover]) {
-  background: none;
-}
-
-.dropdown[popover] {
-  color: inherit;
-  position: fixed;
-}
-
-@supports not (position-area: bottom) {
-  .dropdown[popover] {
-    margin: auto;
-  }
-
-  .dropdown[popover].dropdown-open:not(:popover-open) {
-    transform-origin: top;
-    opacity: 0;
-    display: none;
-    scale: 95%;
-  }
-
-  .dropdown[popover]::backdrop {
-    background-color: oklab(0% none none / .3);
-  }
-}
-
-.dropdown[popover]:not(.dropdown-open, :popover-open) {
-  transform-origin: top;
-  opacity: 0;
-  display: none;
-  scale: 95%;
-}
-
 @keyframes dropdown {
   0% {
     opacity: 0;
@@ -810,31 +711,6 @@ img, video {
   50% {
     background-position-x: -115%;
   }
-}
-
-.avatar-group :where(.avatar) {
-  border: 4px solid var(--color-base-100);
-  border-radius: 3.40282e38px;
-  overflow: hidden;
-}
-
-.avatar {
-  vertical-align: middle;
-  display: inline-flex;
-  position: relative;
-}
-
-.avatar > div {
-  aspect-ratio: 1;
-  display: block;
-  overflow: hidden;
-}
-
-.avatar img {
-  -o-object-fit: cover;
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
 }
 
 .input {
@@ -1736,10 +1612,6 @@ img, video {
   left: .5rem;
 }
 
-.right-10 {
-  right: 2.5rem;
-}
-
 .right-2 {
   right: .5rem;
 }
@@ -1750,10 +1622,6 @@ img, video {
 
 .top-1\/2 {
   top: 50%;
-}
-
-.top-10 {
-  top: 2.5rem;
 }
 
 .top-\[1px\] {
@@ -1772,16 +1640,8 @@ img, video {
   isolation: isolate;
 }
 
-.z-20 {
-  z-index: 20;
-}
-
 .z-50 {
   z-index: 50;
-}
-
-.z-\[100\] {
-  z-index: 100;
 }
 
 .z-\[1\] {
@@ -1859,12 +1719,12 @@ img, video {
   margin-top: 1rem;
 }
 
-.block {
-  display: block;
+.mb-6 {
+  margin-bottom: 1.5rem;
 }
 
-.inline-block {
-  display: inline-block;
+.block {
+  display: block;
 }
 
 .flex {
@@ -1985,8 +1845,8 @@ img, video {
   width: 1.5rem;
 }
 
-.w-\[300px\] {
-  width: 300px;
+.w-64 {
+  width: 16rem;
 }
 
 .w-fit {
@@ -1999,6 +1859,10 @@ img, video {
 
 .w-max {
   width: max-content;
+}
+
+.w-48 {
+  width: 12rem;
 }
 
 .min-w-0 {
@@ -2120,10 +1984,6 @@ img, video {
   justify-content: flex-start;
 }
 
-.justify-end {
-  justify-content: flex-end;
-}
-
 .justify-center {
   justify-content: center;
 }
@@ -2160,6 +2020,12 @@ img, video {
   margin-left: calc(1.5rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
+.space-y-2 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(.5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(.5rem * var(--tw-space-y-reverse));
+}
+
 .space-y-4 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0;
   margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
@@ -2194,10 +2060,6 @@ img, video {
   white-space: nowrap;
 }
 
-.whitespace-pre {
-  white-space: pre;
-}
-
 .rounded-full {
   border-radius: 9999px;
 }
@@ -2230,6 +2092,10 @@ img, video {
   border-bottom-width: 1px;
 }
 
+.border-r {
+  border-right-width: 1px;
+}
+
 .border-t {
   border-top-width: 1px;
 }
@@ -2258,21 +2124,12 @@ img, video {
   background-color: #0000;
 }
 
-.bg-white {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
-}
-
 .fill-current {
   fill: currentColor;
 }
 
 .p-1 {
   padding: .25rem;
-}
-
-.p-10 {
-  padding: 2.5rem;
 }
 
 .p-2 {
@@ -2336,11 +2193,6 @@ img, video {
   padding-bottom: .75rem;
 }
 
-.py-4 {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-}
-
 .py-6 {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
@@ -2372,6 +2224,10 @@ img, video {
 
 .pt-4 {
   padding-top: 1rem;
+}
+
+.pr-4 {
+  padding-right: 1rem;
 }
 
 .text-center {
@@ -2527,10 +2383,6 @@ img, video {
   transition-timing-function: cubic-bezier(.4, 0, .2, 1);
 }
 
-.duration-150 {
-  transition-duration: .15s;
-}
-
 .duration-300 {
   transition-duration: .3s;
 }
@@ -2616,11 +2468,6 @@ img, video {
 
 .disabled\:opacity-50:disabled {
   opacity: .5;
-}
-
-.group\/sidebar:hover .group-hover\/sidebar\:translate-x-1 {
-  --tw-translate-x: .25rem;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .peer:disabled ~ .peer-disabled\:cursor-not-allowed {
@@ -2756,10 +2603,6 @@ img, video {
   transition-duration: .2s;
 }
 
-.dark\:bg-base-200:is(.dark *) {
-  background-color: var(--color-base-200);
-}
-
 @media (width >= 640px) {
   .sm\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -2775,12 +2618,12 @@ img, video {
     position: absolute;
   }
 
-  .md\:flex {
-    display: flex;
+  .md\:block {
+    display: block;
   }
 
-  .md\:hidden {
-    display: none;
+  .md\:flex {
+    display: flex;
   }
 
   .md\:w-\[var\(--radix-navigation-menu-viewport-width\)\] {
@@ -2793,10 +2636,6 @@ img, video {
 
   .md\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .md\:flex-col {
-    flex-direction: column;
   }
 
   .md\:text-sm {
