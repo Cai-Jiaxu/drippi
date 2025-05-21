@@ -240,7 +240,7 @@ export default function UploadPage() {
               multiple
               accept=".jpeg,.jpg,.png,.svg"
               onChange={e => setImages(Array.from(e.target.files || []))}
-              className="file-input file-input-bordered bg-base-100 text-base-content w-full"
+              className="file-input file-input-bordered bg-base-100 text-base-content"
               required
             />
           </div>

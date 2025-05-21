@@ -1,18 +1,14 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/router'
 import { useTheme } from 'next-themes'
 import Link from 'next/link'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
-import {
-  Menu,
-  ShoppingCart,
-  Sun,
-  Moon,
-} from 'lucide-react'
+import { Menu, ShoppingCart, Sun, Moon } from 'lucide-react'
 import { AuthControls } from '@/components/AuthControls'
+import { useDebounce } from '../../../hooks/useDebounce'
 
 interface HeaderProps {
   toggleSidebar: () => void
@@ -21,21 +17,30 @@ interface HeaderProps {
 export function Header({ toggleSidebar }: HeaderProps) {
   const router = useRouter()
   const { theme, setTheme } = useTheme()
-//   const { resolvedTheme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
 
+  // Flag to know user actually typed
+  const didSearch = useRef(false)
+
+  // Wait for theme to mount (avoid SSR mismatch)
   useEffect(() => {
     setMounted(true)
   }, [])
 
-//   const isDark = resolvedTheme === 'dim'
-//   const toggleTheme = () => setTheme(isDark ? 'nord' : 'dim')
+  // --- Search term state, initialized from URL ---
+  const [term, setTerm] = useState(() => {
+    const q = typeof router.query.search === 'string' ? router.query.search : ''
+    return q
+  })
 
-  const handleSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') {
-      router.push(`/listings?search=${encodeURIComponent((e.target as HTMLInputElement).value)}`)
-    }
-  }
+  // --- Debounce navigation, but only after user types ---
+  useDebounce(term, 500, () => {
+    if (!didSearch.current) return
+    router.push({
+      pathname: '/listings',
+      query: term ? { search: term } : {},
+    })
+  })
 
   return (
     <header className="fixed top-0 inset-x-0 z-50 h-16 bg-background border-b flex items-center px-4">
@@ -55,23 +60,25 @@ export function Header({ toggleSidebar }: HeaderProps) {
         DripDaddy
       </Link>
 
-      {/* Search */}
+      {/* Search Input */}
       <div className="flex-1">
         <Input
           placeholder="Search outfits..."
-          onKeyDown={handleSearch}
+          value={term}
+          onChange={(e) => {
+            didSearch.current = true
+            setTerm(e.target.value)
+          }}
         />
       </div>
 
       {/* Controls */}
       <div className="flex items-center space-x-2 ml-6">
         {mounted && (
-        <Button
+          <Button
             variant="ghost"
             size="icon"
-            onClick={() =>
-              setTheme(theme === 'dark' ? 'light' : 'dark')
-            }
+            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
             aria-label="Toggle theme"
           >
             {theme === 'dark' ? (

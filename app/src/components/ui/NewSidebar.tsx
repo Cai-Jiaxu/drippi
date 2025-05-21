@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { useRouter } from 'next/router'
+import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import {
   Home,
@@ -9,9 +10,7 @@ import {
   LayoutDashboard,
   ShoppingCart,
   User,
-  X,
 } from 'lucide-react'
-import Link from 'next/link'
 
 interface SidebarProps {
   onLinkClick?: () => void
@@ -20,51 +19,53 @@ interface SidebarProps {
 export function Sidebar({ onLinkClick }: SidebarProps) {
   const router = useRouter()
   const links = [
-    { name: 'Listings', href: '/listings', icon: Home },
-    { name: 'Upload', href: '/upload', icon: Upload },
+    { name: 'Listings',  href: '/listings',  icon: Home },
+    { name: 'Upload',    href: '/upload',    icon: Upload },
     { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
-    { name: 'Cart', href: '/cart', icon: ShoppingCart },
-    { name: 'Profile', href: '/profile', icon: User },
+    { name: 'Cart',      href: '/cart',      icon: ShoppingCart },
+    { name: 'Profile',   href: '/profile',   icon: User },
   ]
 
   return (
     <div className="flex flex-col h-full">
-      {/* Close button */}
-      <div className="flex justify-end mb-4">
-        <Button
-          variant="ghost"
-          size="icon"
-          aria-label="Close sidebar"
+      {/* Logo area aligned with header height */}
+      <div className="flex items-center h-12 px-2">
+        <Link
+          href="/"
           onClick={onLinkClick}
+          className="text-2xl font-semibold leading-none"
         >
-          <X className="h-5 w-5" />
-        </Button>
-      </div>
-
-      {/* Logo */}
-      <div className="mb-6 px-2">
-        <Link href="/" onClick={onLinkClick} className="text-2xl font-semibold">
           DripDaddy
         </Link>
       </div>
 
-      {/* Links */}
-      <nav className="flex-1 space-y-2">
-        {links.map(({ name, href, icon: Icon }) => (
-          <Button
-            key={href}
-            variant={router.pathname === href ? 'secondary' : 'ghost'}
-            size="sm"
-            className="w-full justify-start"
-            onClick={() => {
-              router.push(href)
-              onLinkClick?.()
-            }}
-          >
-            <Icon className="mr-2 h-4 w-4" />
-            {name}
-          </Button>
-        ))}
+      {/* Decorative divider */}
+      <hr className="border-t border-base-content/20 mb-4 mx-2" />
+
+      {/* Navigation links */}
+      <nav className="flex-1 space-y-2 px-2">
+        {links.map(({ name, href, icon: Icon }) => {
+          const isActive = router.pathname === href
+          return (
+            <Button
+              key={href}
+              variant={isActive ? 'secondary' : 'ghost'}
+              size="sm"
+              className={`
+                w-full justify-start transition
+                hover:bg-base-300
+                ${isActive ? 'border-l-4 border-primary' : ''}
+              `}
+              onClick={() => {
+                router.push(href)
+                onLinkClick?.()
+              }}
+            >
+              <Icon className="mr-2 h-2 w-4" />
+              {name}
+            </Button>
+          )
+        })}
       </nav>
     </div>
   )

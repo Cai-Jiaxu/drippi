@@ -1,7 +1,3 @@
-# views contain the logic for what do when an HTTP request is sent from frontend, 
-# sends the data to serializer to be converted
-# includes interactions with db
-
 from django.contrib.auth import authenticate, login as django_login, logout as django_logout
 from django.contrib.auth.models import User
 from rest_framework import status, viewsets, permissions
@@ -30,7 +26,6 @@ class RegisterView(APIView):
         django_login(request, user)
         return Response({"username": user.username}, status=status.HTTP_201_CREATED)
 
-
 class LoginView(APIView):
     permission_classes = [permissions.AllowAny]
 
@@ -43,13 +38,11 @@ class LoginView(APIView):
         django_login(request, user)
         return Response({"username": user.username}, status=status.HTTP_200_OK)
 
-
 class MeView(APIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def get(self, request):
         return Response({"username": request.user.username}, status=status.HTTP_200_OK)
-
 
 class LogoutView(APIView):
     permission_classes = [permissions.IsAuthenticated]
@@ -66,7 +59,6 @@ class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
     permission_classes = [permissions.IsAuthenticated]
 
-
 class ProfileViewSet(viewsets.ModelViewSet):
     """
     CRUD for profiles (gender).
@@ -74,7 +66,6 @@ class ProfileViewSet(viewsets.ModelViewSet):
     queryset = Profile.objects.all().select_related("user")
     serializer_class = ProfileSerializer
     permission_classes = [permissions.IsAuthenticated]
-
 
 class CategoryViewSet(viewsets.ModelViewSet):
     """
@@ -84,7 +75,6 @@ class CategoryViewSet(viewsets.ModelViewSet):
     serializer_class = CategorySerializer
     permission_classes = [permissions.AllowAny]
 
-
 class OutfitImageViewSet(viewsets.ModelViewSet):
     """
     CRUD for individual outfit images.
@@ -93,13 +83,20 @@ class OutfitImageViewSet(viewsets.ModelViewSet):
     serializer_class = OutfitImageSerializer
     permission_classes = [permissions.IsAuthenticated]
 
-
 class OutfitViewSet(viewsets.ModelViewSet):
     """
     CRUD for outfits. Public read; authenticated create/update/delete.
     """
+    # Add the queryset attribute so DRF can determine basename
     queryset = Outfit.objects.all().select_related("owner", "category").prefetch_related("images")
     serializer_class = OutfitSerializer
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        search = self.request.query_params.get("search")
+        if search:
+            qs = qs.filter(title__icontains=search)
+        return qs
 
     def get_permissions(self):
         if self.action in ["list", "retrieve"]:
@@ -108,7 +105,6 @@ class OutfitViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
-
 
 class RentalViewSet(viewsets.ModelViewSet):
     """
