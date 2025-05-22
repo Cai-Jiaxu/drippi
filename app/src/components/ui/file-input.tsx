@@ -1,35 +1,60 @@
-"use client"
+'use client';
 
-import * as React from "react"
-import { cn } from "@/lib/utils"
-import { Upload } from "lucide-react"
+import React, {
+  forwardRef,
+  ChangeEvent,
+  useState,
+  MouseEvent,
+} from 'react';
+import { cn } from '@/lib/utils';
+import { Upload, X } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-object-type
-export interface FileInputProps extends React.InputHTMLAttributes<HTMLInputElement> {}
+export interface FileInputProps
+  extends React.InputHTMLAttributes<HTMLInputElement> {
+  label?: string;
+}
 
-export const FileInput = React.forwardRef<HTMLInputElement, FileInputProps>(
-  ({ className, multiple = false, accept, onChange, ...props }, ref) => {
-    const [fileNames, setFileNames] = React.useState<string[]>([])
+const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
+  (
+    {
+      className,
+      label = 'Choose files',
+      multiple = false,
+      accept,
+      onChange,
+      ...props
+    },
+    ref
+  ) => {
+    const [files, setFiles] = useState<File[]>([]);
 
-    function handleFiles(e: React.ChangeEvent<HTMLInputElement>) {
-      const files = e.target.files
-      if (files) setFileNames(Array.from(files).map((f) => f.name))
-      onChange?.(e)
-    }
+    const handleFiles = (e: ChangeEvent<HTMLInputElement>) => {
+      const selected = Array.from(e.target.files || []);
+      setFiles(selected);
+      if (onChange) onChange(e);
+    };
 
-    const labelText = multiple
-      ? fileNames.length
-        ? `${fileNames.length} file${fileNames.length > 1 ? "s" : ""}`
-        : "Choose files"
-      : fileNames[0] || "Choose file"
+    const removeFile = (idx: number) => (e: MouseEvent) => {
+      e.preventDefault();
+      setFiles((prev) => prev.filter((_, i) => i !== idx));
+    };
+
+    const labelText =
+      files.length === 0
+        ? label
+        : files.length === 1
+        ? files[0].name
+        : `${files.length} files selected`;
 
     return (
-      <div className={cn("inline-flex flex-col space-y-1", className)}>
-        <label className="cursor-pointer">
+      <div>
+        <label className="cursor-pointer block">
           <input
             type="file"
             ref={ref}
-            className="sr-only"
+            className="sr-only peer"
             multiple={multiple}
             accept={accept}
             onChange={handleFiles}
@@ -37,11 +62,11 @@ export const FileInput = React.forwardRef<HTMLInputElement, FileInputProps>(
           />
           <div
             className={cn(
-              // **Apply file-input classes here** on the inner div
-              "file-input file-input-bordered",
-              "flex items-center space-x-2 rounded-md",
-              "px-3 py-2 bg-base-100 text-base-content",
-              className // any extra sizing (e.g. !w-auto) can be passed in
+              'file-input file-input-bordered w-full min-w-0',
+              'flex items-center space-x-2 rounded-md',
+              'px-3 py-2 bg-base-100 text-base-content',
+              'peer-focus:ring-2 peer-focus:ring-primary',
+              className
             )}
           >
             <Upload className="h-5 w-5 text-primary" />
@@ -49,17 +74,31 @@ export const FileInput = React.forwardRef<HTMLInputElement, FileInputProps>(
           </div>
         </label>
 
-        {fileNames.length > 0 && (
-          <ul className="pl-1 text-sm text-muted-foreground space-y-0.5">
-            {fileNames.map((name) => (
-              <li key={name} className="truncate">
-                {name}
-              </li>
+        {files.length > 0 && (
+          <div className="mt-2 grid grid-cols-2 gap-2">
+            {files.map((file, i) => (
+              <Badge
+                key={i}
+                className="flex items-center justify-between w-full min-w-0 px-2 py-0.1"
+              >
+                <span className="truncate w-full">{file.name}</span>
+                <Button
+                  size="icon"
+                  variant="ghost"
+                  onClick={removeFile(i)}
+                  aria-label={`Remove ${file.name}`}
+                >
+                  <X className="h-4 w-4" />
+                </Button>
+              </Badge>
             ))}
-          </ul>
+          </div>
         )}
       </div>
-    )
+    );
   }
-)
-FileInput.displayName = "FileInput"
+);
+
+FileInput.displayName = 'FileInput';
+
+export default FileInput;

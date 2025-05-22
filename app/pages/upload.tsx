@@ -12,7 +12,7 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { Button } from '@/components/ui/button'
-import { FileInput } from '@/components/ui/file-input'
+import FileInput  from '@/components/ui/file-input'
 import { getCsrfToken } from '../src/lib/csrf'
 
 interface Category {
@@ -154,13 +154,13 @@ export default function UploadPage() {
               id="title"
               value={title}
               onChange={e => setTitle(e.target.value)}
-              placeholder="Summer Floral Dress"
+              placeholder="TITLE"
               className="input input-bordered bg-base-100 text-base-content w-full"
               required
             />
           </div>
 
-          {/* Description */}
+          
           <div className="form-control">
             <label htmlFor="description" className="label">
               <span className="label-text">Description (optional)</span>
@@ -176,7 +176,7 @@ export default function UploadPage() {
             />
           </div>
 
-          {/* Size */}
+          
           <div className="form-control">
             <label htmlFor="size" className="label">
               <span className="label-text">Size</span>
@@ -185,13 +185,13 @@ export default function UploadPage() {
               id="size"
               value={size}
               onChange={e => setSize(e.target.value)}
-              placeholder="S, 8, M/L"
+              placeholder="Size"
               className="input input-bordered bg-base-100 text-base-content w-full"
               required
             />
           </div>
 
-          {/* Price */}
+          
           <div className="form-control">
             <label htmlFor="price" className="label">
               <span className="label-text">Price per day (SGD)</span>
@@ -202,7 +202,7 @@ export default function UploadPage() {
               step="0.01"
               value={price}
               onChange={e => setPrice(e.target.value)}
-              placeholder="25.00"
+              placeholder="Price"
               className="input input-bordered bg-base-100 text-base-content w-full"
               required
             />
@@ -230,7 +230,7 @@ export default function UploadPage() {
             </Select>
           </div>
 
-          {/* Images */}
+          
           <div className="form-control">
             <label htmlFor="images" className="label">
               <span className="label-text">Images (1–5)</span>
@@ -240,7 +240,6 @@ export default function UploadPage() {
               multiple
               accept=".jpeg,.jpg,.png,.svg"
               onChange={e => setImages(Array.from(e.target.files || []))}
-              className="file-input file-input-bordered bg-base-100 text-base-content"
               required
             />
           </div>
