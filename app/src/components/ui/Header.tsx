@@ -1,3 +1,4 @@
+// 
 'use client'
 
 import React, { useEffect, useRef, useState } from 'react'
@@ -7,7 +8,7 @@ import Link from 'next/link'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { Menu, ShoppingCart, Sun, Moon } from 'lucide-react'
-import { AuthControls } from '@/components/AuthControls'
+import { AuthMenu } from '@/components/AuthMenu'
 import { useDebounce } from '../../../hooks/useDebounce'
 
 interface HeaderProps {
@@ -33,7 +34,7 @@ export function Header({ toggleSidebar }: HeaderProps) {
     return q
   })
 
-  // --- Debounce navigation, but only after user types ---
+
   useDebounce(term, 500, () => {
     if (!didSearch.current) return
     router.push({
@@ -43,7 +44,7 @@ export function Header({ toggleSidebar }: HeaderProps) {
   })
 
   return (
-    <header className="fixed top-0 inset-x-0 z-50 h-16 bg-background border-b flex items-center px-4">
+    <header className="fixed top-0 inset-x-0 z-50 h-16 bg-base-100 border-b-2 border-base-200 flex items-center px-4">
       {/* Hamburger */}
       <Button
         variant="ghost"
@@ -81,11 +82,7 @@ export function Header({ toggleSidebar }: HeaderProps) {
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
             aria-label="Toggle theme"
           >
-            {theme === 'dark' ? (
-              <Sun className="h-5 w-5" />
-            ) : (
-              <Moon className="h-5 w-5" />
-            )}
+            {theme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
           </Button>
         )}
 
@@ -98,7 +95,8 @@ export function Header({ toggleSidebar }: HeaderProps) {
           <ShoppingCart className="h-5 w-5" />
         </Button>
 
-        <AuthControls />
+        {/* Auth menu dropdown */}
+        <AuthMenu />
       </div>
     </header>
   )

@@ -1,7 +1,5 @@
 // pages/upload.tsx
 import { useState, useEffect, FormEvent } from 'react'
-// import { useRouter } from 'next/router'
-import { useAuth } from '../hooks/useAuth'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import {
@@ -12,7 +10,7 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { Button } from '@/components/ui/button'
-import FileInput  from '@/components/ui/file-input'
+import FileInput from '@/components/ui/file-input'
 import { getCsrfToken } from '../src/lib/csrf'
 
 interface Category {
@@ -21,9 +19,6 @@ interface Category {
 }
 
 export default function UploadPage() {
-  const { user } = useAuth()
-  // const router = useRouter()
-
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [size, setSize] = useState('')
@@ -115,14 +110,6 @@ export default function UploadPage() {
     }
   }
 
-  if (!user) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-base-200">
-        <p className="text-base-content">Please log in to upload an outfit.</p>
-      </div>
-    )
-  }
-
   return (
     <div className="min-h-screen bg-base-200 flex items-center justify-center p-4">
       <div className="card w-full max-w-sm bg-base-100 shadow-lg p-6">
@@ -160,7 +147,7 @@ export default function UploadPage() {
             />
           </div>
 
-          
+          {/* Description */}
           <div className="form-control">
             <label htmlFor="description" className="label">
               <span className="label-text">Description (optional)</span>
@@ -176,7 +163,7 @@ export default function UploadPage() {
             />
           </div>
 
-          
+          {/* Size */}
           <div className="form-control">
             <label htmlFor="size" className="label">
               <span className="label-text">Size</span>
@@ -191,7 +178,7 @@ export default function UploadPage() {
             />
           </div>
 
-          
+          {/* Price */}
           <div className="form-control">
             <label htmlFor="price" className="label">
               <span className="label-text">Price per day (SGD)</span>
@@ -230,7 +217,7 @@ export default function UploadPage() {
             </Select>
           </div>
 
-          
+          {/* Images */}
           <div className="form-control">
             <label htmlFor="images" className="label">
               <span className="label-text">Images (1–5)</span>
