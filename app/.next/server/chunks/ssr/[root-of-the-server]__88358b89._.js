@@ -597,7 +597,7 @@ function UploadPage() {
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
         className: "min-h-screen bg-base-200 flex items-center justify-center p-4",
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
-            className: "card w-full max-w-sm bg-base-100 shadow-lg p-6",
+            className: "card w-full max-w-sm bg-base-100 shadow-lg p-6 overflow-visible",
             children: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("h1", {
                     className: "card-title justify-center mb-4",
@@ -820,8 +820,8 @@ function UploadPage() {
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__["Select"], {
-                                    onValueChange: (val)=>setCategoryId(Number(val)),
                                     value: categoryId === '' ? undefined : String(categoryId),
+                                    onValueChange: (val)=>setCategoryId(Number(val)),
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__["SelectTrigger"], {
                                             className: "select select-bordered bg-base-100 text-base-content w-full",
@@ -830,32 +830,35 @@ function UploadPage() {
                                             }, void 0, false, {
                                                 fileName: "[project]/pages/upload.tsx",
                                                 lineNumber: 208,
-                                                columnNumber: 17
+                                                columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/pages/upload.tsx",
                                             lineNumber: 207,
-                                            columnNumber: 15
+                                            columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__["SelectContent"], {
+                                            side: "bottom",
+                                            sideOffset: 4,
+                                            className: "   bg-base-100   text-base-content   border   border-gray-200   rounded-md   shadow-lg   z-50    ",
                                             children: categories.map((cat)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
                                                     value: String(cat.id),
                                                     children: cat.name
                                                 }, cat.id, false, {
                                                     fileName: "[project]/pages/upload.tsx",
-                                                    lineNumber: 212,
-                                                    columnNumber: 19
+                                                    lineNumber: 225,
+                                                    columnNumber: 21
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/pages/upload.tsx",
-                                            lineNumber: 210,
-                                            columnNumber: 15
+                                            lineNumber: 211,
+                                            columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/pages/upload.tsx",
                                     lineNumber: 203,
-                                    columnNumber: 13
+                                    columnNumber: 14
                                 }, this)
                             ]
                         }, void 0, true, {
@@ -874,12 +877,12 @@ function UploadPage() {
                                         children: "Images (1–5)"
                                     }, void 0, false, {
                                         fileName: "[project]/pages/upload.tsx",
-                                        lineNumber: 223,
+                                        lineNumber: 236,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/pages/upload.tsx",
-                                    lineNumber: 222,
+                                    lineNumber: 235,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$file$2d$input$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -890,13 +893,13 @@ function UploadPage() {
                                     required: true
                                 }, void 0, false, {
                                     fileName: "[project]/pages/upload.tsx",
-                                    lineNumber: 225,
+                                    lineNumber: 238,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/pages/upload.tsx",
-                            lineNumber: 221,
+                            lineNumber: 234,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -906,7 +909,7 @@ function UploadPage() {
                             children: submitting ? 'Uploading…' : 'Submit Outfit'
                         }, void 0, false, {
                             fileName: "[project]/pages/upload.tsx",
-                            lineNumber: 235,
+                            lineNumber: 248,
                             columnNumber: 11
                         }, this)
                     ]

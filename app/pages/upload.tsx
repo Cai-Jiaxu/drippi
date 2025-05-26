@@ -112,7 +112,7 @@ export default function UploadPage() {
 
   return (
     <div className="min-h-screen bg-base-200 flex items-center justify-center p-4">
-      <div className="card w-full max-w-sm bg-base-100 shadow-lg p-6">
+      <div className="card w-full max-w-sm bg-base-100 shadow-lg p-6 overflow-visible">
         <h1 className="card-title justify-center mb-4">Upload Outfit</h1>
 
         {success && (
@@ -200,21 +200,34 @@ export default function UploadPage() {
             <label htmlFor="category" className="label">
               <span className="label-text">Category</span>
             </label>
-            <Select
-              onValueChange={val => setCategoryId(Number(val))}
-              value={categoryId === '' ? undefined : String(categoryId)}
-            >
-              <SelectTrigger className="select select-bordered bg-base-100 text-base-content w-full">
-                <SelectValue placeholder="Select a category" />
-              </SelectTrigger>
-              <SelectContent>
-                {categories.map(cat => (
-                  <SelectItem key={cat.id} value={String(cat.id)}>
-                    {cat.name}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+             <Select
+                value={categoryId === '' ? undefined : String(categoryId)}
+                onValueChange={val => setCategoryId(Number(val))}
+              >
+                <SelectTrigger className="select select-bordered bg-base-100 text-base-content w-full">
+                  <SelectValue placeholder="Select a category" />
+                </SelectTrigger>
+
+                <SelectContent
+                  side="bottom"
+                  sideOffset={4}
+                  className="
+                    bg-base-100
+                    text-base-content
+                    border
+                    border-gray-200
+                    rounded-md
+                    shadow-lg
+                    z-50 
+                  "
+                >
+                  {categories.map(cat => (
+                    <SelectItem key={cat.id} value={String(cat.id)}>
+                      {cat.name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
           </div>
 
           {/* Images */}

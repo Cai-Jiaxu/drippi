@@ -1,0 +1,14 @@
+[
+  { "model": "core.category", "pk": 1,  "fields": { "name": "Dress" } },
+  { "model": "core.category", "pk": 2,  "fields": { "name": "Top" } },
+  { "model": "core.category", "pk": 3,  "fields": { "name": "Pants" } },
+  { "model": "core.category", "pk": 4,  "fields": { "name": "Skirt" } },
+  { "model": "core.category", "pk": 5,  "fields": { "name": "Jacket" } },
+  { "model": "core.category", "pk": 6,  "fields": { "name": "Coat" } },
+  { "model": "core.category", "pk": 7,  "fields": { "name": "Sweater" } },
+  { "model": "core.category", "pk": 8,  "fields": { "name": "Shorts" } },
+  { "model": "core.category", "pk": 9,  "fields": { "name": "Activewear" } },
+  { "model": "core.category", "pk": 10, "fields": { "name": "Footwear" } },
+  { "model": "core.category", "pk": 11, "fields": { "name": "Other" } }
+]
+
