@@ -1429,7 +1429,7 @@ function UploadPage() {
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["SelectContent"], {
                                             side: "bottom",
                                             sideOffset: 4,
-                                            className: "   bg-base-100   text-base-content   border   border-gray-200   rounded-md   shadow-lg   z-50    ",
+                                            className: " bg-base-100 text-base-content border border-gray-200 rounded-md shadow-lg z-50  ",
                                             children: categories.map((cat)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["SelectItem"], {
                                                     value: String(cat.id),
                                                     children: cat.name
