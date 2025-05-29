@@ -1,0 +1,44 @@
+// See https://containers.dev/implementors/json_reference/ for configuration reference
+{
+  "name": "DripDaddy Dev",
+
+  // Build using custom Dockerfile
+  "build": { "dockerfile": "Dockerfile" },
+
+  // Mount the repository at /workspace
+  "workspaceFolder": "/workspace",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
+
+  // Bootstrap Python & JavaScript dependencies
+  "postCreateCommand": "bash -lc 'cd django && python3 -m venv env && source env/bin/activate && pip install -r requirements.txt && cd ../app && npm install'",
+
+  // Ports to forward from container
+  "forwardPorts": [3000, 8000],
+
+  // Container features for required runtimes
+  "features": {
+    "ghcr.io/devcontainers/features/python:1": { "version": "3.12" },
+    "ghcr.io/devcontainers/features/node:1":   { "version": "20.11.0" }
+  },
+
+  // User and shell in the container
+  "remoteUser": "node",
+
+  // Customizations for VS Code
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "ms-python.python",
+        "ms-azuretools.vscode-docker",
+        "gruntfuggly.todo-tree",
+        "visualstudioexptteam.vscodeintellicode"
+      ],
+      "settings": {
+        // Use bash as the integrated terminal
+        "terminal.integrated.defaultProfile.linux": "bash"
+      }
+    }
+  }
+}
