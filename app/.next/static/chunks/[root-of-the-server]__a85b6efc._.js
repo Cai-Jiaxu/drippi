@@ -1166,6 +1166,7 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 
 var { g: global, __dirname, k: __turbopack_refresh__, m: module } = __turbopack_context__;
 {
+// components/OutfitCard.tsx
 __turbopack_context__.s({
     "OutfitCard": (()=>OutfitCard)
 });
@@ -1207,30 +1208,30 @@ function OutfitCard({ outfit, onAddToCart }) {
         className: "max-w-xs transition-transform transition-shadow duration-200 ease-in-out hover:shadow-2xl hover:scale-[1.02]",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$carousel$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["Carousel"], {
-                className: "h-56 bg-base-200 dark:bg-base-300",
+                className: "h-56 bg-[var(--muted)]",
                 children: outfit.images.map((img)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "carousel-item w-full relative",
                         children: [
                             !loaded[img.id] && !error[img.id] && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "absolute inset-0 bg-base-200 dark:bg-base-300 animate-pulse"
+                                className: "absolute inset-0 bg-[var(--muted)] animate-pulse"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/OutfitCard.tsx",
                                 lineNumber: 49,
                                 columnNumber: 15
                             }, this),
                             error[img.id] && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "absolute inset-0 bg-base-200 dark:bg-base-300 flex items-center justify-center",
+                                className: "absolute inset-0 bg-[var(--muted)] flex items-center justify-center",
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                    className: "text-sm text-muted-foreground",
+                                    className: "text-sm text-[var(--muted-foreground)]",
                                     children: "Image unavailable"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/OutfitCard.tsx",
-                                    lineNumber: 54,
+                                    lineNumber: 53,
                                     columnNumber: 17
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/OutfitCard.tsx",
-                                lineNumber: 53,
+                                lineNumber: 52,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {
@@ -1243,37 +1244,37 @@ function OutfitCard({ outfit, onAddToCart }) {
                                 onError: ()=>handleError(img.id)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/OutfitCard.tsx",
-                                lineNumber: 59,
+                                lineNumber: 58,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, img.id, true, {
                         fileName: "[project]/src/components/OutfitCard.tsx",
-                        lineNumber: 46,
+                        lineNumber: 47,
                         columnNumber: 11
                     }, this))
             }, void 0, false, {
                 fileName: "[project]/src/components/OutfitCard.tsx",
-                lineNumber: 44,
+                lineNumber: 45,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "p-4 flex flex-col h-full bg-base-100 text-base-content",
+                className: "p-4 flex flex-col h-full bg-[var(--background)] text-[var(--foreground)]",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                         className: "text-lg font-semibold line-clamp-2",
                         children: outfit.title
                     }, void 0, false, {
                         fileName: "[project]/src/components/OutfitCard.tsx",
-                        lineNumber: 75,
+                        lineNumber: 74,
                         columnNumber: 9
                     }, this),
                     outfit.description && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                        className: "text-sm text-muted-foreground mt-1 line-clamp-3",
+                        className: "text-sm text-[var(--muted-foreground)] mt-1 line-clamp-3",
                         children: outfit.description
                     }, void 0, false, {
                         fileName: "[project]/src/components/OutfitCard.tsx",
-                        lineNumber: 77,
+                        lineNumber: 76,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1287,11 +1288,11 @@ function OutfitCard({ outfit, onAddToCart }) {
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/OutfitCard.tsx",
-                                lineNumber: 83,
+                                lineNumber: 82,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["Button"], {
-                                variant: "primary",
+                                variant: "default",
                                 size: "sm",
                                 className: "flex items-center",
                                 onClick: ()=>onAddToCart(outfit),
@@ -1300,14 +1301,14 @@ function OutfitCard({ outfit, onAddToCart }) {
                                         className: "mr-1 h-4 w-4"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/OutfitCard.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 91,
                                         columnNumber: 13
                                     }, this),
                                     " Add to cart"
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/OutfitCard.tsx",
-                                lineNumber: 86,
+                                lineNumber: 85,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$dialog$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["Dialog"], {
@@ -1320,16 +1321,16 @@ function OutfitCard({ outfit, onAddToCart }) {
                                             children: "Quick View"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/OutfitCard.tsx",
-                                            lineNumber: 98,
+                                            lineNumber: 96,
                                             columnNumber: 15
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/OutfitCard.tsx",
-                                        lineNumber: 97,
+                                        lineNumber: 95,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$dialog$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["DialogContent"], {
-                                        className: "bg-base-100 text-base-content",
+                                        className: "bg-[var(--background)] text-[var(--foreground)]",
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$dialog$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["DialogHeader"], {
                                                 children: [
@@ -1337,24 +1338,24 @@ function OutfitCard({ outfit, onAddToCart }) {
                                                         children: outfit.title
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/OutfitCard.tsx",
-                                                        lineNumber: 104,
+                                                        lineNumber: 102,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$dialog$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["DialogDescription"], {
                                                         children: outfit.description
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/OutfitCard.tsx",
-                                                        lineNumber: 105,
+                                                        lineNumber: 103,
                                                         columnNumber: 17
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/OutfitCard.tsx",
-                                                lineNumber: 103,
+                                                lineNumber: 101,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$carousel$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["Carousel"], {
-                                                className: "h-64 bg-base-200 dark:bg-base-300",
+                                                className: "h-64 bg-[var(--muted)]",
                                                 children: outfit.images.map((img)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                         className: "carousel-item w-full relative",
                                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {
@@ -1364,17 +1365,17 @@ function OutfitCard({ outfit, onAddToCart }) {
                                                             className: "object-cover"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/OutfitCard.tsx",
-                                                            lineNumber: 110,
+                                                            lineNumber: 108,
                                                             columnNumber: 21
                                                         }, this)
                                                     }, img.id, false, {
                                                         fileName: "[project]/src/components/OutfitCard.tsx",
-                                                        lineNumber: 109,
+                                                        lineNumber: 107,
                                                         columnNumber: 19
                                                     }, this))
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/OutfitCard.tsx",
-                                                lineNumber: 107,
+                                                lineNumber: 105,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1388,61 +1389,61 @@ function OutfitCard({ outfit, onAddToCart }) {
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/OutfitCard.tsx",
-                                                        lineNumber: 120,
+                                                        lineNumber: 118,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["Button"], {
-                                                        variant: "primary",
+                                                        variant: "default",
                                                         onClick: ()=>onAddToCart(outfit),
                                                         children: [
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$shopping$2d$cart$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ShoppingCart$3e$__["ShoppingCart"], {
                                                                 className: "mr-1 h-4 w-4"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/OutfitCard.tsx",
-                                                                lineNumber: 127,
+                                                                lineNumber: 125,
                                                                 columnNumber: 19
                                                             }, this),
                                                             "Add to cart"
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/OutfitCard.tsx",
-                                                        lineNumber: 123,
+                                                        lineNumber: 121,
                                                         columnNumber: 17
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/OutfitCard.tsx",
-                                                lineNumber: 119,
+                                                lineNumber: 117,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/OutfitCard.tsx",
-                                        lineNumber: 102,
+                                        lineNumber: 100,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/OutfitCard.tsx",
-                                lineNumber: 96,
+                                lineNumber: 94,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/OutfitCard.tsx",
-                        lineNumber: 82,
+                        lineNumber: 81,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/OutfitCard.tsx",
-                lineNumber: 74,
+                lineNumber: 73,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/OutfitCard.tsx",
-        lineNumber: 43,
+        lineNumber: 44,
         columnNumber: 5
     }, this);
 }
@@ -1459,6 +1460,7 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 
 var { g: global, __dirname, k: __turbopack_refresh__, m: module } = __turbopack_context__;
 {
+// pages/listings.tsx
 __turbopack_context__.s({
     "__N_SSP": (()=>__N_SSP),
     "default": (()=>Listings)
@@ -1470,6 +1472,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$api$2f$fetchListings$
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$OutfitCard$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/OutfitCard.tsx [client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
+'use client';
 ;
 ;
 ;
@@ -1540,7 +1543,7 @@ function Listings({ initialResults, initialNext }) {
     ]);
     const isFirstLoad = page === 1 && items.length === 0 && loading;
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "min-h-screen bg-base-100 text-base-content p-8",
+        className: "min-h-screen bg-[var(--background)] text-[var(--foreground)] p-8",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6",
@@ -1550,42 +1553,42 @@ function Listings({ initialResults, initialNext }) {
                         className: "max-w-xs w-full space-y-2 animate-pulse",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "h-56 bg-base-200 dark:bg-base-300 rounded"
+                                className: "h-56 bg-[var(--muted)] rounded"
                             }, void 0, false, {
                                 fileName: "[project]/pages/listings.tsx",
-                                lineNumber: 60,
+                                lineNumber: 63,
                                 columnNumber: 17
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "h-4 bg-base-200 dark:bg-base-300 rounded w-3/4"
+                                className: "h-4 bg-[var(--muted)] rounded w-3/4"
                             }, void 0, false, {
                                 fileName: "[project]/pages/listings.tsx",
-                                lineNumber: 61,
+                                lineNumber: 64,
                                 columnNumber: 17
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "h-4 bg-base-200 dark:bg-base-300 rounded w-1/2"
+                                className: "h-4 bg-[var(--muted)] rounded w-1/2"
                             }, void 0, false, {
                                 fileName: "[project]/pages/listings.tsx",
-                                lineNumber: 62,
+                                lineNumber: 65,
                                 columnNumber: 17
                             }, this)
                         ]
                     }, i, true, {
                         fileName: "[project]/pages/listings.tsx",
-                        lineNumber: 59,
+                        lineNumber: 62,
                         columnNumber: 15
                     }, this)) : items.map((o)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$OutfitCard$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["OutfitCard"], {
                         outfit: o,
                         onAddToCart: ()=>{}
                     }, o.id, false, {
                         fileName: "[project]/pages/listings.tsx",
-                        lineNumber: 66,
+                        lineNumber: 69,
                         columnNumber: 15
                     }, this))
             }, void 0, false, {
                 fileName: "[project]/pages/listings.tsx",
-                lineNumber: 56,
+                lineNumber: 59,
                 columnNumber: 7
             }, this),
             loading && !isFirstLoad && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1593,14 +1596,14 @@ function Listings({ initialResults, initialNext }) {
                 children: "Loading more…"
             }, void 0, false, {
                 fileName: "[project]/pages/listings.tsx",
-                lineNumber: 71,
+                lineNumber: 74,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 ref: sentinelRef
             }, void 0, false, {
                 fileName: "[project]/pages/listings.tsx",
-                lineNumber: 73,
+                lineNumber: 76,
                 columnNumber: 7
             }, this),
             !loading && items.length === 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1608,13 +1611,13 @@ function Listings({ initialResults, initialNext }) {
                 children: "No listings found."
             }, void 0, false, {
                 fileName: "[project]/pages/listings.tsx",
-                lineNumber: 76,
+                lineNumber: 79,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/pages/listings.tsx",
-        lineNumber: 55,
+        lineNumber: 58,
         columnNumber: 5
     }, this);
 }

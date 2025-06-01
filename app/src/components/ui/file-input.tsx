@@ -1,3 +1,4 @@
+// components/ui/file-input.tsx
 'use client';
 
 import React, {
@@ -50,7 +51,7 @@ const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 
     return (
       <div>
-        <label className="cursor-pointer block">
+        <label className="block cursor-pointer">
           <input
             type="file"
             ref={ref}
@@ -62,14 +63,15 @@ const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
           />
           <div
             className={cn(
-              'file-input file-input-bordered w-full min-w-0',
-              'flex items-center space-x-2 rounded-md',
-              'px-3 py-2 bg-base-100 text-base-content',
-              'peer-focus:ring-2 peer-focus:ring-primary',
+              'flex items-center space-x-2 w-full min-w-0',
+              'px-3 py-2',
+              'bg-[var(--background)] text-[var(--foreground)]',
+              'border border-[var(--border)] rounded-md',
+              'peer-focus-within:ring-2 peer-focus-within:ring-[var(--primary)]',
               className
             )}
           >
-            <Upload className="h-5 w-5 text-primary" />
+            <Upload className="h-5 w-5 text-[var(--primary)]" />
             <span className="truncate">{labelText}</span>
           </div>
         </label>
@@ -79,7 +81,7 @@ const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
             {files.map((file, i) => (
               <Badge
                 key={i}
-                className="flex items-center justify-between w-full min-w-0 px-2 py-0.1"
+                className="flex items-center justify-between w-full min-w-0 px-2 py-0.5"
               >
                 <span className="truncate w-full">{file.name}</span>
                 <Button

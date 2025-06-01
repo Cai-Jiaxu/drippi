@@ -68,6 +68,7 @@ import {
   SignOutButton,
   UserButton
 } from '@clerk/nextjs'
+import { Button } from '@/components/ui/button'
 
 export function AuthControls() {
   return (
@@ -77,7 +78,9 @@ export function AuthControls() {
         <div className="flex items-center space-x-4">
           <UserButton />
           <SignOutButton>
-            <button className="btn">Sign out</button>
+            <Button variant="ghost" size="sm">
+              Sign out
+            </Button>
           </SignOutButton>
         </div>
       </SignedIn>
@@ -86,10 +89,14 @@ export function AuthControls() {
       <SignedOut>
         <div className="flex items-center space-x-2">
           <SignInButton>
-            <button className="btn btn-outline">Sign in</button>
+            <Button variant="outline" size="sm">
+              Sign in
+            </Button>
           </SignInButton>
           <SignUpButton>
-            <button className="btn btn-primary">Register</button>
+            <Button variant="default" size="sm">
+              Register
+            </Button>
           </SignUpButton>
         </div>
       </SignedOut>

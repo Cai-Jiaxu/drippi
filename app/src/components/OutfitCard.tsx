@@ -1,3 +1,4 @@
+// components/OutfitCard.tsx
 'use client';
 
 import { useState } from 'react';
@@ -41,17 +42,15 @@ export function OutfitCard({ outfit, onAddToCart }: OutfitCardProps) {
 
   return (
     <Card className="max-w-xs transition-transform transition-shadow duration-200 ease-in-out hover:shadow-2xl hover:scale-[1.02]">
-      <Carousel className="h-56 bg-base-200 dark:bg-base-300">
+      <Carousel className="h-56 bg-[var(--muted)]">
         {outfit.images.map(img => (
           <div key={img.id} className="carousel-item w-full relative">
-            {/* skeleton placeholder */}
             {!loaded[img.id] && !error[img.id] && (
-              <div className="absolute inset-0 bg-base-200 dark:bg-base-300 animate-pulse" />
+              <div className="absolute inset-0 bg-[var(--muted)] animate-pulse" />
             )}
-            {/* error fallback */}
             {error[img.id] && (
-              <div className="absolute inset-0 bg-base-200 dark:bg-base-300 flex items-center justify-center">
-                <span className="text-sm text-muted-foreground">
+              <div className="absolute inset-0 bg-[var(--muted)] flex items-center justify-center">
+                <span className="text-sm text-[var(--muted-foreground)]">
                   Image unavailable
                 </span>
               </div>
@@ -71,10 +70,10 @@ export function OutfitCard({ outfit, onAddToCart }: OutfitCardProps) {
         ))}
       </Carousel>
 
-      <div className="p-4 flex flex-col h-full bg-base-100 text-base-content">
+      <div className="p-4 flex flex-col h-full bg-[var(--background)] text-[var(--foreground)]">
         <h2 className="text-lg font-semibold line-clamp-2">{outfit.title}</h2>
         {outfit.description && (
-          <p className="text-sm text-muted-foreground mt-1 line-clamp-3">
+          <p className="text-sm text-[var(--muted-foreground)] mt-1 line-clamp-3">
             {outfit.description}
           </p>
         )}
@@ -84,7 +83,7 @@ export function OutfitCard({ outfit, onAddToCart }: OutfitCardProps) {
             ${outfit.price_per_day.toFixed(2)}
           </span>
           <Button
-            variant="primary"
+            variant="default"
             size="sm"
             className="flex items-center"
             onClick={() => onAddToCart(outfit)}
@@ -92,19 +91,18 @@ export function OutfitCard({ outfit, onAddToCart }: OutfitCardProps) {
             <ShoppingCart className="mr-1 h-4 w-4" /> Add to cart
           </Button>
 
-          {/* Quick View Modal */}
           <Dialog>
             <DialogTrigger asChild>
               <Button variant="outline" size="sm">
                 Quick View
               </Button>
             </DialogTrigger>
-            <DialogContent className="bg-base-100 text-base-content">
+            <DialogContent className="bg-[var(--background)] text-[var(--foreground)]">
               <DialogHeader>
                 <DialogTitle>{outfit.title}</DialogTitle>
                 <DialogDescription>{outfit.description}</DialogDescription>
               </DialogHeader>
-              <Carousel className="h-64 bg-base-200 dark:bg-base-300">
+              <Carousel className="h-64 bg-[var(--muted)]">
                 {outfit.images.map(img => (
                   <div key={img.id} className="carousel-item w-full relative">
                     <Image
@@ -121,7 +119,7 @@ export function OutfitCard({ outfit, onAddToCart }: OutfitCardProps) {
                   ${outfit.price_per_day.toFixed(2)}
                 </span>
                 <Button
-                  variant="primary"
+                  variant="default"
                   onClick={() => onAddToCart(outfit)}
                 >
                   <ShoppingCart className="mr-1 h-4 w-4" />

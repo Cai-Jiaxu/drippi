@@ -1,3 +1,4 @@
+// components/ui/NewSidebar.tsx
 'use client'
 
 import React from 'react'
@@ -40,7 +41,7 @@ export function Sidebar({ onLinkClick }: SidebarProps) {
       </div>
 
       {/* Decorative divider */}
-      <hr className="border-t border-base-content/20 mb-4 mx-2" />
+      <hr className="border-t border-[var(--foreground)]/20 mb-4 mx-2" />
 
       {/* Navigation links */}
       <nav className="flex-1 space-y-2 px-2">
@@ -53,15 +54,15 @@ export function Sidebar({ onLinkClick }: SidebarProps) {
               size="sm"
               className={`
                 w-full justify-start transition
-                hover:bg-base-300
-                ${isActive ? 'border-l-4 border-primary' : ''}
+                hover:bg-[var(--muted)]
+                ${isActive ? 'border-l-4 border-[var(--primary)]' : ''}
               `}
               onClick={() => {
                 router.push(href)
                 onLinkClick?.()
               }}
             >
-              <Icon className="mr-2 h-2 w-4" />
+              <Icon className="mr-2 h-4 w-4" />
               {name}
             </Button>
           )

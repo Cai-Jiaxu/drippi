@@ -10,10 +10,10 @@ export default function App({ Component, pageProps }: AppProps) {
     <ClerkProvider {...pageProps}>
       {/* Wrap only the client-side theme logic to avoid SSR mismatch */}
       <ThemeProvider
-        attribute="data-theme"
+        attribute="class"
         defaultTheme="system"
         enableSystem={true}
-        themes={['nord', 'dim']}
+        // themes={['nord', 'dim']}
         disableTransitionOnChange
       >
         <Layout>

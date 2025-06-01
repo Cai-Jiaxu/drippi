@@ -3,8 +3,9 @@
     chunks: [
   "static/chunks/node_modules_next_63387682._.js",
   "static/chunks/node_modules_react-dom_82bb97c6._.js",
-  "static/chunks/node_modules_2a5cf4bb._.js",
-  "static/chunks/[root-of-the-server]__6961bf74._.js"
+  "static/chunks/node_modules_tailwind-merge_dist_bundle-mjs_mjs_e33d9f9e._.js",
+  "static/chunks/node_modules_0ed9a27d._.js",
+  "static/chunks/[root-of-the-server]__beddf162._.js"
 ],
     source: "entry"
 });

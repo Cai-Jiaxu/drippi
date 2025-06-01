@@ -1,4 +1,4 @@
-// 
+// components/ui/Header.tsx
 'use client'
 
 import React, { useEffect, useRef, useState } from 'react'
@@ -34,7 +34,6 @@ export function Header({ toggleSidebar }: HeaderProps) {
     return q
   })
 
-
   useDebounce(term, 500, () => {
     if (!didSearch.current) return
     router.push({
@@ -44,7 +43,7 @@ export function Header({ toggleSidebar }: HeaderProps) {
   })
 
   return (
-    <header className="fixed top-0 inset-x-0 z-50 h-16 bg-base-100 border-b-2 border-base-200 flex items-center px-4">
+    <header className="fixed top-0 inset-x-0 z-50 h-16 bg-[var(--background)] border-b-2 border-[var(--border)] flex items-center px-4">
       {/* Hamburger */}
       <Button
         variant="ghost"

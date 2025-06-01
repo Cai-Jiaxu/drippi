@@ -1,3 +1,4 @@
+// components/Layout.tsx
 'use client'
 
 import React, { useState, useEffect } from 'react'
@@ -28,7 +29,7 @@ export default function Layout({ children }: LayoutProps) {
       <aside
         className={`
           fixed inset-0 left-0 z-50 w-64 p-4 transform transition-transform duration-200
-          bg-base-200
+          bg-[var(--sidebar)]
           ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}
         `}
       >

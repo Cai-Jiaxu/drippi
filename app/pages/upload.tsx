@@ -1,4 +1,6 @@
 // pages/upload.tsx
+'use client'
+
 import { useState, useEffect, FormEvent } from 'react'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
@@ -111,18 +113,20 @@ export default function UploadPage() {
   }
 
   return (
-    <div className="min-h-screen bg-base-200 flex items-center justify-center p-4">
-      <div className="card w-full max-w-sm bg-base-100 shadow-lg p-6 overflow-visible">
-        <h1 className="card-title justify-center mb-4">Upload Outfit</h1>
+    <div className="min-h-screen bg-[var(--muted)] flex items-center justify-center p-4">
+      <div className="bg-[var(--background)] shadow-lg p-6 rounded-lg w-full max-w-sm overflow-visible">
+        <h1 className="text-2xl font-semibold text-[var(--foreground)] text-center mb-4">
+          Upload Outfit
+        </h1>
 
         {success && (
-          <div className="alert alert-success shadow-lg mb-4">
+          <div className="bg-[var(--primary)] text-[var(--primary-foreground)] p-3 rounded mb-4">
             <span>Your outfit was uploaded successfully!</span>
           </div>
         )}
 
         {errors.length > 0 && (
-          <div className="alert alert-error shadow-lg mb-4">
+          <div className="bg-[var(--destructive)] text-[var(--destructive-foreground)] p-3 rounded mb-4">
             <div className="flex flex-col space-y-1">
               {errors.map((e, i) => (
                 <span key={i}>• {e}</span>
@@ -133,24 +137,24 @@ export default function UploadPage() {
 
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Title */}
-          <div className="form-control">
-            <label htmlFor="title" className="label">
-              <span className="label-text">Title</span>
+          <div>
+            <label htmlFor="title" className="block mb-1 text-[var(--foreground)] font-medium">
+              Title
             </label>
             <Input
               id="title"
               value={title}
               onChange={e => setTitle(e.target.value)}
               placeholder="TITLE"
-              className="input input-bordered bg-base-100 text-base-content w-full"
+              className="w-full bg-[var(--background)] text-[var(--foreground)] border border-[var(--border)]"
               required
             />
           </div>
 
           {/* Description */}
-          <div className="form-control">
-            <label htmlFor="description" className="label">
-              <span className="label-text">Description (optional)</span>
+          <div>
+            <label htmlFor="description" className="block mb-1 text-[var(--foreground)] font-medium">
+              Description (optional)
             </label>
             <Textarea
               id="description"
@@ -159,29 +163,29 @@ export default function UploadPage() {
               value={description}
               onChange={e => setDescription(e.target.value)}
               placeholder="Tell renters more about this outfit"
-              className="textarea textarea-bordered bg-base-100 text-base-content w-full"
+              className="w-full bg-[var(--background)] text-[var(--foreground)] border border-[var(--border)]"
             />
           </div>
 
           {/* Size */}
-          <div className="form-control">
-            <label htmlFor="size" className="label">
-              <span className="label-text">Size</span>
+          <div>
+            <label htmlFor="size" className="block mb-1 text-[var(--foreground)] font-medium">
+              Size
             </label>
             <Input
               id="size"
               value={size}
               onChange={e => setSize(e.target.value)}
               placeholder="Size"
-              className="input input-bordered bg-base-100 text-base-content w-full"
+              className="w-full bg-[var(--background)] text-[var(--foreground)] border border-[var(--border)]"
               required
             />
           </div>
 
           {/* Price */}
-          <div className="form-control">
-            <label htmlFor="price" className="label">
-              <span className="label-text">Price per day (SGD)</span>
+          <div>
+            <label htmlFor="price" className="block mb-1 text-[var(--foreground)] font-medium">
+              Price per day (SGD)
             </label>
             <Input
               id="price"
@@ -190,50 +194,41 @@ export default function UploadPage() {
               value={price}
               onChange={e => setPrice(e.target.value)}
               placeholder="Price"
-              className="input input-bordered bg-base-100 text-base-content w-full"
+              className="w-full bg-[var(--background)] text-[var(--foreground)] border border-[var(--border)]"
               required
             />
           </div>
 
           {/* Category */}
-          <div className="form-control">
-            <label htmlFor="category" className="label">
-              <span className="label-text">Category</span>
+          <div>
+            <label htmlFor="category" className="block mb-1 text-[var(--foreground)] font-medium">
+              Category
             </label>
-             <Select
-                value={categoryId === '' ? undefined : String(categoryId)}
-                onValueChange={val => setCategoryId(Number(val))}
+            <Select
+              value={categoryId === '' ? undefined : String(categoryId)}
+              onValueChange={val => setCategoryId(Number(val))}
+            >
+              <SelectTrigger className="w-full bg-[var(--background)] text-[var(--foreground)] border border-[var(--border)]">
+                <SelectValue placeholder="Select a category" />
+              </SelectTrigger>
+              <SelectContent
+                side="bottom"
+                sideOffset={4}
+                className="bg-[var(--background)] text-[var(--foreground)] border border-[var(--border)] rounded-md shadow-lg z-50"
               >
-                <SelectTrigger className="select select-bordered bg-base-100 text-base-content w-full">
-                  <SelectValue placeholder="Select a category" />
-                </SelectTrigger>
-
-                <SelectContent
-                  side="bottom"
-                  sideOffset={4}
-                  className="
-                    bg-base-100
-                    text-base-content
-                    border
-                    border-gray-200
-                    rounded-md
-                    shadow-lg
-                    z-50 
-                  "
-                >
-                  {categories.map(cat => (
-                    <SelectItem key={cat.id} value={String(cat.id)}>
-                      {cat.name}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+                {categories.map(cat => (
+                  <SelectItem key={cat.id} value={String(cat.id)}>
+                    {cat.name}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
 
           {/* Images */}
-          <div className="form-control">
-            <label htmlFor="images" className="label">
-              <span className="label-text">Images (1–5)</span>
+          <div>
+            <label htmlFor="images" className="block mb-1 text-[var(--foreground)] font-medium">
+              Images (1–5)
             </label>
             <FileInput
               id="images"
@@ -247,7 +242,9 @@ export default function UploadPage() {
           {/* Submit */}
           <Button
             type="submit"
-            className={`btn btn-primary w-full ${submitting ? 'loading' : ''}`}
+            variant="outline"
+            size="lg"
+            className="w-full px-6 py-3 rounded-full font-semibold transition"
             disabled={submitting}
           >
             {submitting ? 'Uploading…' : 'Submit Outfit'}
