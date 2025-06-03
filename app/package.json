@@ -7,8 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "tw:init": "tailwindcss init -p",
-    "vercel-build": "npm install --legacy-peer-deps && next build"
+    "tw:init": "tailwindcss init -p"
   },
   "dependencies": {
     "@clerk/nextjs": "^6.20.0",
