@@ -515,6 +515,11 @@ img, video {
   margin-bottom: .25rem;
 }
 
+.mx-4 {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
 .-ml-4 {
   margin-left: -1rem;
 }
@@ -778,6 +783,10 @@ img, video {
 
 .w-max {
   width: max-content;
+}
+
+.w-56 {
+  width: 14rem;
 }
 
 .min-w-0 {

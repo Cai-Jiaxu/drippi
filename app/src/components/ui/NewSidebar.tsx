@@ -11,6 +11,7 @@ import {
   LayoutDashboard,
   ShoppingCart,
   User,
+  Menu,              
 } from 'lucide-react'
 
 interface SidebarProps {
@@ -29,8 +30,17 @@ export function Sidebar({ onLinkClick }: SidebarProps) {
 
   return (
     <div className="flex flex-col h-full">
-      {/* Logo area aligned with header height */}
-      <div className="flex items-center h-12 px-2">
+     
+      <div className="flex items-center h-12 px-2 space-x-2">
+        <Button
+          variant="ghost"
+          size="icon"
+          aria-label="Close sidebar"
+          onClick={() => onLinkClick?.()}
+        >
+          <Menu className="h-5 w-5" />
+        </Button>
+
         <Link
           href="/"
           onClick={onLinkClick}
