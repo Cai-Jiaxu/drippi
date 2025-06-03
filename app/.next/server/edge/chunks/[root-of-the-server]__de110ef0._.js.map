@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 23, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/middleware.ts"],"sourcesContent":["import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';\n\nconst isProtectedRoute = createRouteMatcher([\n  '/upload/:path*',\n  '/dashboard/:path*',\n  '/profile/:path*',\n  '/cart/:path*',\n]);\n\nexport default clerkMiddleware(async (auth, req) => {\n  if (isProtectedRoute(req)) {\n\n    await auth.protect();\n  }\n});\n\nexport const config = {\n  matcher: [\n    // skip internals & static files\n    '/((?!_next|[^?]*\\\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',\n    // always run for API/trpc\n    '/(api|trpc)(.*)',\n    // run for all pages so our callback can gate them\n    '/((?!_next|api|trpc).*)',\n  ],\n};\n"],"names":[],"mappings":";;;;AAAA;AAAA;;AAEA,MAAM,mBAAmB,CAAA,GAAA,kLAAA,CAAA,qBAAkB,AAAD,EAAE;IAC1C;IACA;IACA;IACA;CACD;uCAEc,CAAA,GAAA,qLAAA,CAAA,kBAAe,AAAD,EAAE,OAAO,MAAM;IAC1C,IAAI,iBAAiB,MAAM;QAEzB,MAAM,KAAK,OAAO;IACpB;AACF;AAEO,MAAM,SAAS;IACpB,SAAS;QACP,gCAAgC;QAChC;QACA,0BAA0B;QAC1B;QACA,kDAAkD;QAClD;KACD;AACH"}}]
-}
