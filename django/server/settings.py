@@ -3,9 +3,12 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = "django-insecure-%1-okrpxqwy*g=d=f5ombf@1p*n^hhjbx&nbv3fy97tw@7hn=d"
-DEBUG = True
-ALLOWED_HOSTS = []
+import os
+
+SECRET_KEY = os.getenv('SECRET_KEY', 'unsafe-dev-secret')
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost').split(',')
+
 
 INSTALLED_APPS = [
     "django.contrib.admin",

@@ -300,4 +300,6 @@ XlsxWriter==3.1.2
 yellowbrick==1.5
 yfinance==0.2.28
 zipp==3.21.0
-zmq==0.0.0
+zmq==0.0.0 
+gunicorn==21.2.0
+python-dotenv==1.0.1
