@@ -7,8 +7,7 @@ import { cn } from "@/lib/utils";
 type Tab = {
   title: string;
   value: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  content?: string | React.ReactNode | any;
+  content?: React.ReactNode;
 };
 
 export const Tabs = ({
