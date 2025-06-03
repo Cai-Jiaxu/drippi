@@ -1,3 +1,4 @@
+# server/settings.py
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -81,8 +82,8 @@ CORS_ALLOW_CREDENTIALS = True
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
-        "rest_framework.authentication.SessionAuthentication",
-         "core.authentication.ClerkAuthentication",
+        "core.authentication.ClerkAuthentication",            
+        "rest_framework.authentication.SessionAuthentication",  
     ],
     "DEFAULT_PERMISSION_CLASSES": [
         "rest_framework.permissions.AllowAny",
@@ -90,18 +91,15 @@ REST_FRAMEWORK = {
     "PAGE_SIZE": 10,
 }
 
-
 CSRF_COOKIE_DOMAIN    = "localhost"
 SESSION_COOKIE_DOMAIN = "localhost"
-
 
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:5173",
     "http://localhost:3000",
 ]
 
-
 CSRF_COOKIE_SAMESITE    = "None"
 SESSION_COOKIE_SAMESITE = "None"
-CSRF_COOKIE_SECURE      = False  
+CSRF_COOKIE_SECURE      = False
 SESSION_COOKIE_SECURE   = False

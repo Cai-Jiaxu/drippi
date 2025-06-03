@@ -15,12 +15,16 @@ export function AuthMenu() {
   const { user, isLoaded, isSignedIn } = useUser()
   if (!isLoaded) return null
 
+  // Clerk's UserResource has `imageUrl`, not `profileImageUrl`
+  const avatarUrl = user?.imageUrl ?? ''
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         {isSignedIn && user ? (
           <Avatar className="cursor-pointer ring ring-primary ring-offset-[var(--background)] ring-offset-2 rounded-full">
-            <AvatarImage src={user.setProfileImage} alt={user.fullName || 'User'} />
+            {/* Now passing a string URL (user.imageUrl), not a function */}
+            <AvatarImage src={avatarUrl} alt={user.fullName || 'User'} />
             <AvatarFallback>{(user.firstName || 'U')[0]}</AvatarFallback>
           </Avatar>
         ) : (
@@ -39,7 +43,8 @@ export function AuthMenu() {
           <>
             <div className="flex items-center space-x-2 px-3 py-2">
               <Avatar className="h-8 w-8">
-                <AvatarImage src={user.setProfileImage} alt={user.fullName || 'User'} />
+                {/* Again, use user.imageUrl */}
+                <AvatarImage src={avatarUrl} alt={user.fullName || 'User'} />
                 <AvatarFallback>{(user.firstName || 'U')[0]}</AvatarFallback>
               </Avatar>
               <span className="font-medium text-sm">{user.fullName} │ DripDaddy</span>

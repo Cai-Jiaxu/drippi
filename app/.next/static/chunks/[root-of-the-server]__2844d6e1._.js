@@ -958,6 +958,8 @@ function AuthMenu() {
     _s();
     const { user, isLoaded, isSignedIn } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$clerk$2f$shared$2f$dist$2f$react$2f$index$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__["useUser"])();
     if (!isLoaded) return null;
+    // Clerk's UserResource has `imageUrl`, not `profileImageUrl`
+    const avatarUrl = user?.imageUrl ?? '';
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$dropdown$2d$menu$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["DropdownMenu"], {
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$dropdown$2d$menu$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["DropdownMenuTrigger"], {
@@ -966,24 +968,24 @@ function AuthMenu() {
                     className: "cursor-pointer ring ring-primary ring-offset-[var(--background)] ring-offset-2 rounded-full",
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$avatar$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["AvatarImage"], {
-                            src: user.setProfileImage,
+                            src: avatarUrl,
                             alt: user.fullName || 'User'
                         }, void 0, false, {
                             fileName: "[project]/src/components/AuthMenu.tsx",
-                            lineNumber: 23,
+                            lineNumber: 27,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$avatar$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["AvatarFallback"], {
                             children: (user.firstName || 'U')[0]
                         }, void 0, false, {
                             fileName: "[project]/src/components/AuthMenu.tsx",
-                            lineNumber: 24,
+                            lineNumber: 28,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/AuthMenu.tsx",
-                    lineNumber: 22,
+                    lineNumber: 25,
                     columnNumber: 11
                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$avatar$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["Avatar"], {
                     className: "cursor-pointer ring ring-primary ring-offset-[var(--background)] ring-offset-2 rounded-full",
@@ -991,17 +993,17 @@ function AuthMenu() {
                         children: "?"
                     }, void 0, false, {
                         fileName: "[project]/src/components/AuthMenu.tsx",
-                        lineNumber: 28,
+                        lineNumber: 32,
                         columnNumber: 13
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/components/AuthMenu.tsx",
-                    lineNumber: 27,
+                    lineNumber: 31,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/AuthMenu.tsx",
-                lineNumber: 20,
+                lineNumber: 23,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$dropdown$2d$menu$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["DropdownMenuContent"], {
@@ -1017,24 +1019,24 @@ function AuthMenu() {
                                     className: "h-8 w-8",
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$avatar$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["AvatarImage"], {
-                                            src: user.setProfileImage,
+                                            src: avatarUrl,
                                             alt: user.fullName || 'User'
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/AuthMenu.tsx",
-                                            lineNumber: 42,
+                                            lineNumber: 47,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$avatar$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["AvatarFallback"], {
                                             children: (user.firstName || 'U')[0]
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/AuthMenu.tsx",
-                                            lineNumber: 43,
+                                            lineNumber: 48,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/AuthMenu.tsx",
-                                    lineNumber: 41,
+                                    lineNumber: 45,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1045,13 +1047,13 @@ function AuthMenu() {
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/AuthMenu.tsx",
-                                    lineNumber: 45,
+                                    lineNumber: 50,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/AuthMenu.tsx",
-                            lineNumber: 40,
+                            lineNumber: 44,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1066,22 +1068,22 @@ function AuthMenu() {
                                         children: "Sign out"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/AuthMenu.tsx",
-                                        lineNumber: 50,
+                                        lineNumber: 55,
                                         columnNumber: 19
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/AuthMenu.tsx",
-                                    lineNumber: 49,
+                                    lineNumber: 54,
                                     columnNumber: 17
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/AuthMenu.tsx",
-                                lineNumber: 48,
+                                lineNumber: 53,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/components/AuthMenu.tsx",
-                            lineNumber: 47,
+                            lineNumber: 52,
                             columnNumber: 13
                         }, this)
                     ]
@@ -1096,12 +1098,12 @@ function AuthMenu() {
                                         children: "?"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/AuthMenu.tsx",
-                                        lineNumber: 61,
+                                        lineNumber: 66,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/AuthMenu.tsx",
-                                    lineNumber: 60,
+                                    lineNumber: 65,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1109,13 +1111,13 @@ function AuthMenu() {
                                     children: "Welcome to DripDaddy"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/AuthMenu.tsx",
-                                    lineNumber: 63,
+                                    lineNumber: 68,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/AuthMenu.tsx",
-                            lineNumber: 59,
+                            lineNumber: 64,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1129,12 +1131,12 @@ function AuthMenu() {
                                         children: "Sign in"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/AuthMenu.tsx",
-                                        lineNumber: 67,
+                                        lineNumber: 72,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/AuthMenu.tsx",
-                                    lineNumber: 66,
+                                    lineNumber: 71,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$clerk$2f$clerk$2d$react$2f$dist$2f$index$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["SignUpButton"], {
@@ -1145,31 +1147,31 @@ function AuthMenu() {
                                         children: "Register"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/AuthMenu.tsx",
-                                        lineNumber: 72,
+                                        lineNumber: 77,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/AuthMenu.tsx",
-                                    lineNumber: 71,
+                                    lineNumber: 76,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/AuthMenu.tsx",
-                            lineNumber: 65,
+                            lineNumber: 70,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true)
             }, void 0, false, {
                 fileName: "[project]/src/components/AuthMenu.tsx",
-                lineNumber: 33,
+                lineNumber: 37,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/AuthMenu.tsx",
-        lineNumber: 19,
+        lineNumber: 22,
         columnNumber: 5
     }, this);
 }
@@ -1404,7 +1406,7 @@ function Header({ toggleSidebar }) {
         columnNumber: 5
     }, this);
 }
-_s(Header, "FBqtPH84P5l2md4ZhJcdCa5Z20k=", false, function() {
+_s(Header, "rXnUBSAetSJkuiWsUxTqitae9z0=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$router$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useRouter"],
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2d$themes$2f$dist$2f$index$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__["useTheme"],

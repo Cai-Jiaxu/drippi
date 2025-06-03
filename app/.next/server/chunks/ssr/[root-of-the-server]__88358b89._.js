@@ -469,7 +469,7 @@ __turbopack_async_result__();
 
 var { g: global, __dirname } = __turbopack_context__;
 {
-// reads csrf cookie
+// csrf.ts reads csrf cookie
 __turbopack_context__.s({
     "getCsrfToken": (()=>getCsrfToken)
 });
@@ -524,7 +524,7 @@ function UploadPage() {
     const [submitting, setSubmitting] = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useState"])(false);
     const [success, setSuccess] = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useState"])(false);
     (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useEffect"])(()=>{
-        fetch('/api/categories/', {
+        fetch('http://localhost:8000/api/categories/', {
             credentials: 'include'
         }).then((res)=>res.json()).then((data)=>setCategories(data)).catch(console.error);
     }, []);
@@ -554,7 +554,7 @@ function UploadPage() {
         setErrors([]);
         try {
             // 1) create outfit
-            const outfitRes = await fetch('/api/outfits/', {
+            const outfitRes = await fetch('http://localhost:8000/api/outfits/', {
                 method: 'POST',
                 credentials: 'include',
                 headers: {
@@ -576,7 +576,7 @@ function UploadPage() {
                 const form = new FormData();
                 form.append('outfit', String(outfitId));
                 form.append('image', file);
-                const imgRes = await fetch('/api/images/', {
+                const imgRes = await fetch('http://localhost:8000/api/images/', {
                     method: 'POST',
                     credentials: 'include',
                     headers: {
@@ -606,7 +606,7 @@ function UploadPage() {
                     children: "Upload Outfit"
                 }, void 0, false, {
                     fileName: "[project]/pages/upload.tsx",
-                    lineNumber: 118,
+                    lineNumber: 120,
                     columnNumber: 9
                 }, this),
                 success && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -615,12 +615,12 @@ function UploadPage() {
                         children: "Your outfit was uploaded successfully!"
                     }, void 0, false, {
                         fileName: "[project]/pages/upload.tsx",
-                        lineNumber: 124,
+                        lineNumber: 126,
                         columnNumber: 13
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/pages/upload.tsx",
-                    lineNumber: 123,
+                    lineNumber: 125,
                     columnNumber: 11
                 }, this),
                 errors.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -634,17 +634,17 @@ function UploadPage() {
                                 ]
                             }, i, true, {
                                 fileName: "[project]/pages/upload.tsx",
-                                lineNumber: 132,
+                                lineNumber: 134,
                                 columnNumber: 17
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/pages/upload.tsx",
-                        lineNumber: 130,
+                        lineNumber: 132,
                         columnNumber: 13
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/pages/upload.tsx",
-                    lineNumber: 129,
+                    lineNumber: 131,
                     columnNumber: 11
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("form", {
@@ -659,7 +659,7 @@ function UploadPage() {
                                     children: "Title"
                                 }, void 0, false, {
                                     fileName: "[project]/pages/upload.tsx",
-                                    lineNumber: 141,
+                                    lineNumber: 143,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$input$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__["Input"], {
@@ -671,13 +671,13 @@ function UploadPage() {
                                     required: true
                                 }, void 0, false, {
                                     fileName: "[project]/pages/upload.tsx",
-                                    lineNumber: 144,
+                                    lineNumber: 146,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/pages/upload.tsx",
-                            lineNumber: 140,
+                            lineNumber: 142,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -688,7 +688,7 @@ function UploadPage() {
                                     children: "Description (optional)"
                                 }, void 0, false, {
                                     fileName: "[project]/pages/upload.tsx",
-                                    lineNumber: 156,
+                                    lineNumber: 158,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$textarea$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__["Textarea"], {
@@ -701,13 +701,13 @@ function UploadPage() {
                                     className: "w-full bg-[var(--background)] text-[var(--foreground)] border border-[var(--border)]"
                                 }, void 0, false, {
                                     fileName: "[project]/pages/upload.tsx",
-                                    lineNumber: 159,
+                                    lineNumber: 161,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/pages/upload.tsx",
-                            lineNumber: 155,
+                            lineNumber: 157,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -718,7 +718,7 @@ function UploadPage() {
                                     children: "Size"
                                 }, void 0, false, {
                                     fileName: "[project]/pages/upload.tsx",
-                                    lineNumber: 172,
+                                    lineNumber: 174,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$input$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__["Input"], {
@@ -730,13 +730,13 @@ function UploadPage() {
                                     required: true
                                 }, void 0, false, {
                                     fileName: "[project]/pages/upload.tsx",
-                                    lineNumber: 175,
+                                    lineNumber: 177,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/pages/upload.tsx",
-                            lineNumber: 171,
+                            lineNumber: 173,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -747,7 +747,7 @@ function UploadPage() {
                                     children: "Price per day (SGD)"
                                 }, void 0, false, {
                                     fileName: "[project]/pages/upload.tsx",
-                                    lineNumber: 187,
+                                    lineNumber: 189,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$input$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__["Input"], {
@@ -761,13 +761,13 @@ function UploadPage() {
                                     required: true
                                 }, void 0, false, {
                                     fileName: "[project]/pages/upload.tsx",
-                                    lineNumber: 190,
+                                    lineNumber: 192,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/pages/upload.tsx",
-                            lineNumber: 186,
+                            lineNumber: 188,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -778,7 +778,7 @@ function UploadPage() {
                                     children: "Category"
                                 }, void 0, false, {
                                     fileName: "[project]/pages/upload.tsx",
-                                    lineNumber: 204,
+                                    lineNumber: 206,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__["Select"], {
@@ -791,12 +791,12 @@ function UploadPage() {
                                                 placeholder: "Select a category"
                                             }, void 0, false, {
                                                 fileName: "[project]/pages/upload.tsx",
-                                                lineNumber: 212,
+                                                lineNumber: 214,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/pages/upload.tsx",
-                                            lineNumber: 211,
+                                            lineNumber: 213,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__["SelectContent"], {
@@ -808,24 +808,24 @@ function UploadPage() {
                                                     children: cat.name
                                                 }, cat.id, false, {
                                                     fileName: "[project]/pages/upload.tsx",
-                                                    lineNumber: 220,
+                                                    lineNumber: 222,
                                                     columnNumber: 19
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/pages/upload.tsx",
-                                            lineNumber: 214,
+                                            lineNumber: 216,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/pages/upload.tsx",
-                                    lineNumber: 207,
+                                    lineNumber: 209,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/pages/upload.tsx",
-                            lineNumber: 203,
+                            lineNumber: 205,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -836,7 +836,7 @@ function UploadPage() {
                                     children: "Images (1–5)"
                                 }, void 0, false, {
                                     fileName: "[project]/pages/upload.tsx",
-                                    lineNumber: 230,
+                                    lineNumber: 232,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$file$2d$input$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -847,13 +847,13 @@ function UploadPage() {
                                     required: true
                                 }, void 0, false, {
                                     fileName: "[project]/pages/upload.tsx",
-                                    lineNumber: 233,
+                                    lineNumber: 235,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/pages/upload.tsx",
-                            lineNumber: 229,
+                            lineNumber: 231,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -865,24 +865,24 @@ function UploadPage() {
                             children: submitting ? 'Uploading…' : 'Submit Outfit'
                         }, void 0, false, {
                             fileName: "[project]/pages/upload.tsx",
-                            lineNumber: 243,
+                            lineNumber: 245,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/pages/upload.tsx",
-                    lineNumber: 138,
+                    lineNumber: 140,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/pages/upload.tsx",
-            lineNumber: 117,
+            lineNumber: 119,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/pages/upload.tsx",
-        lineNumber: 116,
+        lineNumber: 118,
         columnNumber: 5
     }, this);
 }
