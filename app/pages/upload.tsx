@@ -33,7 +33,7 @@ export default function UploadPage() {
   const [success, setSuccess] = useState(false)
 
   useEffect(() => {
-    fetch('http://localhost:8000/api/categories/', {
+    fetch('/api/categories/', {
       credentials: 'include',
     })
       .then(res => res.json())
@@ -73,7 +73,7 @@ export default function UploadPage() {
 
     try {
       // 1) create outfit
-      const outfitRes = await fetch('http://localhost:8000/api/outfits/', {
+      const outfitRes = await fetch('/api/outfits/', {
         method: 'POST',
         credentials: 'include',
         headers: {
@@ -96,7 +96,7 @@ export default function UploadPage() {
         const form = new FormData()
         form.append('outfit', String(outfitId))
         form.append('image', file)
-        const imgRes = await fetch('http://localhost:8000/api/images/', {
+        const imgRes = await fetch('/api/images/', {
           method: 'POST',
           credentials: 'include',
           headers: { 'X-CSRFToken': getCsrfToken() },

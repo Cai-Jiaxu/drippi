@@ -77,10 +77,11 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",
-    "http://localhost:3000",
-]
+CORS_ALLOWED_ORIGINS = os.getenv(
+    "CORS_ALLOWED_ORIGINS",
+    "http://localhost:5173,http://localhost:3000"
+).split(',')
+
 CORS_ALLOW_CREDENTIALS = True
 
 REST_FRAMEWORK = {
@@ -94,13 +95,13 @@ REST_FRAMEWORK = {
     "PAGE_SIZE": 10,
 }
 
-CSRF_COOKIE_DOMAIN    = "localhost"
-SESSION_COOKIE_DOMAIN = "localhost"
+CSRF_COOKIE_DOMAIN    = os.getenv("CSRF_COOKIE_DOMAIN", "localhost")
+SESSION_COOKIE_DOMAIN = os.getenv("SESSION_COOKIE_DOMAIN", "localhost")
 
-CSRF_TRUSTED_ORIGINS = [
-    "http://localhost:5173",
-    "http://localhost:3000",
-]
+CSRF_TRUSTED_ORIGINS = os.getenv(
+    "CSRF_TRUSTED_ORIGINS",
+    "http://localhost:5173,http://localhost:3000"
+).split(',')
 
 CSRF_COOKIE_SAMESITE    = "None"
 SESSION_COOKIE_SAMESITE = "None"
