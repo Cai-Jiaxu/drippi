@@ -556,51 +556,277 @@ __turbopack_context__.s({
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react/jsx-dev-runtime.js [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$router$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/router.js [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/ui/button.tsx [client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react/index.js [client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$washing$2d$machine$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__WashingMachine$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/washing-machine.js [client] (ecmascript) <export default as WashingMachine>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$leaf$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Leaf$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/leaf.js [client] (ecmascript) <export default as Leaf>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$shirt$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Shirt$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/shirt.js [client] (ecmascript) <export default as Shirt>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$shuffle$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Shuffle$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/shuffle.js [client] (ecmascript) <export default as Shuffle>");
 ;
 var _s = __turbopack_context__.k.signature();
 'use client';
 ;
 ;
+;
+;
 function Home() {
     _s();
+    var _s1 = __turbopack_context__.k.signature();
     const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$router$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useRouter"])();
     const handleGetStarted = ()=>{
         router.push('/listings');
     };
+    const MainText = ()=>{
+        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["Fragment"], {
+            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "max-w-xl mx-auto py-20",
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "w-full flex justify-left ",
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
+                            className: "text-7xl font-bold mb-4 p-2 gradient",
+                            children: "DripDaddy"
+                        }, void 0, false, {
+                            fileName: "[project]/pages/index.tsx",
+                            lineNumber: 21,
+                            columnNumber: 9
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "[project]/pages/index.tsx",
+                        lineNumber: 20,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                        className: "text-lg text-[var(--muted-foreground)] text-left mb-8",
+                        children: "Peer-to-peer outfit rental and sharing made easy. Browse, rent, and refresh your wardrobe without the commitment of purchase."
+                    }, void 0, false, {
+                        fileName: "[project]/pages/index.tsx",
+                        lineNumber: 27,
+                        columnNumber: 7
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/pages/index.tsx",
+                lineNumber: 19,
+                columnNumber: 7
+            }, this)
+        }, void 0, false);
+    };
+    const features = [
+        {
+            icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$shuffle$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Shuffle$3e$__["Shuffle"],
+            title: 'Dare try new style'
+        },
+        {
+            icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$shirt$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Shirt$3e$__["Shirt"],
+            title: 'Have clothes for all your needs'
+        },
+        {
+            icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$washing$2d$machine$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__WashingMachine$3e$__["WashingMachine"],
+            title: 'Reclaim me time, No more laundry'
+        },
+        {
+            icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$leaf$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Leaf$3e$__["Leaf"],
+            title: 'Fight fast fashion'
+        }
+    ];
+    function FeatureCard({ icon: Icon, title, subtitle }) {
+        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            className: "flex flex-col items-center text-center px-4",
+            children: [
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Icon, {
+                    className: "w-16 h-16 mb-4 text-blue-500"
+                }, void 0, false, {
+                    fileName: "[project]/pages/index.tsx",
+                    lineNumber: 62,
+                    columnNumber: 7
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                    className: "font-medium text-lg",
+                    children: title
+                }, void 0, false, {
+                    fileName: "[project]/pages/index.tsx",
+                    lineNumber: 64,
+                    columnNumber: 7
+                }, this),
+                subtitle && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                    className: "mt-2 text-gray-600",
+                    children: subtitle
+                }, void 0, false, {
+                    fileName: "[project]/pages/index.tsx",
+                    lineNumber: 67,
+                    columnNumber: 9
+                }, this)
+            ]
+        }, void 0, true, {
+            fileName: "[project]/pages/index.tsx",
+            lineNumber: 60,
+            columnNumber: 5
+        }, this);
+    }
+    function FeatureSection() {
+        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
+            className: "py-20",
+            children: [
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                    className: "text-4xl font-semibold text-center mb-12",
+                    children: "Always Have Something New to Wear!"
+                }, void 0, false, {
+                    fileName: "[project]/pages/index.tsx",
+                    lineNumber: 79,
+                    columnNumber: 7
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8",
+                    children: features.map((f, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(FeatureCard, {
+                            ...f
+                        }, i, false, {
+                            fileName: "[project]/pages/index.tsx",
+                            lineNumber: 85,
+                            columnNumber: 11
+                        }, this))
+                }, void 0, false, {
+                    fileName: "[project]/pages/index.tsx",
+                    lineNumber: 83,
+                    columnNumber: 7
+                }, this)
+            ]
+        }, void 0, true, {
+            fileName: "[project]/pages/index.tsx",
+            lineNumber: 78,
+            columnNumber: 5
+        }, this);
+    }
+    const faqs = [
+        {
+            question: 'How does Drippi work?',
+            answer: 'Drippi is a clothing rental service. You pick a plan, we ship you a box of curated pieces, you wear them as long as you like, then swap them out whenever you’re ready—no commitment to purchase.'
+        },
+        {
+            question: 'How many items can I rent in a month?',
+            answer: 'Each plan comes with a fixed number of items per box and unlimited swaps. For example, our Classic plan gives you 3 items and up to 2 swaps per month.'
+        },
+        {
+            question: 'How long does it take for me to receive my box?',
+            answer: 'Once you place your order, it typically ships within 1–2 business days, and you’ll receive tracking info via email. Delivery time depends on your location but usually arrives in 3–5 days.'
+        },
+        {
+            question: 'What condition are the items in?',
+            answer: 'All pieces are professionally cleaned and inspected after every return. You’ll only ever receive like-new or gently used items that pass our strict quality checks.'
+        }
+    ];
+    const FaqSection = ()=>{
+        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            className: "w-full mx-auto py-20 text-center",
+            children: [
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                    className: "text-3xl font-semibold  mb-8",
+                    children: "FAQ"
+                }, void 0, false, {
+                    fileName: "[project]/pages/index.tsx",
+                    lineNumber: 113,
+                    columnNumber: 7
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "divide-y divide-white-200",
+                    children: faqs.map((faq, idx)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(FAQItem, {
+                            faq: faq
+                        }, idx, false, {
+                            fileName: "[project]/pages/index.tsx",
+                            lineNumber: 116,
+                            columnNumber: 11
+                        }, this))
+                }, void 0, false, {
+                    fileName: "[project]/pages/index.tsx",
+                    lineNumber: 114,
+                    columnNumber: 7
+                }, this)
+            ]
+        }, void 0, true, {
+            fileName: "[project]/pages/index.tsx",
+            lineNumber: 112,
+            columnNumber: 5
+        }, this);
+    };
+    function FAQItem({ faq }) {
+        _s1();
+        const [isOpen, setIsOpen] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(false);
+        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            className: "relative",
+            children: [
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                    onClick: ()=>setIsOpen((o)=>!o),
+                    className: "w-full py-6 text-center focus:outline-none",
+                    children: faq.question
+                }, void 0, false, {
+                    fileName: "[project]/pages/index.tsx",
+                    lineNumber: 128,
+                    columnNumber: 7
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                    onClick: ()=>setIsOpen((o)=>!o),
+                    className: "absolute right-4 top-1/2 transform -translate-y-1/2 text-2xl text-gray-400",
+                    children: isOpen ? "-" : "+"
+                }, void 0, false, {
+                    fileName: "[project]/pages/index.tsx",
+                    lineNumber: 135,
+                    columnNumber: 7
+                }, this),
+                isOpen && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                    className: "px-4 pb-6 text-white-600",
+                    children: faq.answer
+                }, void 0, false, {
+                    fileName: "[project]/pages/index.tsx",
+                    lineNumber: 143,
+                    columnNumber: 9
+                }, this)
+            ]
+        }, void 0, true, {
+            fileName: "[project]/pages/index.tsx",
+            lineNumber: 127,
+            columnNumber: 5
+        }, this);
+    }
+    _s1(FAQItem, "+sus0Lb0ewKHdwiUhiTAJFoFyQ0=");
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "max-w-xl mx-auto py-20 text-center",
         children: [
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-                className: "text-4xl font-bold mb-4",
-                children: "DripDaddy"
-            }, void 0, false, {
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "max-w-xl mx-auto py-20 text-center",
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(MainText, {}, void 0, false, {
+                        fileName: "[project]/pages/index.tsx",
+                        lineNumber: 161,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["Button"], {
+                        onClick: handleGetStarted,
+                        variant: "outline",
+                        className: "px-6 py-6  text-xl rounded-full font-semibold transition",
+                        children: "Get Started"
+                    }, void 0, false, {
+                        fileName: "[project]/pages/index.tsx",
+                        lineNumber: 163,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
                 fileName: "[project]/pages/index.tsx",
-                lineNumber: 16,
+                lineNumber: 160,
                 columnNumber: 7
             }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                className: "text-lg text-[var(--muted-foreground)] mb-8",
-                children: "Peer-to-peer outfit rental and sharing made easy. Browse, rent, and refresh your wardrobe without the commitment of purchase."
-            }, void 0, false, {
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(FeatureSection, {}, void 0, false, {
                 fileName: "[project]/pages/index.tsx",
-                lineNumber: 17,
+                lineNumber: 172,
                 columnNumber: 7
             }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["Button"], {
-                onClick: handleGetStarted,
-                variant: "outline",
-                size: "lg",
-                className: "px-6 py-3 rounded-full font-semibold transition",
-                children: "Get Started"
-            }, void 0, false, {
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(FaqSection, {}, void 0, false, {
                 fileName: "[project]/pages/index.tsx",
-                lineNumber: 21,
+                lineNumber: 173,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/pages/index.tsx",
-        lineNumber: 15,
+        lineNumber: 159,
         columnNumber: 5
     }, this);
 }

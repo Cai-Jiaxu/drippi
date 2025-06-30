@@ -462,73 +462,15 @@ function triggerUpdate(msg) {
     }
 }
 }}),
-"[project]/pages/index.tsx [client] (ecmascript)": ((__turbopack_context__) => {
-"use strict";
+"[project]/pages/index.tsx [client] (ecmascript)": (function(__turbopack_context__) {
 
-var { g: global, __dirname, k: __turbopack_refresh__, m: module } = __turbopack_context__;
+var { g: global, __dirname, k: __turbopack_refresh__, m: module, e: exports } = __turbopack_context__;
 {
-__turbopack_context__.s({
-    "default": (()=>Home)
-});
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react/jsx-dev-runtime.js [client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$router$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/router.js [client] (ecmascript)");
-;
-var _s = __turbopack_context__.k.signature();
-'use client';
-;
-function Home() {
-    _s();
-    const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$router$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useRouter"])();
-    const handleGetStarted = ()=>{
-        router.push('/listings');
-    };
-    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "max-w-xl mx-auto py-20 text-center",
-        children: [
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-                className: "text-4xl font-bold mb-4",
-                children: "DripDaddy"
-            }, void 0, false, {
-                fileName: "[project]/pages/index.tsx",
-                lineNumber: 14,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                className: "text-lg text-gray-600 mb-8",
-                children: "Peer-to-peer outfit rental and sharing made easy. Browse, rent, and refresh your wardrobe without the commitment of purchase."
-            }, void 0, false, {
-                fileName: "[project]/pages/index.tsx",
-                lineNumber: 15,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                onClick: handleGetStarted,
-                className: "px-6 py-3 rounded-full btn btn-primary font-semibold transition",
-                children: "Get Started"
-            }, void 0, false, {
-                fileName: "[project]/pages/index.tsx",
-                lineNumber: 19,
-                columnNumber: 7
-            }, this)
-        ]
-    }, void 0, true, {
-        fileName: "[project]/pages/index.tsx",
-        lineNumber: 13,
-        columnNumber: 5
-    }, this);
-}
-_s(Home, "fN7XvhJ+p5oE6+Xlo0NJmXpxjC8=", false, function() {
-    return [
-        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$router$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useRouter"]
-    ];
-});
-_c = Home;
-var _c;
-__turbopack_context__.k.register(_c, "Home");
-if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
-    __turbopack_context__.k.registerExports(module, globalThis.$RefreshHelpers$);
-}
-}}),
+const e = new Error(`Could not parse module '[project]/pages/index.tsx'
+
+Expression expected`);
+e.code = 'MODULE_UNPARSEABLE';
+throw e;}}),
 "[next]/entry/page-loader.ts { PAGE => \"[project]/pages/index.tsx [client] (ecmascript)\" } [client] (ecmascript)": (function(__turbopack_context__) {
 
 var { g: global, __dirname, m: module, e: exports } = __turbopack_context__;

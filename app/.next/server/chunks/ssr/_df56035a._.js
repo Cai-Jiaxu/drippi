@@ -1,69 +1,14 @@
 module.exports = {
 
-"[project]/pages/index.tsx [ssr] (ecmascript)": ((__turbopack_context__) => {
-"use strict";
+"[project]/pages/index.tsx [ssr] (ecmascript)": (function(__turbopack_context__) {
 
-var { g: global, __dirname, a: __turbopack_async_module__ } = __turbopack_context__;
-__turbopack_async_module__(async (__turbopack_handle_async_dependencies__, __turbopack_async_result__) => { try {
-// pages/index.tsx
-__turbopack_context__.s({
-    "default": (()=>Home)
-});
-var __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__ = __turbopack_context__.i("[externals]/react/jsx-dev-runtime [external] (react/jsx-dev-runtime, cjs)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$router$2e$js__$5b$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/router.js [ssr] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/ui/button.tsx [ssr] (ecmascript)");
-var __turbopack_async_dependencies__ = __turbopack_handle_async_dependencies__([
-    __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__
-]);
-([__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__] = __turbopack_async_dependencies__.then ? (await __turbopack_async_dependencies__)() : __turbopack_async_dependencies__);
-'use client';
-;
-;
-;
-function Home() {
-    const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$router$2e$js__$5b$ssr$5d$__$28$ecmascript$29$__["useRouter"])();
-    const handleGetStarted = ()=>{
-        router.push('/listings');
-    };
-    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
-        className: "max-w-xl mx-auto py-20 text-center",
-        children: [
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("h1", {
-                className: "text-4xl font-bold mb-4",
-                children: "DripDaddy"
-            }, void 0, false, {
-                fileName: "[project]/pages/index.tsx",
-                lineNumber: 16,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
-                className: "text-lg text-[var(--muted-foreground)] mb-8",
-                children: "Peer-to-peer outfit rental and sharing made easy. Browse, rent, and refresh your wardrobe without the commitment of purchase."
-            }, void 0, false, {
-                fileName: "[project]/pages/index.tsx",
-                lineNumber: 17,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__["Button"], {
-                onClick: handleGetStarted,
-                variant: "outline",
-                size: "lg",
-                className: "px-6 py-3 rounded-full font-semibold transition",
-                children: "Get Started"
-            }, void 0, false, {
-                fileName: "[project]/pages/index.tsx",
-                lineNumber: 21,
-                columnNumber: 7
-            }, this)
-        ]
-    }, void 0, true, {
-        fileName: "[project]/pages/index.tsx",
-        lineNumber: 15,
-        columnNumber: 5
-    }, this);
-}
-__turbopack_async_result__();
-} catch(e) { __turbopack_async_result__(e); } }, false);}),
+var { g: global, __dirname, m: module, e: exports } = __turbopack_context__;
+{
+const e = new Error(`Could not parse module '[project]/pages/index.tsx'
+
+Expression expected`);
+e.code = 'MODULE_UNPARSEABLE';
+throw e;}}),
 "[project]/node_modules/next/dist/esm/server/route-modules/pages/module.compiled.js [ssr] (ecmascript)": (function(__turbopack_context__) {
 
 var { g: global, __dirname, m: module, e: exports } = __turbopack_context__;
@@ -172,10 +117,9 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$pages$2f$_app$2e$tsx__$5b$ss
 // Import the userland code.
 var __TURBOPACK__imported__module__$5b$project$5d2f$pages$2f$index$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/pages/index.tsx [ssr] (ecmascript)");
 var __turbopack_async_dependencies__ = __turbopack_handle_async_dependencies__([
-    __TURBOPACK__imported__module__$5b$project$5d2f$pages$2f$_app$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__,
-    __TURBOPACK__imported__module__$5b$project$5d2f$pages$2f$index$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__
+    __TURBOPACK__imported__module__$5b$project$5d2f$pages$2f$_app$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__
 ]);
-([__TURBOPACK__imported__module__$5b$project$5d2f$pages$2f$_app$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__, __TURBOPACK__imported__module__$5b$project$5d2f$pages$2f$index$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__] = __turbopack_async_dependencies__.then ? (await __turbopack_async_dependencies__)() : __turbopack_async_dependencies__);
+([__TURBOPACK__imported__module__$5b$project$5d2f$pages$2f$_app$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__] = __turbopack_async_dependencies__.then ? (await __turbopack_async_dependencies__)() : __turbopack_async_dependencies__);
 ;
 ;
 ;
