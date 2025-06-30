@@ -58,12 +58,15 @@ class CategorySerializer(serializers.ModelSerializer):
 
 
 class OutfitImageSerializer(serializers.ModelSerializer):
-    """
-    Returns the URL for each outfit image.
-    """
+    image_url = serializers.SerializerMethodField()
+
     class Meta:
-        model = OutfitImage
-        fields = ['id', 'image']
+        model  = OutfitImage
+        fields = ['id', 'image_url']
+
+    def get_image_url(self, obj):
+        request = self.context.get("request")
+        return request.build_absolute_uri(obj.image.url) if request else obj.image.url
 
 
 class OutfitSerializer(serializers.ModelSerializer):
@@ -71,7 +74,9 @@ class OutfitSerializer(serializers.ModelSerializer):
     Serializes an outfit, including its owner, category, and images.
     """
     owner    = UserSerializer(read_only=True)
-    category = CategorySerializer(read_only=True)
+    category = serializers.PrimaryKeyRelatedField(
+        queryset=Category.objects.all()
+    )
     images   = OutfitImageSerializer(many=True, read_only=True)
 
     class Meta:

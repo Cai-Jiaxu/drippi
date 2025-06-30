@@ -5,7 +5,7 @@ export interface Listing {
   title: string;
   description?: string;
   price_per_day: number;
-  images: { id: number; image: string }[];
+  images: { id: number; image_url: string }[];
 }
 
 export interface PaginatedResponse<T> {

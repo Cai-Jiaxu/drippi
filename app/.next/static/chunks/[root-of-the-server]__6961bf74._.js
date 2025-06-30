@@ -468,7 +468,7 @@ var { g: global, __dirname, k: __turbopack_refresh__, m: module, e: exports } = 
 {
 const e = new Error(`Could not parse module '[project]/pages/index.tsx'
 
-Expression expected`);
+Merge conflict marker encountered.`);
 e.code = 'MODULE_UNPARSEABLE';
 throw e;}}),
 "[next]/entry/page-loader.ts { PAGE => \"[project]/pages/index.tsx [client] (ecmascript)\" } [client] (ecmascript)": (function(__turbopack_context__) {

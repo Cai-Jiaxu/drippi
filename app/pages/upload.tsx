@@ -33,11 +33,18 @@ export default function UploadPage() {
   const [success, setSuccess] = useState(false)
 
   useEffect(() => {
-    fetch('/api/categories/', { credentials: 'include' })
-      .then(res => res.json())
-      .then((data: Category[]) => setCategories(data))
-      .catch(console.error)
-  }, [])
+  fetch('/api/categories', { credentials: 'include' })
+    .then(res => {
+      if (!res.ok) throw new Error(res.statusText)
+      return res.json()
+    })
+    .then((data: Category[]) => {
+      console.log('🔽 fetched categories', data)
+      setCategories(data)
+    })
+    .catch(err => console.error('Category load failed:', err))
+}, [])
+
 
   function validate() {
     const errs: string[] = []

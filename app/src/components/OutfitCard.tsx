@@ -21,7 +21,7 @@ export interface Outfit {
   title: string;
   description?: string;
   price_per_day: number;
-  images: { id: number; image: string }[];
+  images: { id: number; image_url: string }[];
 }
 
 export interface OutfitCardProps {
@@ -56,7 +56,7 @@ export function OutfitCard({ outfit, onAddToCart }: OutfitCardProps) {
               </div>
             )}
             <Image
-              src={img.image}
+              src={img.image_url}
               alt={outfit.title}
               fill
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -106,7 +106,7 @@ export function OutfitCard({ outfit, onAddToCart }: OutfitCardProps) {
                 {outfit.images.map(img => (
                   <div key={img.id} className="carousel-item w-full relative">
                     <Image
-                      src={img.image}
+                      src={img.image_url}
                       alt={outfit.title}
                       fill
                       className="object-cover"

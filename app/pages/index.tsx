@@ -28,6 +28,7 @@ export default function Home() {
         Peer-to-peer outfit rental and sharing made easy. Browse, rent,
         and refresh your wardrobe without the commitment of purchase.
       </p>
+
     </div>
     </>
        
@@ -174,4 +175,5 @@ function FeatureSection() {
     </div>
   )
 }
+
 

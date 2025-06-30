@@ -1,10 +1,16 @@
+# server/settings.py
 from pathlib import Path
+import dj_database_url
+import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = "django-insecure-%1-okrpxqwy*g=d=f5ombf@1p*n^hhjbx&nbv3fy97tw@7hn=d"
-DEBUG = True
-ALLOWED_HOSTS = []
+
+
+SECRET_KEY = os.getenv('SECRET_KEY', 'unsafe-dev-secret')
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost').split(',')
+
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -49,11 +55,17 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "server.wsgi.application"
 
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.sqlite3",
+#         "NAME": BASE_DIR / "db.sqlite3",
+#     }
+# }
+
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
+    "default": dj_database_url.config(
+        default=os.getenv("DATABASE_URL")
+    )
 }
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -73,16 +85,17 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",
-    "http://localhost:3000",
-]
+CORS_ALLOWED_ORIGINS = os.getenv(
+    "CORS_ALLOWED_ORIGINS",
+    "http://localhost:5173,http://localhost:3000"
+).split(',')
+
 CORS_ALLOW_CREDENTIALS = True
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
-        "rest_framework.authentication.SessionAuthentication",
-         "core.authentication.ClerkAuthentication",
+        "core.authentication.ClerkAuthentication",            
+        "rest_framework.authentication.SessionAuthentication",  
     ],
     "DEFAULT_PERMISSION_CLASSES": [
         "rest_framework.permissions.AllowAny",
@@ -90,18 +103,15 @@ REST_FRAMEWORK = {
     "PAGE_SIZE": 10,
 }
 
+CSRF_COOKIE_DOMAIN    = os.getenv("CSRF_COOKIE_DOMAIN", "localhost")
+SESSION_COOKIE_DOMAIN = os.getenv("SESSION_COOKIE_DOMAIN", "localhost")
 
-CSRF_COOKIE_DOMAIN    = "localhost"
-SESSION_COOKIE_DOMAIN = "localhost"
-
-
-CSRF_TRUSTED_ORIGINS = [
-    "http://localhost:5173",
-    "http://localhost:3000",
-]
-
+CSRF_TRUSTED_ORIGINS = os.getenv(
+    "CSRF_TRUSTED_ORIGINS",
+    "http://localhost:5173,http://localhost:3000"
+).split(',')
 
 CSRF_COOKIE_SAMESITE    = "None"
 SESSION_COOKIE_SAMESITE = "None"
-CSRF_COOKIE_SECURE      = False  
+CSRF_COOKIE_SECURE      = False
 SESSION_COOKIE_SECURE   = False
