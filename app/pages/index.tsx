@@ -3,7 +3,7 @@
 
 import { useRouter } from 'next/router'
 import { Button } from '@/components/ui/button'
-import React, { useState } from 'react'
+import React, { useState,ComponentType,SVGProps } from 'react'
 import { WashingMachine,Leaf,Shirt,Shuffle } from 'lucide-react'
 
 
@@ -56,7 +56,12 @@ const features = [
   },
 ]
 
-function FeatureCard({ icon: Icon, title, subtitle }) {
+interface FeatureCardProps {
+  icon: ComponentType<SVGProps<SVGSVGElement>>
+  title: string
+}
+
+function FeatureCard({ icon: Icon, title }: FeatureCardProps) {
   return (
     <div className="flex flex-col items-center text-center px-4">
       
@@ -64,11 +69,7 @@ function FeatureCard({ icon: Icon, title, subtitle }) {
 
       <h3 className="font-medium text-lg">{title}</h3>
 
-      {subtitle && (
-        <p className="mt-2 text-gray-600">
-          {subtitle}
-        </p>
-      )}
+      
     </div>
   )
 }
@@ -91,7 +92,9 @@ function FeatureSection() {
 }
 
 
-
+ interface FAQ {
+  question: string
+  answer: string}
 
   const faqs = [
   {question: 'How does Drippi work?',
@@ -121,7 +124,10 @@ function FeatureSection() {
   )
   }
 
-  function FAQItem({ faq }) {
+ interface FAQItemProps {
+  faq: FAQ}
+
+  function FAQItem({ faq }:FAQItemProps) {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
@@ -148,7 +154,15 @@ function FeatureSection() {
     </div>
   )
 }
-return (
+
+
+
+
+
+
+
+
+  return (
     <div >
       <div className="max-w-xl mx-auto py-20 text-center">
         <MainText />
