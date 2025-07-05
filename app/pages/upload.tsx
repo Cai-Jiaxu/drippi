@@ -78,7 +78,7 @@ export default function UploadPage() {
 
     try {
       // 1) create outfit
-      const outfitRes = await fetch('/api/outfits/', {
+      const outfitRes = await fetch('http://localhost:8000/api/outfits/', {
         method: 'POST',
         credentials: 'include',
         headers: {
