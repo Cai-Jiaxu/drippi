@@ -33,7 +33,7 @@ export default function UploadPage() {
   const [success, setSuccess] = useState(false)
 
   useEffect(() => {
-  fetch('/api/categories', { credentials: 'include' })
+  fetch('/api/categories/', { credentials: 'include' })
     .then(res => {
       if (!res.ok) throw new Error(res.statusText)
       return res.json()

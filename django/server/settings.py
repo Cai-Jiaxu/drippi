@@ -2,8 +2,12 @@
 from pathlib import Path
 import dj_database_url
 import os
+from dotenv import load_dotenv
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+load_dotenv()
+
+
+BASE_DIR = Path(file).resolve().parent.parent
 
 
 
@@ -100,7 +104,9 @@ REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": [
         "rest_framework.permissions.AllowAny",
     ],
-    "PAGE_SIZE": 10,
+    'DEFAULT_PAGINATION_CLASS': None,
+    'PAGE_SIZE': 10,
+    'DISABLE_PAGINATION_WARNING': True
 }
 
 CSRF_COOKIE_DOMAIN    = os.getenv("CSRF_COOKIE_DOMAIN", "localhost")
