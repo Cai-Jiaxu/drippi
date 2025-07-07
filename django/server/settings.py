@@ -3,6 +3,7 @@ from pathlib import Path
 import dj_database_url
 import os
 from dotenv import load_dotenv
+from corsheaders.defaults import default_headers
 
 load_dotenv()
 
@@ -95,6 +96,9 @@ CORS_ALLOWED_ORIGINS = os.getenv(
 ).split(',')
 
 CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_HEADERS = list(default_headers) + [
+    "Authorization",
+]
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
@@ -121,3 +125,25 @@ CSRF_COOKIE_SAMESITE    = "None"
 SESSION_COOKIE_SAMESITE = "None"
 CSRF_COOKIE_SECURE      = False
 SESSION_COOKIE_SECURE   = False
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        # Catch everything in your core.authentication module
+        'core.authentication': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+        },
+        # You can also set 'root' to DEBUG to see all debug output
+        '': {
+            'handlers': ['console'],
+            'level': 'INFO',
+        },
+    },
+}

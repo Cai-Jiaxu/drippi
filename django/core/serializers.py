@@ -58,11 +58,20 @@ class CategorySerializer(serializers.ModelSerializer):
 
 
 class OutfitImageSerializer(serializers.ModelSerializer):
-    image_url = serializers.SerializerMethodField()
+    # Accept the outfit’s ID in the request
+    outfit = serializers.PrimaryKeyRelatedField(
+        queryset=Outfit.objects.all(),
+        write_only=True
+    )
+    # Accept the file upload
+    image = serializers.ImageField(write_only=True)
+    # Return a URL in responses
+    image_url = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
-        model  = OutfitImage
-        fields = ['id', 'image_url']
+        model = OutfitImage
+        fields = ['id', 'outfit', 'image', 'image_url']
+        read_only_fields = ['id', 'image_url']
 
     def get_image_url(self, obj):
         request = self.context.get("request")

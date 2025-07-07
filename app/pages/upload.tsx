@@ -14,6 +14,7 @@ import {
 import { Button } from '@/components/ui/button'
 import FileInput from '@/components/ui/file-input'
 import { getCsrfToken } from '../src/lib/csrf'
+import { useAuth } from '@clerk/nextjs'
 
 interface Category {
   id: number
@@ -31,6 +32,8 @@ export default function UploadPage() {
   const [errors, setErrors] = useState<string[]>([])
   const [submitting, setSubmitting] = useState(false)
   const [success, setSuccess] = useState(false)
+  const { getToken } = useAuth()
+
 
   useEffect(() => {
   fetch('/api/categories/', { credentials: 'include' })
@@ -65,6 +68,7 @@ export default function UploadPage() {
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault()
+     const clerkToken = await getToken()
     if (submitting) return
 
     const errs = validate()
@@ -80,10 +84,9 @@ export default function UploadPage() {
       // 1) create outfit
       const outfitRes = await fetch('http://localhost:8000/api/outfits/', {
         method: 'POST',
-        credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
-          'X-CSRFToken': getCsrfToken(),
+          'Authorization': `Bearer ${clerkToken}`,
         },
         body: JSON.stringify({
           title,
@@ -101,10 +104,12 @@ export default function UploadPage() {
         const form = new FormData()
         form.append('outfit', String(outfitId))
         form.append('image', file)
-        const imgRes = await fetch('/api/images/', {
+        const imgRes = await fetch('http://localhost:8000/api/images/', {
           method: 'POST',
           credentials: 'include',
-          headers: { 'X-CSRFToken': getCsrfToken() },
+          headers: { 'X-CSRFToken': getCsrfToken(),
+            'Authorization': `Bearer ${clerkToken}`,
+           },
           body: form,
         })
         if (!imgRes.ok) throw new Error(`Failed to upload ${file.name}.`)

@@ -87,8 +87,9 @@ class OutfitViewSet(viewsets.ModelViewSet):
     """
     CRUD for outfits. Public read; authenticated create/update/delete.
     """
+    # authentication_classes = []
     # Add the queryset attribute so DRF can determine basename
-    queryset = Outfit.objects.all().select_related("owner", "category").prefetch_related("images")
+    queryset = Outfit.objects.all()  # your existing queryset
     serializer_class = OutfitSerializer
 
     def get_queryset(self):
