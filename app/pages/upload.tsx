@@ -80,9 +80,11 @@ export default function UploadPage() {
     setSubmitting(true)
     setErrors([])
 
+    const API_BASE = process.env.NEXT_PUBLIC_API_URL;
+
     try {
       // 1) create outfit
-      const outfitRes = await fetch('http://localhost:8000/api/outfits/', {
+      const outfitRes = await fetch(`${API_BASE}/api/outfits/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
