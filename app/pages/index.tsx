@@ -1,4 +1,3 @@
-// pages/index.tsx
 'use client'
 
 import { useRouter } from 'next/router'
@@ -43,7 +42,6 @@ export default function Home() {
       <FeatureSection />
       <HowItWorksSection />
       <FaqSection />
-      <Footer />
     </div>
   )
 }
@@ -229,18 +227,5 @@ function FaqSection() {
         ))}
       </div>
     </section>
-  )
-}
-
-// ✅ Footer Section
-function Footer() {
-  return (
-    <footer className="bg-gray-100 dark:bg-gray-800 py-8 text-center">
-      <p className="text-gray-700 dark:text-gray-300 mb-2">© 2025 DripDaddy. All rights reserved.</p>
-      <div className="flex justify-center space-x-4 text-purple-600 dark:text-purple-400">
-        <a href="/listings">Listings</a>
-        <a href="/upload">List Your Clothes</a>
-      </div>
-    </footer>
   )
 }
