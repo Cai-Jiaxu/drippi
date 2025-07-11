@@ -55,7 +55,7 @@ function HeroSection({
   handleList: () => void
 }) {
   return (
-    <section className="relative flex flex-col items-center justify-center text-center py-32 px-4 bg-gradient-to-br from-purple-600 to-blue-500 dark:from-gray-800 dark:to-gray-900 overflow-hidden">
+    <section className="relative flex flex-col items-center justify-center text-center py-36 px-4 bg-gradient-to-br from-purple-600 to-blue-500 dark:from-gray-800 dark:to-gray-900 overflow-hidden">
       <img
         src="/images/clothing-bg.jpg"
         alt=""
@@ -63,10 +63,10 @@ function HeroSection({
       />
       <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-purple-700 to-blue-600 dark:from-gray-700 dark:to-gray-800 opacity-40 -z-10"></div>
 
-      <h1 className="text-7xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-200 dark:from-gray-100 dark:to-gray-300 animate-fade-in">
+      <h1 className="text-7xl leading-[1.3] font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-200 dark:from-gray-100 dark:to-gray-300 animate-fade-in">
         DripDaddy
       </h1>
-      <p className="max-w-xl text-xl text-gray-200 dark:text-gray-300 mb-10 animate-fade-in delay-200">
+      <p className="max-w-xl text-xl text-gray-200 dark:text-gray-300 mb-10">
         Your campus closet. Rent, wear, and share outfits effortlessly.
       </p>
 
