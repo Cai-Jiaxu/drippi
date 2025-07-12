@@ -17,3 +17,4 @@ dj-database-url==3.0.0
 psycopg2-binary==2.9.10
 typing_extensions==4.14.0
 PyJWT==2.8.0
+cryptography>=41.0
