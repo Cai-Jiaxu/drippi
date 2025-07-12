@@ -55,7 +55,7 @@ function HeroSection({
   handleList: () => void
 }) {
   return (
-    <section className="relative flex flex-col items-center justify-center text-center py-36 px-4 bg-gradient-to-br from-purple-600 to-blue-500 dark:from-gray-800 dark:to-gray-900 overflow-hidden">
+    <section className="relative flex flex-col items-center justify-center text-center px-4 h-screen bg-gradient-to-br from-purple-600 to-blue-500 dark:from-gray-800 dark:to-gray-900 overflow-hidden -mt-10">
       <img
         src="/images/clothing-bg.jpg"
         alt=""
