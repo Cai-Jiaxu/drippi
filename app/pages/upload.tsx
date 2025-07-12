@@ -85,6 +85,7 @@ export default function UploadPage() {
       // 1) create outfit
       const outfitRes = await fetch(`${API_BASE}/api/outfits/`, {
         method: 'POST',
+        credentials: "include",
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${clerkToken}`,
@@ -107,6 +108,7 @@ export default function UploadPage() {
         form.append('image', file)
         const imgRes = await fetch(`${API_BASE}/api/images/`, {
           method: 'POST',
+          credentials: "include",
           headers: {
             'Authorization': `Bearer ${clerkToken}`,
            },
