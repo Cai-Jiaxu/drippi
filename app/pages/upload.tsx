@@ -13,7 +13,6 @@ import {
 } from '@/components/ui/select'
 import { Button } from '@/components/ui/button'
 import FileInput from '@/components/ui/file-input'
-import { getCsrfToken } from '../src/lib/csrf'
 import { useAuth } from '@clerk/nextjs'
 
 interface Category {
@@ -106,10 +105,9 @@ export default function UploadPage() {
         const form = new FormData()
         form.append('outfit', String(outfitId))
         form.append('image', file)
-        const imgRes = await fetch('http://localhost:8000/api/images/', {
+        const imgRes = await fetch(`${API_BASE}/api/images/`, {
           method: 'POST',
-          credentials: 'include',
-          headers: { 'X-CSRFToken': getCsrfToken(),
+          headers: {
             'Authorization': `Bearer ${clerkToken}`,
            },
           body: form,

@@ -118,7 +118,7 @@ SESSION_COOKIE_DOMAIN = os.getenv("SESSION_COOKIE_DOMAIN", "localhost")
 
 CSRF_TRUSTED_ORIGINS = os.getenv(
     "CSRF_TRUSTED_ORIGINS",
-    "http://localhost:5173,http://localhost:3000"
+    "http://localhost:5173,http://localhost:3000,https://drippi.vercel.app"
 ).split(',')
 
 CSRF_COOKIE_SAMESITE    = "None"
