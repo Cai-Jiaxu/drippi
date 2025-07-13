@@ -115,3 +115,29 @@ CSRF_COOKIE_SAMESITE    = "None"
 SESSION_COOKIE_SAMESITE = "None"
 CSRF_COOKIE_SECURE      = False
 SESSION_COOKIE_SECURE   = False
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        # Catch everything in your core.authentication module
+        'core.authentication': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+        },
+        # You can also set 'root' to DEBUG to see all debug output
+        '': {
+            'handlers': ['console'],
+            'level': 'INFO',
+        },
+    },
+}
+
+SUPABASE_URL = 'https://tknjzinbwzkesqpwrfwu.supabase.co'
+SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRrbmp6aW5id3prZXNxcHdyZnd1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTEzNTU5OTMsImV4cCI6MjA2NjkzMTk5M30.VIuNg35TaNIhaXpS1Qug143s-zbjUatwJAXMMOCA_U4'
+

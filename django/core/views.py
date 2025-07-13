@@ -116,3 +116,40 @@ class RentalViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(renter=self.request.user)
+
+
+# Supabase image upload
+
+import requests
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.conf import settings
+
+@csrf_exempt
+def upload_image(request):
+    if request.method == "POST":
+        image = request.FILES.get("image")
+        if not image:
+            return JsonResponse({"error": "No file uploaded"}, status=400)
+        
+        
+        # Prepare file for upload to Supabase bucket
+        url = f"{settings.SUPABASE_URL}/storage/v1/object/outfits/images/{image.name}"
+        headers = {
+            "Authorization": f"Bearer {settings.SUPABASE_API_KEY}",
+        }
+
+        files = {
+            'file': image
+        }
+        response = requests.post(url, headers=headers, files=files)
+
+        if response.status_code != 200:
+            return JsonResponse({"error": "Failed to upload image"}, status=500)
+
+        # After successful upload, get public URL
+        image_url = f"{settings.SUPABASE_URL}/storage/v1/object/public/your-bucket-name/images/{image.name}"
+
+        return JsonResponse({"imageUrl": image_url, "message": "Image uploaded successfully"})
+
+    return JsonResponse({"error": "Invalid request method"}, status=400)
