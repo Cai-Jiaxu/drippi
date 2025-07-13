@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@supabase/supabase-js": "^2.50.5",
+    "multer": "^2.0.1"
+  }
+}
