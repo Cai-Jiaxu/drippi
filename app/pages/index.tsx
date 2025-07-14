@@ -56,13 +56,6 @@ function HeroSection({
 }) {
   return (
     <section className="relative flex flex-col items-center justify-center text-center px-4 h-screen bg-gradient-to-br from-purple-600 to-blue-500 dark:from-gray-800 dark:to-gray-900 overflow-hidden -mt-10">
-      <img
-        src="/images/clothing-bg.jpg"
-        alt=""
-        className="absolute inset-0 w-full h-full object-cover opacity-20 -z-10"
-      />
-      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-purple-700 to-blue-600 dark:from-gray-700 dark:to-gray-800 opacity-40 -z-10"></div>
-
       <h1 className="text-7xl leading-[1.3] font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-200 dark:from-gray-100 dark:to-gray-300 animate-fade-in">
         DripDaddy
       </h1>

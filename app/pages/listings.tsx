@@ -80,9 +80,8 @@ export default function ListingsPage() {
                 <Image
                   src={getValidImageUrl(listing.images?.[0]?.image_url)}
                   alt={listing.title}
-                  width={400}
-                  height={200}
-                  className="object-cover w-full h-auto"
+                  fill
+                  className="object-cover object-center"
                 />
               </div>
               <div className="p-4">
@@ -107,9 +106,8 @@ export default function ListingsPage() {
               <Image
                 src={getValidImageUrl(selectedListing.images?.[0]?.image_url)}
                 alt={selectedListing.title}
-                width={500}
-                height={250}
-                className="object-cover w-full h-auto"
+                fill
+                className="object-cover object-center"
               />
             </div>
 
