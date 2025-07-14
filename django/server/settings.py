@@ -10,7 +10,8 @@ load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
+SUPABASE_URL = os.getenv("NEXT_PUBLIC_SUPABASE_URL")
+SUPABASE_KEY = os.getenv("NEXT_PUBLIC_SUPABASE_ANON_KEY")
 
 SECRET_KEY = os.getenv('SECRET_KEY', 'unsafe-dev-secret')
 DEBUG = os.getenv('DEBUG', 'False') == 'True'

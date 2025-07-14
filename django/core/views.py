@@ -3,6 +3,13 @@ from django.contrib.auth.models import User
 from rest_framework import status, viewsets, permissions
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from .supabaseClient import supabase
+from rest_framework.parsers import MultiPartParser
+from rest_framework.views import APIView
+from rest_framework.parsers import MultiPartParser
+from rest_framework import permissions, status
+from rest_framework.response import Response
+import uuid
 
 from .models import Profile, Category, Outfit, OutfitImage, Rental
 from .serializers import (
@@ -82,6 +89,43 @@ class OutfitImageViewSet(viewsets.ModelViewSet):
     queryset = OutfitImage.objects.all().select_related("outfit")
     serializer_class = OutfitImageSerializer
     permission_classes = [permissions.IsAuthenticated]
+    
+class OutfitImageUploadView(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+    parser_classes = [MultiPartParser]
+
+    def post(self, request):
+        outfit_id = request.data.get('outfit')
+        file = request.FILES.get('image')
+
+        if not outfit_id or not file:
+            return Response({"error": "Outfit ID and image file are required."},
+                            status=status.HTTP_400_BAD_REQUEST)
+
+        file_ext = file.name.split('.')[-1]
+        unique_filename = f"{uuid.uuid4()}.{file_ext}"
+
+        # Read file bytes
+        file_bytes = file.read()
+
+        upload_response = supabase.storage.from_('outfits').upload(unique_filename, file_bytes)
+
+        print("Upload response:", upload_response)
+        print("Upload response attributes:", dir(upload_response))
+
+        if not upload_response:
+            return Response({"error": "Failed to upload image to Supabase Storage."},
+                            status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+        # Correct usage: get_public_url returns a string URL
+        public_url = supabase.storage.from_('outfits').get_public_url(unique_filename)
+
+        print("Public URL:", public_url)
+
+        image = OutfitImage.objects.create(outfit_id=outfit_id, image=public_url)
+
+        serializer = OutfitImageSerializer(image)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 class OutfitViewSet(viewsets.ModelViewSet):
     """

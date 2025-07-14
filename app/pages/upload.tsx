@@ -106,7 +106,7 @@ export default function UploadPage() {
         const form = new FormData()
         form.append('outfit', String(outfitId))
         form.append('image', file)
-        const imgRes = await fetch(`${API_BASE}/api/images/`, {
+        const imgRes = await fetch(`${API_BASE}/api/images/upload/`, {
           method: 'POST',
           credentials: "include",
           headers: {

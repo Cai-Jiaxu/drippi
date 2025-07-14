@@ -13,6 +13,7 @@ from .views import (
     OutfitViewSet,
     OutfitImageViewSet,
     RentalViewSet,
+    OutfitImageUploadView,
 )
 
 router = DefaultRouter()
@@ -28,6 +29,7 @@ urlpatterns = [
     path('auth/login/',    LoginView.as_view(),    name='login'),
     path('auth/me/',       MeView.as_view(),       name='me'),
     path('auth/logout/',   LogoutView.as_view(),   name='logout'),
+    path('images/upload/', OutfitImageUploadView.as_view(), name='outfitimage-upload'),
     path('', include(router.urls)),
 ]
 

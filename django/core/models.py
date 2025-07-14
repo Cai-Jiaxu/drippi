@@ -38,7 +38,7 @@ class Outfit(models.Model):
 
 class OutfitImage(models.Model):
     outfit  = models.ForeignKey(Outfit, on_delete=models.CASCADE, related_name='images')
-    image   = models.ImageField(upload_to='outfit_images/')
+    image = models.URLField() 
 
     def __str__(self):
         return f"Image for {self.outfit.title}"

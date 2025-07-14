@@ -1,4 +1,3 @@
-// pages/listings.tsx
 'use client'
 
 import React, { useEffect, useState } from 'react'
@@ -10,11 +9,10 @@ interface Listing {
   description: string
   size: string
   price_per_day: number
-  category: number // changed to number since it's always an ID here
-  images: string[] // URLs directly from Django API
+  category: number
+  images: { id: number; image_url: string }[]
 }
 
-// ✅ Category ID ➔ Name mapping
 const categoryMap: Record<number, string> = {
   1: 'Dress',
   2: 'Top',
@@ -55,6 +53,13 @@ export default function ListingsPage() {
     fetchListings()
   }, [])
 
+  const getValidImageUrl = (url?: string): string => {
+    if (!url) return '/images/placeholder.jpg'
+    return url.startsWith('http://') || url.startsWith('https://')
+      ? url
+      : '/images/placeholder.jpg'
+  }
+
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-8">
       <h1 className="text-4xl font-bold text-center mb-12 text-purple-700 dark:text-purple-400">
@@ -65,7 +70,7 @@ export default function ListingsPage() {
         <p className="text-center">Loading listings…</p>
       ) : (
         <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-          {listings.map(listing => (
+          {listings.map((listing) => (
             <div
               key={listing.id}
               className="bg-white dark:bg-gray-800 rounded-lg shadow hover:shadow-xl cursor-pointer transition"
@@ -73,10 +78,11 @@ export default function ListingsPage() {
             >
               <div className="relative w-full h-48 rounded-t-lg overflow-hidden">
                 <Image
-                  src={listing.images?.[0] || '/images/placeholder.jpg'}
+                  src={getValidImageUrl(listing.images?.[0]?.image_url)}
                   alt={listing.title}
-                  fill
-                  className="object-cover"
+                  width={400}
+                  height={200}
+                  className="object-cover w-full h-auto"
                 />
               </div>
               <div className="p-4">
@@ -89,7 +95,7 @@ export default function ListingsPage() {
         </div>
       )}
 
-      {/* ✅ Custom Modal */}
+      {/* Modal */}
       {selectedListing && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4">
           <div className="bg-white dark:bg-gray-800 rounded-lg max-w-lg w-full p-6">
@@ -99,10 +105,11 @@ export default function ListingsPage() {
 
             <div className="relative w-full h-64 mb-4 rounded-lg overflow-hidden">
               <Image
-                src={selectedListing.images?.[0] || '/images/placeholder.jpg'}
+                src={getValidImageUrl(selectedListing.images?.[0]?.image_url)}
                 alt={selectedListing.title}
-                fill
-                className="object-cover"
+                width={500}
+                height={250}
+                className="object-cover w-full h-auto"
               />
             </div>
 
