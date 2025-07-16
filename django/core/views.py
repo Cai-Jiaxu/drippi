@@ -10,6 +10,9 @@ from rest_framework.parsers import MultiPartParser
 from rest_framework import permissions, status
 from rest_framework.response import Response
 import uuid
+from rest_framework.generics import ListAPIView
+from rest_framework.permissions import IsAuthenticated
+from .models import Rental
 
 from .models import Profile, Category, Outfit, OutfitImage, Rental
 from .serializers import (
@@ -161,3 +164,34 @@ class RentalViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(renter=self.request.user)
+
+
+
+class MyListingsView(ListAPIView):
+    serializer_class = OutfitSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        return Outfit.objects.filter(owner=self.request.user).prefetch_related("images", "category")
+
+
+class MyRentalsView(ListAPIView):
+    serializer_class = RentalSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        return Rental.objects.filter(renter=self.request.user).select_related("outfit", "outfit__owner")
+
+
+
+class CancelRentalView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request, rental_id):
+        try:
+            rental = Rental.objects.get(id=rental_id, renter=request.user)
+            rental.status = 'cancelled'
+            rental.save()
+            return Response({'message': 'Rental cancelled'}, status=status.HTTP_200_OK)
+        except Rental.DoesNotExist:
+            return Response({'error': 'Rental not found'}, status=status.HTTP_404_NOT_FOUND)

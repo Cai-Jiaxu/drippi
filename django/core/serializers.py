@@ -101,19 +101,22 @@ class OutfitSerializer(serializers.ModelSerializer):
             'images',
         ]
 
-
 class RentalSerializer(serializers.ModelSerializer):
     """
-    Serializes a rental request, nested with outfit and renter details.
+    Handles both creating a rental (with outfit ID) and returning full outfit info.
     """
-    outfit = OutfitSerializer(read_only=True)
+    outfit = serializers.PrimaryKeyRelatedField(
+        queryset=Outfit.objects.all(), write_only=True
+    )
+    outfit_details = OutfitSerializer(source='outfit', read_only=True)
     renter = UserSerializer(read_only=True)
 
     class Meta:
-        model  = Rental
+        model = Rental
         fields = [
             'id',
-            'outfit',
+            'outfit',         # used for POST
+            'outfit_details', # used for GET
             'renter',
             'start_date',
             'end_date',

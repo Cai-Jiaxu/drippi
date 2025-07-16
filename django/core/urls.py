@@ -2,6 +2,11 @@
 # core/urls.py means all the stuff in core is for the outfit renting
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
+
+
+
+
+
 from .views import (
     RegisterView,
     LoginView,
@@ -14,6 +19,9 @@ from .views import (
     OutfitImageViewSet,
     RentalViewSet,
     OutfitImageUploadView,
+    MyListingsView, 
+    MyRentalsView,
+    CancelRentalView
 )
 
 router = DefaultRouter()
@@ -30,6 +38,9 @@ urlpatterns = [
     path('auth/me/',       MeView.as_view(),       name='me'),
     path('auth/logout/',   LogoutView.as_view(),   name='logout'),
     path('images/upload/', OutfitImageUploadView.as_view(), name='outfitimage-upload'),
+    path('my-listings/', MyListingsView.as_view(), name='my-listings'),
+    path('my-rentals/', MyRentalsView.as_view(), name='my-rentals'),
+    path('cancel-rental/<int:rental_id>/', CancelRentalView.as_view(), name='cancel-rental'),
     path('', include(router.urls)),
 ]
 
