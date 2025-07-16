@@ -16,14 +16,19 @@ interface OutfitImage {
   image_url: string
 }
 
+interface Profile {
+  gender: string
+  telegram_handle?: string
+  phone_number?: string
+}
+
 interface UserInfo {
   id: number
   username: string
   first_name: string
   last_name: string
   email: string
-  telegram_handle?: string
-  phone_number?: string
+  profile?: Profile // optional because it might be null
 }
 
 interface Outfit {
@@ -224,17 +229,24 @@ export default function Dashboard() {
                         <span className="text-yellow-300 uppercase font-bold">{rental.status}</span>
                       </p>
 
+                       {/* Conditionally show gender */}
+                       {rental.renter.profile?.gender && (
+                          <p>
+                            Gender: <span className="text-white">{rental.renter.profile.gender}</span>
+                          </p>
+                       )}
+
                       {/* Conditionally show telegram handle */}
-                      {rental.renter.telegram_handle && (
+                      {rental.renter.profile?.telegram_handle && (
                         <p>
-                          Telegram: <span className="text-white">{rental.renter.telegram_handle}</span>
+                          Telegram: <span className="text-white">{rental.renter.profile?.telegram_handle}</span>
                         </p>
                       )}
 
                       {/* Conditionally show phone number */}
-                      {rental.renter.phone_number && (
+                      {rental.renter.profile?.phone_number && (
                         <p>
-                          Phone: <span className="text-white">{rental.renter.phone_number}</span>
+                          Phone: <span className="text-white">{rental.renter.profile?.phone_number}</span>
                         </p>
                       )}
 
