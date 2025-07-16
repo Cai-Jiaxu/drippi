@@ -9,7 +9,6 @@ import {
   Home,
   Upload,
   LayoutDashboard,
-  ShoppingCart,
   User,
   Menu,              
 } from 'lucide-react'
@@ -24,7 +23,6 @@ export function Sidebar({ onLinkClick }: SidebarProps) {
     { name: 'Listings',  href: '/listings',  icon: Home },
     { name: 'Upload',    href: '/upload',    icon: Upload },
     { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
-    { name: 'Cart',      href: '/cart',      icon: ShoppingCart },
     { name: 'Profile',   href: '/profile',   icon: User },
   ]
 

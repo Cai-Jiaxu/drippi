@@ -4,7 +4,8 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'
 
 const nextConfig = {
   images: {
-    domains: ['tknjzinbwzkesqpwrfwu.supabase.co'], // add your Supabase domain here
+    domains: ['tknjzinbwzkesqpwrfwu.supabase.co', 'img.clerk.com'], // add your Supabase domain here
+    
   },
   async rewrites() {
     return [
