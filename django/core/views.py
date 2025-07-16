@@ -195,3 +195,25 @@ class CancelRentalView(APIView):
             return Response({'message': 'Rental cancelled'}, status=status.HTTP_200_OK)
         except Rental.DoesNotExist:
             return Response({'error': 'Rental not found'}, status=status.HTTP_404_NOT_FOUND)
+        
+
+
+class ApproveRentalView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request, rental_id):
+        try:
+            rental = Rental.objects.get(id=rental_id)
+
+            if rental.outfit.owner != request.user:
+                return Response({"detail": "Not authorized."}, status=status.HTTP_403_FORBIDDEN)
+
+            if rental.status != "requested":
+                return Response({"detail": "Only 'requested' rentals can be approved."}, status=status.HTTP_400_BAD_REQUEST)
+
+            rental.status = "approved"
+            rental.save()
+            return Response({"detail": "Rental approved."}, status=status.HTTP_200_OK)
+
+        except Rental.DoesNotExist:
+            return Response({"detail": "Rental not found."}, status=status.HTTP_404_NOT_FOUND)

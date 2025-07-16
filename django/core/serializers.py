@@ -75,20 +75,24 @@ class OutfitImageSerializer(serializers.ModelSerializer):
 
     def get_image_url(self, obj):
         return obj.image
+    
+class NestedRentalSerializer(serializers.ModelSerializer):
+    renter = UserSerializer(read_only=True)
+
+    class Meta:
+        model = Rental
+        fields = ['id', 'renter', 'start_date', 'end_date', 'status', 'created_at']
+
 
 
 class OutfitSerializer(serializers.ModelSerializer):
-    """
-    Serializes an outfit, including its owner, category, and images.
-    """
-    owner    = UserSerializer(read_only=True)
-    category = serializers.PrimaryKeyRelatedField(
-        queryset=Category.objects.all()
-    )
-    images   = OutfitImageSerializer(many=True, read_only=True)
+    owner = UserSerializer(read_only=True)
+    category = serializers.PrimaryKeyRelatedField(queryset=Category.objects.all())
+    images = OutfitImageSerializer(many=True, read_only=True)
+    rentals = NestedRentalSerializer(many=True, read_only=True)  # ✅ Use lightweight serializer
 
     class Meta:
-        model  = Outfit
+        model = Outfit
         fields = [
             'id',
             'title',
@@ -99,6 +103,7 @@ class OutfitSerializer(serializers.ModelSerializer):
             'owner',
             'category',
             'images',
+            'rentals'
         ]
 
 class RentalSerializer(serializers.ModelSerializer):

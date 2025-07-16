@@ -21,7 +21,8 @@ from .views import (
     OutfitImageUploadView,
     MyListingsView, 
     MyRentalsView,
-    CancelRentalView
+    CancelRentalView,
+    ApproveRentalView
 )
 
 router = DefaultRouter()
@@ -41,6 +42,6 @@ urlpatterns = [
     path('my-listings/', MyListingsView.as_view(), name='my-listings'),
     path('my-rentals/', MyRentalsView.as_view(), name='my-rentals'),
     path('cancel-rental/<int:rental_id>/', CancelRentalView.as_view(), name='cancel-rental'),
+    path("approve-rental/<int:rental_id>/", ApproveRentalView.as_view(), name="approve-rental"),
     path('', include(router.urls)),
 ]
-
