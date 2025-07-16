@@ -28,13 +28,11 @@ class RegisterSerializer(serializers.Serializer):
         return user
 
 
+# serializers.py
 class ProfileSerializer(serializers.ModelSerializer):
-    """
-    Serialize the extra fields on the user profile.
-    """
     class Meta:
         model = Profile
-        fields = ['gender']
+        fields = ['gender', 'telegram_handle', 'phone_number']
 
 
 class UserSerializer(serializers.ModelSerializer):

@@ -2,7 +2,14 @@
 
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
-import { useUser, useAuth } from '@clerk/nextjs'
+import { useAuth } from '@clerk/nextjs'
+
+function formatRenter(renter?: { first_name?: string; last_name?: string; email?: string }) {
+  if (!renter) return 'N/A';
+  const fullName = `${renter.first_name ?? ''} ${renter.last_name ?? ''}`.trim();
+  const email = renter.email ?? 'no email';
+  return `${fullName} (${email})`;
+}
 
 interface OutfitImage {
   id: number
@@ -15,6 +22,8 @@ interface UserInfo {
   first_name: string
   last_name: string
   email: string
+  telegram_handle?: string
+  phone_number?: string
 }
 
 interface Outfit {
@@ -56,7 +65,7 @@ export default function Dashboard() {
   const [activeTab, setActiveTab] = useState<'renter' | 'lister'>('renter')
   const [rentals, setRentals] = useState<Rental[]>([])
   const [listings, setListings] = useState<Outfit[]>([])
-  const { user } = useUser()
+  //const { user } = useUser()
   const { getToken } = useAuth()
 
   useEffect(() => {
@@ -140,13 +149,13 @@ export default function Dashboard() {
           className={`px-4 py-2 rounded border ${activeTab === 'lister' ? 'bg-purple-600' : 'bg-gray-800'}`}
           onClick={() => setActiveTab('lister')}
         >
-          I'm a Lister
+          Your Listings
         </button>
         <button
           className={`px-4 py-2 rounded border ${activeTab === 'renter' ? 'bg-purple-600' : 'bg-gray-800'}`}
           onClick={() => setActiveTab('renter')}
         >
-          I'm a Renter
+          Your Rentals
         </button>
       </div>
 
@@ -205,7 +214,7 @@ export default function Dashboard() {
                   {listing.rentals.map((rental) => (
                     <div key={rental.id} className="mb-2 bg-gray-700 p-2 rounded">
                       <p>
-                        Renter: <span className="text-white">{rental.renter?.username || 'N/A'}</span>
+                        Renter: <span className="text-white">{formatRenter(rental.renter)}</span>
                       </p>
                       <p>
                         Period: {rental.start_date} to {rental.end_date}
@@ -214,6 +223,21 @@ export default function Dashboard() {
                         Status:{' '}
                         <span className="text-yellow-300 uppercase font-bold">{rental.status}</span>
                       </p>
+
+                      {/* Conditionally show telegram handle */}
+                      {rental.renter.telegram_handle && (
+                        <p>
+                          Telegram: <span className="text-white">{rental.renter.telegram_handle}</span>
+                        </p>
+                      )}
+
+                      {/* Conditionally show phone number */}
+                      {rental.renter.phone_number && (
+                        <p>
+                          Phone: <span className="text-white">{rental.renter.phone_number}</span>
+                        </p>
+                      )}
+
                       {rental.status === 'requested' && (
                         <button
                           onClick={() => handleApproveRental(rental.id)}
@@ -226,6 +250,7 @@ export default function Dashboard() {
                   ))}
                 </div>
               )}
+
             </div>
           ))}
       </div>

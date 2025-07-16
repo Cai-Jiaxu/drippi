@@ -3,20 +3,25 @@
 from django.contrib.auth.models import User
 from django.db import models
 
+# core/models.py
 class Profile(models.Model):
-    user       = models.OneToOneField(User, on_delete=models.CASCADE)
-    gender     = models.CharField(
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    gender = models.CharField(
         max_length=1,
         choices=[
             ('M', 'Male'),
             ('F', 'Female'),
             ('O', 'Other'),
-        ]
+        ],
+        blank=True,
+        null=True,
     )
+    telegram_handle = models.CharField(max_length=100, blank=True, null=True)
+    phone_number = models.CharField(max_length=20, blank=True, null=True)
 
     def __str__(self):
-        
         return self.user.username
+
 
 class Category(models.Model):
     name = models.CharField(max_length=100, unique=True)

@@ -217,3 +217,29 @@ class ApproveRentalView(APIView):
 
         except Rental.DoesNotExist:
             return Response({"detail": "Rental not found."}, status=status.HTTP_404_NOT_FOUND)
+        
+class UserProfileView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        try:
+            profile = Profile.objects.get(user=request.user)
+        except Profile.DoesNotExist:
+            # Return empty/default profile if none exists
+            profile = Profile(user=request.user)
+            profile.save()
+        
+        serializer = ProfileSerializer(profile)
+        return Response(serializer.data)
+
+    def put(self, request):
+        try:
+            profile = Profile.objects.get(user=request.user)
+        except Profile.DoesNotExist:
+            profile = Profile(user=request.user)
+
+        serializer = ProfileSerializer(profile, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save(user=request.user)
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
