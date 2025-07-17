@@ -267,3 +267,16 @@ class UserProfileView(APIView):
             serializer.save(user=request.user)
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+
+
+class DeleteListingView(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
+    def delete(self, request, pk):
+        try:
+            listing = Outfit.objects.get(pk=pk, owner=request.user)
+            listing.delete()
+            return Response({'message': 'Listing deleted'}, status=status.HTTP_204_NO_CONTENT)
+        except Outfit.DoesNotExist:
+            return Response({'error': 'Listing not found or unauthorized'}, status=status.HTTP_404_NOT_FOUND)
