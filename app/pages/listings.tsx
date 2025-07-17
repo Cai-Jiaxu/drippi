@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
-import { useAuth } from '@clerk/nextjs'
+import { useUser, useAuth } from '@clerk/nextjs'  // Use useUser to get the full user object
 
 interface Listing {
   id: number
@@ -13,6 +13,10 @@ interface Listing {
   price_per_day: number | string
   category: number
   images: { id: number; image_url: string }[]
+  owner: {
+    id: number
+    username: string
+  }
 }
 
 const categoryMap: Record<number, string> = {
@@ -37,9 +41,10 @@ export default function ListingsPage() {
   const [endDate, setEndDate] = useState('')
   const [rentalSuccess, setRentalSuccess] = useState(false)
   const [loading, setLoading] = useState(true)
-  const { getToken } = useAuth()
+  const { user } = useUser()  // Use useUser hook to get the full user object
   const router = useRouter()
-  const { search } = router.query // Get the search term from the URL
+  const { search } = router.query
+  const { getToken } = useAuth()
 
   const [filteredListings, setFilteredListings] = useState<Listing[]>([])
 
@@ -73,7 +78,7 @@ export default function ListingsPage() {
       )
       setFilteredListings(matchedListings)
     } else {
-      setFilteredListings(listings) // If no search, show all listings
+      setFilteredListings(listings)
     }
   }, [search, listings])
 
@@ -132,11 +137,22 @@ export default function ListingsPage() {
     }
   }
 
+  // Check if the current user is the owner of the listing
+
+  console.log('User:', user);
+console.log('Selected Listing:', selectedListing);
+console.log('Is owner:', String(user?.id) === String(selectedListing?.owner.username));
+
+  const isOwner =
+    user && selectedListing
+      ? String(user.id) === String(selectedListing.owner.username)
+      : false
+
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-8">
       <h1 className="text-4xl font-bold text-center mb-12 text-purple-700 dark:text-purple-400">
         Browse Outfits
-      </h1>
+      </h1> 
 
       {loading ? (
         <p className="text-center">Loading listings…</p>
@@ -166,7 +182,7 @@ export default function ListingsPage() {
       ) : (
         <div className="text-center text-lg text-gray-700 dark:text-gray-300">
           <p>No matching listings :(</p>
-          <p>Be the first one to list it !</p>
+          <p>Be the first one to list it?</p>
         </div>
       )}
 
@@ -209,8 +225,7 @@ export default function ListingsPage() {
                       <strong>Size:</strong> {selectedListing.size}
                     </li>
                     <li>
-                      <strong>Price per day:</strong> $
-                      {Number(selectedListing.price_per_day).toFixed(2)}
+                      <strong>Price per day:</strong> $ {Number(selectedListing.price_per_day).toFixed(2)}
                     </li>
                     <li>
                       <strong>Category:</strong> {categoryMap[selectedListing.category] || 'Unknown'}
@@ -253,11 +268,13 @@ export default function ListingsPage() {
                     </div>
                   )}
 
+                  {/* Rent Now Button */}
                   <button
                     onClick={handleRent}
-                    className="w-full py-3 text-white bg-green-600 hover:bg-green-700 rounded-lg text-lg font-semibold shadow"
+                    disabled={isOwner} // Ensuring a boolean is passed
+                    className={`w-full py-3 text-white ${isOwner ? 'bg-gray-400 cursor-not-allowed' : 'bg-green-600 hover:bg-green-700'} rounded-lg text-lg font-semibold shadow`}
                   >
-                    Rent Now
+                    {isOwner ? 'You cannot rent your own outfit' : 'Rent Now'}
                   </button>
                 </div>
               </div>
