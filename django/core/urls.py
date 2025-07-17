@@ -25,6 +25,7 @@ from .views import (
     ApproveRentalView,
     RejectRentalView,
     UserProfileView,
+    DeleteListingView
 )
 
 router = DefaultRouter()
@@ -46,6 +47,7 @@ urlpatterns = [
     path('cancel-rental/<int:rental_id>/', CancelRentalView.as_view(), name='cancel-rental'),
     path("approve-rental/<int:rental_id>/", ApproveRentalView.as_view(), name="approve-rental"),
     path('reject-rental/<int:rental_id>/', RejectRentalView.as_view(), name='reject-rental'),
+    path('delete-listing/<int:pk>/', DeleteListingView.as_view(), name='delete-listing'),
     path('profile/', UserProfileView.as_view(), name='user-profile'),
     path('', include(router.urls)),
 ]
