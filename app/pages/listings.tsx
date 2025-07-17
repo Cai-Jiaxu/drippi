@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 import Image from 'next/image'
 import { useAuth } from '@clerk/nextjs'
 
@@ -37,7 +38,12 @@ export default function ListingsPage() {
   const [rentalSuccess, setRentalSuccess] = useState(false)
   const [loading, setLoading] = useState(true)
   const { getToken } = useAuth()
+  const router = useRouter()
+  const { search } = router.query // Get the search term from the URL
 
+  const [filteredListings, setFilteredListings] = useState<Listing[]>([])
+
+  // Fetch listings
   useEffect(() => {
     const fetchListings = async () => {
       setLoading(true)
@@ -46,7 +52,6 @@ export default function ListingsPage() {
         const res = await fetch(`${API_BASE}/api/outfits/`, {
           credentials: 'include',
         })
-        if (!res.ok) throw new Error('Failed to fetch listings.')
         const data = await res.json()
         setListings(data)
       } catch (err) {
@@ -58,6 +63,19 @@ export default function ListingsPage() {
 
     fetchListings()
   }, [])
+
+  // Filter listings based on the search term
+  useEffect(() => {
+    if (search && typeof search === 'string') {
+      const searchTerm = search.toLowerCase()
+      const matchedListings = listings.filter((listing) =>
+        listing.title.toLowerCase().includes(searchTerm)
+      )
+      setFilteredListings(matchedListings)
+    } else {
+      setFilteredListings(listings) // If no search, show all listings
+    }
+  }, [search, listings])
 
   const getValidImageUrl = (url?: string): string => {
     if (!url) return '/images/placeholder.jpg'
@@ -122,23 +140,19 @@ export default function ListingsPage() {
 
       {loading ? (
         <p className="text-center">Loading listings…</p>
-      ) : (
+      ) : filteredListings.length > 0 ? (
         <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-          {listings.map((listing) => (
+          {filteredListings.map((listing) => (
             <div
               key={listing.id}
               className="bg-white dark:bg-gray-800 rounded-lg shadow hover:shadow-xl cursor-pointer transition"
-              onClick={() => {
-                setSelectedListing(listing)
-                setSelectedImageIndex(0)
-              }}
+              onClick={() => setSelectedListing(listing)} // Open the modal on click
             >
               <div className="relative w-full h-48 rounded-t-lg overflow-hidden">
-                <Image
+                <img
                   src={getValidImageUrl(listing.images?.[0]?.image_url)}
                   alt={listing.title}
-                  fill
-                  className="object-cover object-center"
+                  className="object-cover object-center w-full h-full"
                 />
               </div>
               <div className="p-4">
@@ -149,6 +163,11 @@ export default function ListingsPage() {
             </div>
           ))}
         </div>
+      ) : (
+        <div className="text-center text-lg text-gray-700 dark:text-gray-300">
+          <p>No matching listings :(</p>
+          <p>Be the first one to list it !</p>
+        </div>
       )}
 
       {/* Modal */}
@@ -156,10 +175,7 @@ export default function ListingsPage() {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 px-4">
           <div className="relative bg-white dark:bg-gray-800 rounded-xl w-full max-w-3xl p-6 sm:p-8 shadow-2xl">
             <button
-              onClick={() => {
-                setSelectedListing(null)
-                setSelectedImageIndex(0)
-              }}
+              onClick={() => setSelectedListing(null)}
               className="absolute top-3 right-3 text-gray-500 hover:text-red-500 dark:hover:text-red-400 text-2xl"
               aria-label="Close"
             >
@@ -176,43 +192,6 @@ export default function ListingsPage() {
                     fill
                     className="object-contain object-center"
                   />
-                  {selectedImageIndex > 0 && (
-                    <button
-                      className="absolute left-2 top-1/2 transform -translate-y-1/2 text-white bg-black/50 rounded-full p-1 hover:bg-black"
-                      onClick={() => setSelectedImageIndex(selectedImageIndex - 1)}
-                    >
-                      &#8592;
-                    </button>
-                  )}
-                  {selectedImageIndex < selectedListing.images.length - 1 && (
-                    <button
-                      className="absolute right-2 top-1/2 transform -translate-y-1/2 text-white bg-black/50 rounded-full p-1 hover:bg-black"
-                      onClick={() => setSelectedImageIndex(selectedImageIndex + 1)}
-                    >
-                      &#8594;
-                    </button>
-                  )}
-                </div>
-
-                <div className="flex space-x-2 overflow-x-auto">
-                  {selectedListing.images.map((img, idx) => (
-                    <div
-                      key={img.id}
-                      className={`relative w-20 h-20 rounded overflow-hidden border-2 ${
-                        idx === selectedImageIndex
-                          ? 'border-purple-500'
-                          : 'border-gray-300 dark:border-gray-600'
-                      } cursor-pointer hover:opacity-80`}
-                      onClick={() => setSelectedImageIndex(idx)}
-                    >
-                      <Image
-                        src={getValidImageUrl(img.image_url)}
-                        alt={`Thumbnail ${idx + 1}`}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                  ))}
                 </div>
               </div>
 
@@ -282,34 +261,6 @@ export default function ListingsPage() {
                   </button>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Rental Success Modal */}
-      {rentalSuccess && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 px-4">
-          <div className="bg-white dark:bg-gray-800 rounded-lg max-w-md w-full p-6 text-center shadow-lg">
-            <h2 className="text-2xl font-bold text-green-600 dark:text-green-400 mb-4">
-              Rental Successful!
-            </h2>
-            <p className="text-gray-800 dark:text-gray-200 mb-6">
-              Your outfit rental has been confirmed.
-            </p>
-            <div className="flex justify-center space-x-4">
-              <button
-                onClick={() => setRentalSuccess(false)}
-                className="px-4 py-2 bg-gray-300 dark:bg-gray-600 text-black dark:text-white rounded hover:bg-gray-400 dark:hover:bg-gray-700 transition"
-              >
-                Continue Browsing
-              </button>
-              <button
-                onClick={() => (window.location.href = '/dashboard?tab=renter')}
-                className="px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700 transition"
-              >
-                Go to My Rentals
-              </button>
             </div>
           </div>
         </div>

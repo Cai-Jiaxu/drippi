@@ -36,6 +36,7 @@ export function Header({ toggleSidebar }: HeaderProps) {
 
   useDebounce(term, 500, () => {
     if (!didSearch.current) return
+    // Update the URL query with the search term
     router.push({
       pathname: '/listings',
       query: term ? { search: term } : {},
