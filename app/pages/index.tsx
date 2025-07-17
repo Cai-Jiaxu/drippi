@@ -165,9 +165,9 @@ function HowItWorksSection() {
 // ✅ FAQ Section
 const faqs = [
   {
-    question: 'How does Drippi work?',
+    question: 'How does DripDaddy work?',
     answer:
-      'Drippi is a clothing rental service. You pick a plan, we ship you a box of curated pieces, you wear them as long as you like, then swap them out whenever you’re ready—no commitment to purchase.',
+      'DripDaddy is a clothing rental service. You pick a plan, we ship you a box of curated pieces, you wear them as long as you like, then swap them out whenever you’re ready—no commitment to purchase.',
   },
   {
     question: 'How many items can I rent in a month?',
