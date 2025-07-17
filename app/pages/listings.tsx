@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
-import { useUser, useAuth } from '@clerk/nextjs'  // Use useUser to get the full user object
+import { useUser, useAuth } from '@clerk/nextjs'  // Use useUser hook to get the full user object
 
 interface Listing {
   id: number
@@ -41,6 +41,7 @@ export default function ListingsPage() {
   const [endDate, setEndDate] = useState('')
   const [rentalSuccess, setRentalSuccess] = useState(false)
   const [loading, setLoading] = useState(true)
+  const [rentalRequestStatus, setRentalRequestStatus] = useState('') // New state for rental status message
   const { user } = useUser()  // Use useUser hook to get the full user object
   const router = useRouter()
   const { search } = router.query
@@ -126,11 +127,18 @@ export default function ListingsPage() {
         throw new Error('Failed to rent outfit')
       }
 
+      setRentalRequestStatus('Rental request sent! Pending approval.') // Show the message
       setRentalSuccess(true)
       setSelectedListing(null)
       setStartDate('')
       setEndDate('')
       setSelectedImageIndex(0)
+
+      // Hide the message after 5 seconds
+      setTimeout(() => {
+        setRentalRequestStatus('')
+      }, 3500)
+
     } catch (err) {
       console.error('Error during rent:', err)
       alert('Failed to rent outfit. Try again.')
@@ -138,21 +146,29 @@ export default function ListingsPage() {
   }
 
   // Check if the current user is the owner of the listing
-
-  console.log('User:', user);
-console.log('Selected Listing:', selectedListing);
-console.log('Is owner:', String(user?.id) === String(selectedListing?.owner.username));
-
   const isOwner =
     user && selectedListing
       ? String(user.id) === String(selectedListing.owner.username)
       : false
 
+  // Handlers for image navigation
+  const handlePrevImage = () => {
+  if (selectedListing && selectedListing.images) {
+    setSelectedImageIndex((prevIndex) => (selectedListing.images.length === 0 ? 0 : (prevIndex === 0 ? selectedListing.images.length - 1 : prevIndex - 1)))
+    } 
+  }
+
+  const handleNextImage = () => {
+    if (selectedListing && selectedListing.images) {
+      setSelectedImageIndex((prevIndex) => (selectedListing.images.length === 0 ? 0 : (prevIndex === selectedListing.images.length - 1 ? 0 : prevIndex + 1)))
+    }
+  }
+
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-8">
       <h1 className="text-4xl font-bold text-center mb-12 text-purple-700 dark:text-purple-400">
         Browse Outfits
-      </h1> 
+      </h1>
 
       {loading ? (
         <p className="text-center">Loading listings…</p>
@@ -181,8 +197,15 @@ console.log('Is owner:', String(user?.id) === String(selectedListing?.owner.user
         </div>
       ) : (
         <div className="text-center text-lg text-gray-700 dark:text-gray-300">
-          <p>No matching listings :(</p>
+          <p>No matching listings</p>
           <p>Be the first one to list it?</p>
+        </div>
+      )}
+
+      {/* Rental request status */}
+      {rentalRequestStatus && (
+        <div className="fixed bottom-0 left-0 right-0 bg-green-600 text-white text-center py-2 z-50">
+          {rentalRequestStatus}
         </div>
       )}
 
@@ -201,6 +224,7 @@ console.log('Is owner:', String(user?.id) === String(selectedListing?.owner.user
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {/* Image + Arrows + Thumbnails */}
               <div className="flex flex-col space-y-4 relative">
+                {/* Image Carousel */}
                 <div className="relative w-full aspect-square bg-gray-100 dark:bg-gray-700 rounded-lg overflow-hidden">
                   <Image
                     src={getValidImageUrl(selectedListing.images[selectedImageIndex]?.image_url)}
@@ -208,6 +232,14 @@ console.log('Is owner:', String(user?.id) === String(selectedListing?.owner.user
                     fill
                     className="object-contain object-center"
                   />
+                </div>
+
+                {/* Navigation Arrows */}
+                <div className="absolute top-1/2 left-2 transform -translate-y-1/2 z-10 cursor-pointer text-white" onClick={handlePrevImage}>
+                  <span className="text-3xl">←</span>
+                </div>
+                <div className="absolute top-1/2 right-2 transform -translate-y-1/2 z-10 cursor-pointer text-white" onClick={handleNextImage}>
+                  <span className="text-3xl">→</span>
                 </div>
               </div>
 

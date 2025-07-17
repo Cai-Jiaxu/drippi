@@ -34,14 +34,27 @@ export function Header({ toggleSidebar }: HeaderProps) {
     return q
   })
 
+  // Debounced search handler
   useDebounce(term, 500, () => {
     if (!didSearch.current) return
-    // Update the URL query with the search term
-    router.push({
-      pathname: '/listings',
-      query: term ? { search: term } : {},
-    })
+
+    // If search term is cleared, remove the query param
+    if (term === '') {
+      router.replace('/listings', undefined, { shallow: true })  // Keep the current path but without the search query
+    } else {
+      // Otherwise, update the URL query with the search term
+      router.push({
+        pathname: '/listings',
+        query: { search: term },
+      })
+    }
   })
+
+  // When clearing search or navigating away from listings, remove the search query from URL
+  const clearSearchAndRedirect = () => {
+    setTerm('')  // Clear the search term state
+    router.replace('/listings', undefined, { shallow: true })  // Update the URL without search query
+  }
 
   return (
     <header className="fixed top-0 inset-x-0 z-50 h-16 bg-[var(--background)] border-b-2 border-[var(--border)] flex items-center px-4">
