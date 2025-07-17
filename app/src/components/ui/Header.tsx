@@ -1,8 +1,8 @@
-// components/ui/Header.tsx
 'use client'
 
 import React, { useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/router'
+import { usePathname } from 'next/navigation'
 import { useTheme } from 'next-themes'
 import Link from 'next/link'
 import { Input } from '@/components/ui/input'
@@ -17,18 +17,16 @@ interface HeaderProps {
 
 export function Header({ toggleSidebar }: HeaderProps) {
   const router = useRouter()
+  const pathname = usePathname()
   const { theme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
 
-  // Flag to know user actually typed
   const didSearch = useRef(false)
 
-  // Wait for theme to mount (avoid SSR mismatch)
   useEffect(() => {
     setMounted(true)
   }, [])
 
-  // --- Search term state, initialized from URL ---
   const [term, setTerm] = useState(() => {
     const q = typeof router.query.search === 'string' ? router.query.search : ''
     return q
@@ -36,11 +34,12 @@ export function Header({ toggleSidebar }: HeaderProps) {
 
   useDebounce(term, 500, () => {
     if (!didSearch.current) return
-    // Update the URL query with the search term
-    router.push({
-      pathname: '/listings',
-      query: term ? { search: term } : {},
-    })
+    if (pathname === '/listings') {
+      router.push({
+        pathname: '/listings',
+        query: term ? { search: term } : {},
+      })
+    }
   })
 
   return (
@@ -61,16 +60,18 @@ export function Header({ toggleSidebar }: HeaderProps) {
         DripDaddy
       </Link>
 
-      {/* Search Input */}
+      {/* Search Input — only show on /listings */}
       <div className="flex-1">
-        <Input
-          placeholder="Search outfits..."
-          value={term}
-          onChange={(e) => {
-            didSearch.current = true
-            setTerm(e.target.value)
-          }}
-        />
+        {pathname === '/listings' && (
+          <Input
+            placeholder="Search outfits..."
+            value={term}
+            onChange={(e) => {
+              didSearch.current = true
+              setTerm(e.target.value)
+            }}
+          />
+        )}
       </div>
 
       {/* Controls */}
@@ -95,7 +96,6 @@ export function Header({ toggleSidebar }: HeaderProps) {
           <ShoppingCart className="h-5 w-5" />
         </Button>
 
-        {/* Auth menu dropdown */}
         <AuthMenu />
       </div>
     </header>
