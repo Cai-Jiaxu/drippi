@@ -41,6 +41,7 @@ export default function Profile() {
           telegram_handle: data.telegram_handle || "",
           phone_number: data.phone_number || "",
         })
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } catch (err: any) {
         setError(err.message)
       } finally {
@@ -71,6 +72,7 @@ export default function Profile() {
 
       setSuccessMessage("Profile updated successfully!")
       setTimeout(() => setSuccessMessage(null), 4000)
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       setError(err.message)
     } finally {
