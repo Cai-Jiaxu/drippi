@@ -28,7 +28,7 @@ interface UserInfo {
   first_name: string
   last_name: string
   email: string
-  profile?: Profile // optional because it might be null
+  profile?: Profile
 }
 
 interface Outfit {
@@ -69,14 +69,14 @@ const categoryMap: Record<number, string> = {
 const getStatusColor = (status: string) => {
   switch (status.toLowerCase()) {
     case 'approved':
-      return 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200';
+      return 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
     case 'rejected':
-      return 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200';
+      return 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200'
     case 'requested':
     case 'pending':
-      return 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200';
+      return 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200'
     default:
-      return 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200';
+      return 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200'
   }
 }
 
@@ -84,6 +84,7 @@ export default function Dashboard() {
   const [activeTab, setActiveTab] = useState<'renter' | 'lister'>('renter')
   const [rentals, setRentals] = useState<Rental[]>([])
   const [listings, setListings] = useState<Outfit[]>([])
+  const [confirmCancelId, setConfirmCancelId] = useState<number | null>(null)
   const { getToken } = useAuth()
 
   useEffect(() => {
@@ -129,6 +130,7 @@ export default function Dashboard() {
 
     if (res.ok) {
       setRentals((prev) => prev.filter((r) => r.id !== rentalId))
+      setConfirmCancelId(null)
     } else {
       alert('Failed to cancel rental.')
     }
@@ -144,7 +146,6 @@ export default function Dashboard() {
     })
 
     if (res.ok) {
-      // Refresh listings after approval
       const listingsRes = await fetch(`${API_BASE}/api/my-listings/`, {
         headers: { Authorization: `Bearer ${token}` },
       })
@@ -167,7 +168,6 @@ export default function Dashboard() {
     })
 
     if (res.ok) {
-      // Refresh listings after rejection
       const listingsRes = await fetch(`${API_BASE}/api/my-listings/`, {
         headers: { Authorization: `Bearer ${token}` },
       })
@@ -188,8 +188,8 @@ export default function Dashboard() {
         <div className="flex justify-center gap-4 mb-8">
           <button
             className={`px-4 py-2 rounded-lg border transition-colors ${
-              activeTab === 'lister' 
-                ? 'bg-purple-600 text-white' 
+              activeTab === 'lister'
+                ? 'bg-purple-600 text-white'
                 : 'bg-white dark:bg-gray-800 text-gray-800 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700'
             }`}
             onClick={() => setActiveTab('lister')}
@@ -198,8 +198,8 @@ export default function Dashboard() {
           </button>
           <button
             className={`px-4 py-2 rounded-lg border transition-colors ${
-              activeTab === 'renter' 
-                ? 'bg-purple-600 text-white' 
+              activeTab === 'renter'
+                ? 'bg-purple-600 text-white'
                 : 'bg-white dark:bg-gray-800 text-gray-800 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700'
             }`}
             onClick={() => setActiveTab('renter')}
@@ -221,7 +221,7 @@ export default function Dashboard() {
                   />
                 </div>
                 <h3 className="text-lg font-semibold mb-2 line-clamp-1">{rental.outfit_details.title}</h3>
-                
+
                 <div className="space-y-2 mb-3">
                   <div className="flex justify-between text-sm">
                     <span className="text-gray-500 dark:text-gray-400">Category</span>
@@ -246,12 +246,32 @@ export default function Dashboard() {
                   </span>
                 </div>
 
-                <button
-                  onClick={() => handleCancelRental(rental.id)}
-                  className="w-full mt-2 px-4 py-2 text-sm bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors"
-                >
-                  Cancel Rental
-                </button>
+                {confirmCancelId === rental.id ? (
+                  <div className="flex flex-col gap-2 mt-2">
+                    <p className="text-sm text-gray-600 dark:text-gray-300 text-center">Confirm cancel?</p>
+                    <div className="flex gap-2">
+                      <button
+                        onClick={() => handleCancelRental(rental.id)}
+                        className="flex-1 px-4 py-2 text-sm bg-red-600 hover:bg-red-700 text-white rounded-lg"
+                      >
+                        Yes
+                      </button>
+                      <button
+                        onClick={() => setConfirmCancelId(null)}
+                        className="flex-1 px-4 py-2 text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 rounded-lg dark:bg-gray-600 dark:text-white"
+                      >
+                        No
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  <button
+                    onClick={() => setConfirmCancelId(rental.id)}
+                    className="w-full mt-2 px-4 py-2 text-sm bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors"
+                  >
+                    Cancel Rental
+                  </button>
+                )}
               </div>
             ))}
 
@@ -266,9 +286,7 @@ export default function Dashboard() {
                     className="object-cover object-center"
                   />
                 </div>
-                
                 <h3 className="text-lg font-semibold mb-2 line-clamp-1">{listing.title}</h3>
-                
                 <div className="space-y-2 mb-3">
                   <div className="flex justify-between text-sm">
                     <span className="text-gray-500 dark:text-gray-400">Category</span>
@@ -283,7 +301,6 @@ export default function Dashboard() {
                     <span>${listing.price_per_day}/day</span>
                   </div>
                 </div>
-
                 <p className="text-sm text-gray-500 dark:text-gray-400 mb-4 line-clamp-2">{listing.description}</p>
 
                 {listing.rentals && listing.rentals.length > 0 && (
@@ -296,12 +313,10 @@ export default function Dashboard() {
                             <p className="text-sm font-medium">Renter:</p>
                             <p className="text-sm">{formatRenter(rental.renter)}</p>
                           </div>
-                          
                           <div className="mb-2">
                             <p className="text-sm font-medium">Period:</p>
                             <p className="text-sm">{rental.start_date} to {rental.end_date}</p>
                           </div>
-                          
                           <div className="mb-2 flex justify-between items-center">
                             <p className="text-sm font-medium">Status:</p>
                             <span className={`px-2 py-1 text-xs rounded-full ${getStatusColor(rental.status)}`}>
