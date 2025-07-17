@@ -39,7 +39,6 @@ export default function ListingsPage() {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0)
   const [startDate, setStartDate] = useState('')
   const [endDate, setEndDate] = useState('')
-  const [rentalSuccess, setRentalSuccess] = useState(false)
   const [loading, setLoading] = useState(true)
   const [rentalRequestStatus, setRentalRequestStatus] = useState('') // New state for rental status message
   const { user } = useUser()  // Use useUser hook to get the full user object
@@ -128,7 +127,6 @@ export default function ListingsPage() {
       }
 
       setRentalRequestStatus('Rental request sent! Pending approval.') // Show the message
-      setRentalSuccess(true)
       setSelectedListing(null)
       setStartDate('')
       setEndDate('')
