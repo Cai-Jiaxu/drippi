@@ -1,5 +1,5 @@
 // api.ts
-import { Rental, Outfit } from './types'
+import { Rental, Outfit } from '../types/dashboard'
 
 export class ApiService {
   private baseUrl: string

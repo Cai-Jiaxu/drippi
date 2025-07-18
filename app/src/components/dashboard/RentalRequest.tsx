@@ -1,8 +1,8 @@
 //RentalRequest.tsx
 
 import React from 'react'
-import { Rental } from './types'
-import { formatRenter, getStatusColor } from './utils'
+import { Rental } from '../../types/dashboard'
+import { formatRenter, getStatusColor } from '../../utils/dashboard'
 
 interface RentalRequestProps {
   rental: Rental

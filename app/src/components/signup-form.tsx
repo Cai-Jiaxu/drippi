@@ -23,7 +23,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from './ui/select'
-import { useAuth } from '../../hooks/useAuth'
+import { useAuth } from '../hooks/useAuth'
 
 export const SignUpForm: React.FC<React.ComponentProps<'div'>> = ({ className, ...props }) => {
   const { signup } = useAuth()

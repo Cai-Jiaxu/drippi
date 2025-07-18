@@ -1,8 +1,8 @@
 // useDashboard.ts
 import { useState, useEffect } from 'react'
 import { useAuth } from '@clerk/nextjs'
-import { Rental, Outfit, TabType } from './types'
-import { ApiService } from './api'
+import { Rental, Outfit, TabType } from '../types/dashboard'
+import { ApiService } from '../api/dashboard'
 
 export const useDashboard = () => {
   const [activeTab, setActiveTab] = useState<TabType>('renter')

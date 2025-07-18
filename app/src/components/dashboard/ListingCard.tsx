@@ -1,7 +1,9 @@
+//ListingCard.tsx
+
 import React from 'react'
 import Image from 'next/image'
-import { Outfit } from './types'
-import { categoryMap, getValidImageUrl } from './utils'
+import { Outfit } from '../../types/dashboard'
+import { categoryMap, getValidImageUrl } from '../../utils/dashboard'
 import { RentalRequest } from './RentalRequest'
 import { Trash2 } from 'lucide-react'
 

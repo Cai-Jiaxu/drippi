@@ -9,7 +9,7 @@ import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { Menu, Sun, Moon } from 'lucide-react'
 import { AuthMenu } from '@/components/AuthMenu'
-import { useDebounce } from '../../../hooks/useDebounce'
+import { useDebounce } from '../../hooks/useDebounce'
 
 interface HeaderProps {
   toggleSidebar: () => void

@@ -3,10 +3,10 @@
 'use client'
 
 import React from 'react'
-import { useDashboard } from './useDashboard'
-import { TabSelector } from './TabSelector'
-import { RentalCard } from './RentalCard'
-import { ListingCard } from './ListingCard'
+import { useDashboard } from '../src/hooks/useDashboard'
+import { TabSelector } from '../src/components/dashboard/TabSelector'
+import { RentalCard } from '../src/components/dashboard/RentalCard'
+import { ListingCard } from '../src/components/dashboard/ListingCard'
 
 export default function Dashboard() {
   const {

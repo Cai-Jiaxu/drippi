@@ -14,7 +14,7 @@ import {
 } from './ui/card'
 import { Input } from './ui/input'
 import { Label } from './ui/label'
-import { useAuth } from '../../hooks/useAuth'
+import { useAuth } from '../hooks/useAuth'
 
 export function LoginForm({
   className,

@@ -2,8 +2,8 @@
 
 import React from 'react'
 import Image from 'next/image'
-import { Rental } from './types'
-import { categoryMap, getStatusColor, getValidImageUrl } from './utils'
+import { Rental } from '../../src/types/dashboard'
+import { categoryMap, getStatusColor, getValidImageUrl } from '../../src/utils/dashboard'
 
 interface RentalCardProps {
   rental: Rental

@@ -1,7 +1,7 @@
 //TabSelector.tsx 
 
 import React from 'react'
-import { TabType } from './types'
+import { TabType } from '../../types/dashboard'
 
 interface TabSelectorProps {
   activeTab: TabType

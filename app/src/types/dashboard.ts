@@ -1,3 +1,5 @@
+//types.ts
+
 export interface OutfitImage {
   id: number
   image_url: string
