@@ -137,12 +137,17 @@ export default function Dashboard() {
   }, [API_BASE, getToken])
 
   useEffect(() => {
-    if (activeTab === 'renter') {
+  if (activeTab === 'renter') {
+    if (rentals.length === 0) {
       fetchRentals()
-    } else {
+    }
+  } else {
+    if (listings.length === 0) {
       fetchListings()
     }
-  }, [activeTab, fetchRentals, fetchListings])
+  }
+}, [activeTab, fetchRentals, fetchListings, rentals.length, listings.length])
+
 
   const handleCancelRental = async (rentalId: number) => {
     const token = await getToken()
