@@ -1,5 +1,3 @@
-//index.tsx 
-
 'use client'
 
 import React from 'react'
@@ -22,6 +20,7 @@ export default function Dashboard() {
     handleDeleteListing,
     isLoaded,
     userId,
+    isLoading,
   } = useDashboard()
 
   // Show loading state while Clerk is loading
@@ -56,42 +55,53 @@ export default function Dashboard() {
 
         <TabSelector activeTab={activeTab} onTabChange={setActiveTab} />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {activeTab === 'renter' &&
-            rentals.map((rental) => (
-              <RentalCard
-                key={rental.id}
-                rental={rental}
-                confirmCancelId={confirmCancelId}
-                onCancelClick={setConfirmCancelId}
-                onConfirmCancel={handleCancelRental}
-                onCancelConfirm={() => setConfirmCancelId(null)}
-              />
-            ))}
-
-          {activeTab === 'lister' &&
-            listings.map((listing) => (
-              <ListingCard
-                key={listing.id}
-                listing={listing}
-                onApproveRental={handleApproveRental}
-                onRejectRental={handleRejectRental}
-                onDeleteListing={handleDeleteListing}
-              />
-            ))}
-        </div>
-
-        {/* Show empty state */}
-        {activeTab === 'renter' && rentals.length === 0 && (
-          <div className="text-center py-12">
-            <p className="text-gray-500 dark:text-gray-400">You have no rentals yet.</p>
+        {isLoading ? (
+          <div className="flex items-center justify-center py-12">
+            <div className="text-center">
+              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-purple-600 mx-auto mb-4"></div>
+              <p className="text-gray-600 dark:text-gray-400">Loading {activeTab === 'renter' ? 'rentals' : 'listings'}...</p>
+            </div>
           </div>
-        )}
+        ) : (
+          <>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {activeTab === 'renter' &&
+                rentals.map((rental) => (
+                  <RentalCard
+                    key={rental.id}
+                    rental={rental}
+                    confirmCancelId={confirmCancelId}
+                    onCancelClick={setConfirmCancelId}
+                    onConfirmCancel={handleCancelRental}
+                    onCancelConfirm={() => setConfirmCancelId(null)}
+                  />
+                ))}
 
-        {activeTab === 'lister' && listings.length === 0 && (
-          <div className="text-center py-12">
-            <p className="text-gray-500 dark:text-gray-400">You have no listings yet.</p>
-          </div>
+              {activeTab === 'lister' &&
+                listings.map((listing) => (
+                  <ListingCard
+                    key={listing.id}
+                    listing={listing}
+                    onApproveRental={handleApproveRental}
+                    onRejectRental={handleRejectRental}
+                    onDeleteListing={handleDeleteListing}
+                  />
+                ))}
+            </div>
+
+            {/* Show empty state only after loading is complete */}
+            {activeTab === 'renter' && rentals.length === 0 && (
+              <div className="text-center py-12">
+                <p className="text-gray-500 dark:text-gray-400">You have no rentals yet.</p>
+              </div>
+            )}
+
+            {activeTab === 'lister' && listings.length === 0 && (
+              <div className="text-center py-12">
+                <p className="text-gray-500 dark:text-gray-400">You have no listings yet.</p>
+              </div>
+            )}
+          </>
         )}
       </div>
     </div>

@@ -10,12 +10,16 @@ export const useDashboard = () => {
   const [listings, setListings] = useState<Outfit[]>([])
   const [confirmCancelId, setConfirmCancelId] = useState<number | null>(null)
   const [isLoading, setIsLoading] = useState(false)
+  const [isInitialLoad, setIsInitialLoad] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [hasLoadedData, setHasLoadedData] = useState<{renter: boolean, lister: boolean}>({
+    renter: false,
+    lister: false
+  })
   const { getToken, isLoaded, userId, isSignedIn } = useAuth()
 
   useEffect(() => {
     const fetchData = async () => {
-  
       if (!isLoaded || !userId || !isSignedIn) {
         console.log('Clerk not ready:', { isLoaded, userId, isSignedIn })
         return
@@ -36,10 +40,12 @@ export const useDashboard = () => {
         if (activeTab === 'renter') {
           const data = await apiService.fetchMyRentals()
           setRentals(data)
+          setHasLoadedData(prev => ({ ...prev, renter: true }))
         } else {
           console.log('Fetching listings...')
           const data = await apiService.fetchMyListings()
           setListings(data)
+          setHasLoadedData(prev => ({ ...prev, lister: true }))
         }
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } catch (error: any) {
@@ -60,6 +66,7 @@ export const useDashboard = () => {
         }
       } finally {
         setIsLoading(false)
+        setIsInitialLoad(false)
       }
     }
 
@@ -188,6 +195,9 @@ export const useDashboard = () => {
     }
   }
 
+  // Determine if we should show loading state
+  const shouldShowLoading = isLoading || (activeTab === 'renter' && !hasLoadedData.renter) || (activeTab === 'lister' && !hasLoadedData.lister)
+
   return {
     activeTab,
     setActiveTab,
@@ -201,7 +211,8 @@ export const useDashboard = () => {
     handleDeleteListing,
     isLoaded,
     userId,
-    isLoading,
+    isLoading: shouldShowLoading,
+    isInitialLoad,
     error,
   }
 }
