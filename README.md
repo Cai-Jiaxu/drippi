@@ -43,7 +43,7 @@ python manage.py migrate
 
 ```bash
 cd frontend  # or your Next.js directory name
-npm install
+npm install --force
 
 cp .env.local.example .env.local
 # Edit .env.local with Clerk publishable key, Supabase connection, API base URL
@@ -65,15 +65,19 @@ npm run dev
 ### Configuration
 
 Django (.env)
+```bash
 CLERK_JWT_PUBLIC_KEY=your_public_key
 CLERK_API_KEY=your_api_key
 DATABASE_URL=postgresql://postgres:password@db.supabase.co:5432/postgres
-
+```
 
 Next.js (.env.local)
+```bash
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_...
 NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
 NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/dashboard
 NEXT_PUBLIC_SUPABASE_URL=your-project-url.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+```
 
+Contact @jiaxucai on Telegram for environment variables
