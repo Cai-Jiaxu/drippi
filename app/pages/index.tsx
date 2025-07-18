@@ -165,24 +165,34 @@ function HowItWorksSection() {
 // FAQ Section
 const faqs = [
   {
+    question: 'What is DripDaddy?',
+    answer:
+      'DripDaddy is a peer-to-peer (C2C) platform that lets you rent outfits from other users or list your own outfits for others to rent.',
+  },
+  {
     question: 'How does DripDaddy work?',
     answer:
-      'DripDaddy is a clothing rental service. You pick a plan, we ship you a box of curated pieces, you wear them as long as you like, then swap them out whenever you’re ready—no commitment to purchase.',
+      'You browse available outfits, select your rental period, and place a request. If you are a lender, you list your item, set a price, and approve incoming rental requests.',
   },
   {
-    question: 'How many items can I rent in a month?',
+    question: 'What happens after I place a rental request?',
     answer:
-      'Each plan comes with a fixed number of items per box and unlimited swaps. For example, our Classic plan gives you 3 items and up to 2 swaps per month.',
+      'The outfit owner will review and accept or reject your request. Once accepted, you will get details on pickup/delivery.',
   },
   {
-    question: 'How long does it take for me to receive my box?',
+    question: 'Can I cancel my rental request?',
     answer:
-      'Once you place your order, it typically ships within 1–2 business days, and you’ll receive tracking info via email. Delivery time depends on your location but usually arrives in 3–5 days.',
+      'Yes, you can cancel your request before it is accepted. If it has already been accepted, you’ll need to contact the outfit owner directly to request a cancellation.',
   },
   {
-    question: 'What condition are the items in?',
+    question: 'Is payment handled through DripDaddy?',
     answer:
-      'All pieces are professionally cleaned and inspected after every return. You’ll only ever receive like-new or gently used items that pass our strict quality checks.',
+      'Payment features are coming soon. For now, rentals are tracked via the platform, but payments are handled externally.',
+  },
+  {
+    question: 'How do I handle delivery or meetups?',
+    answer:
+      'You can coordinate directly via Telegram or contact number with the other user.',
   },
 ]
 
