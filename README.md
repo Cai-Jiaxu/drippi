@@ -54,11 +54,12 @@ cp .env.local.example .env.local
 Terminal 1 (Django backend):
 
 ```bash
+cd django
 python manage.py runserver
 ```
 Terminal 2 (Next.js frontend):
 ```bash
-cd frontend
+cd app
 npm run dev
 ```
 
