@@ -7,7 +7,7 @@ import { useTheme } from 'next-themes'
 import Link from 'next/link'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
-import { Menu, ShoppingCart, Sun, Moon } from 'lucide-react'
+import { Menu, Sun, Moon } from 'lucide-react'
 import { AuthMenu } from '@/components/AuthMenu'
 import { useDebounce } from '../../../hooks/useDebounce'
 
@@ -92,15 +92,7 @@ export function Header({ toggleSidebar }: HeaderProps) {
           </Button>
         )}
 
-        <Button
-          variant="ghost"
-          size="icon"
-          aria-label="Cart"
-          onClick={() => router.push('/cart')}
-        >
-          <ShoppingCart className="h-5 w-5" />
-        </Button>
-
+        
         <AuthMenu />
       </div>
     </header>
