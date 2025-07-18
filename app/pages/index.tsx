@@ -46,7 +46,7 @@ export default function Home() {
   )
 }
 
-// ✅ Hero Section Component
+// Hero Section Component
 function HeroSection({
   handleBrowse,
   handleList,
@@ -86,7 +86,7 @@ function HeroSection({
   )
 }
 
-// ✅ Features Section
+// Features Section
 const features = [
   { icon: Shuffle, title: 'Dare try new style' },
   { icon: Shirt, title: 'Have clothes for all your needs' },
@@ -118,7 +118,7 @@ function FeatureSection() {
   )
 }
 
-// ✅ How It Works Section
+// How It Works Section
 const steps = [
   {
     icon: Upload,
@@ -162,7 +162,7 @@ function HowItWorksSection() {
   )
 }
 
-// ✅ FAQ Section
+// FAQ Section
 const faqs = [
   {
     question: 'How does DripDaddy work?',
