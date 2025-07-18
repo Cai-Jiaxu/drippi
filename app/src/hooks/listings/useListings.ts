@@ -1,7 +1,9 @@
+//useListings.ts
+
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { useAuth } from '@clerk/nextjs'
-import { Listing, Rental } from './types'
+import { Listing, Rental } from '../../types/listings'
 
 export const useListings = () => {
   const [listings, setListings] = useState<Listing[]>([])

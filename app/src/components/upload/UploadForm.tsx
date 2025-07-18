@@ -1,3 +1,6 @@
+//UploadForm.tsx
+
+
 import { useState, useEffect, FormEvent } from 'react'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
@@ -10,8 +13,8 @@ import {
   SelectItem,
   SelectValue,
 } from '@/components/ui/select'
-import { Category, OutfitFormData } from './types'
-import { fetchCategories } from './api'
+import { Category, OutfitFormData } from '../../types/upload'
+import { fetchCategories } from '../../api/upload'
 import ImageUpload from './ImageUpload'
 
 interface UploadFormProps {

@@ -1,6 +1,8 @@
+//useRental.ts
+
 import { useState } from 'react'
 import { useAuth, useUser } from '@clerk/nextjs'
-import { Listing, Rental } from './types'
+import { Listing, Rental } from '../../types/listings'
 
 export const useRental = (userRentals: Rental[]) => {
   const [startDate, setStartDate] = useState('')

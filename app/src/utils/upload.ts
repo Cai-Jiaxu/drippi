@@ -1,4 +1,6 @@
-import { OutfitFormData } from './types'
+//utils.ts
+
+import { OutfitFormData } from '../types/upload'
 
 export function validateOutfitForm(data: OutfitFormData): string[] {
   const errors: string[] = []

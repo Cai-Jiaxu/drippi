@@ -1,5 +1,8 @@
+//RentalForm.tsx
+
+
 import React from 'react'
-import { Listing } from './types'
+import { Listing } from '../../types/listings'
 
 interface RentalFormProps {
   listing: Listing

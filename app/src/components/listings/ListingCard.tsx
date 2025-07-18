@@ -1,6 +1,8 @@
+//ListingCard.tsx
+
 import React from 'react'
 import Image from 'next/image'
-import { Listing } from './types'
+import { Listing } from '../../types/listings'
 
 interface ListingCardProps {
   listing: Listing

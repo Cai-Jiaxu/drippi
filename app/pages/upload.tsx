@@ -1,10 +1,12 @@
+//Index.tsx
+
 'use client'
 
 import { Check } from 'lucide-react'
-import { useOutfitForm } from './useOutfitForm'
-import ErrorDisplay from './ErrorDisplay'
-import SuccessDisplay from './SuccessDisplay'
-import UploadForm from './UploadForm'
+import { useOutfitForm } from '../src/hooks/useOutfitForm'
+import ErrorDisplay from '../src/components/upload/ErrorDisplay'
+import SuccessDisplay from '../src/components/upload/SuccessDisplay'
+import UploadForm from '../src/components/upload/UploadForm'
 
 export default function UploadPage() {
   const {

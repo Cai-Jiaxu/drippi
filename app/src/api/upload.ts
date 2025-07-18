@@ -1,4 +1,6 @@
-import { Category, OutfitFormData } from './types'
+//api.ts
+
+import { Category, OutfitFormData } from '../types/upload'
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL
 

@@ -1,6 +1,9 @@
+//ListingModal.tsx
+
+
 import React, { useState } from 'react'
-import { Listing } from './types'
-import { categoryMap } from './categories'
+import { Listing } from '../../types/listings'
+import { categoryMap } from '../../constant/listingCategories'
 import { ImageGallery } from './ImageGallery'
 import { RentalForm } from './RentalForm'
 

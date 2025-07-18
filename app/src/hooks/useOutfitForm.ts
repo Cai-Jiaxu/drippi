@@ -1,8 +1,10 @@
+//useOutfitForm.tsx
+
 import { useState } from 'react'
 import { useAuth } from '@clerk/nextjs'
-import { OutfitFormData } from './types'
-import { validateOutfitForm } from './utils'
-import { createOutfit, uploadImage } from './api'
+import { OutfitFormData } from '../types/upload'
+import { validateOutfitForm } from '../utils/upload'
+import { createOutfit, uploadImage } from '../api/upload'
 
 export function useOutfitForm() {
   const [formData, setFormData] = useState<OutfitFormData>({

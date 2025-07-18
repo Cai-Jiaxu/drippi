@@ -1,11 +1,13 @@
+//index.tsx
+
 'use client'
 
 import React, { useState } from 'react'
-import { useListings } from './useListings'
-import { useRental } from './useRental'
-import { ListingCard } from './ListingCard'
-import { ListingModal } from './ListingModal'
-import { Listing } from './types'
+import { useListings } from '../src/hooks/listings/useListings'
+import { useRental } from '../src/hooks/listings/useRental'
+import { ListingCard } from '../src/components/listings/ListingCard'
+import { ListingModal } from '../src/components/listings/ListingModal'
+import { Listing } from '../src/types/listings'
 
 export default function ListingsPage() {
   const { filteredListings, userRentals, loading } = useListings()

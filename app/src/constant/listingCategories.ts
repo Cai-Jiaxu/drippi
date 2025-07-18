@@ -1,3 +1,5 @@
+//Categories.ts
+
 export const categoryMap: Record<number, string> = {
   1: 'Dress',
   2: 'Top',

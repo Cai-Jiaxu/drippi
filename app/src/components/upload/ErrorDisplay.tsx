@@ -1,3 +1,5 @@
+//ErrorDisplay.tsx
+
 interface ErrorDisplayProps {
   errors: string[]
 }
