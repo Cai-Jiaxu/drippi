@@ -41,6 +41,7 @@ export const useDashboard = () => {
           const data = await apiService.fetchMyListings()
           setListings(data)
         }
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } catch (error: any) {
         console.error('Failed to fetch data:', error)
         setError(error.message || 'Failed to fetch data')
@@ -84,6 +85,7 @@ export const useDashboard = () => {
       await apiService.cancelRental(rentalId)
       setRentals((prev) => prev.filter((r) => r.id !== rentalId))
       setConfirmCancelId(null)
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       console.error('Failed to cancel rental:', error)
       
@@ -112,6 +114,7 @@ export const useDashboard = () => {
       await apiService.approveRental(rentalId)
       const updatedListings = await apiService.fetchMyListings()
       setListings(updatedListings)
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       console.error('Failed to approve rental:', error)
       
@@ -140,6 +143,7 @@ export const useDashboard = () => {
       await apiService.rejectRental(rentalId)
       const updatedListings = await apiService.fetchMyListings()
       setListings(updatedListings)
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       console.error('Failed to reject rental:', error)
       
@@ -167,6 +171,7 @@ export const useDashboard = () => {
       
       await apiService.deleteListing(listingId)
       setListings((prev) => prev.filter((l) => l.id !== listingId))
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       console.error('Failed to delete listing:', error)
       

@@ -17,7 +17,6 @@ interface RentalFormProps {
 }
 
 export const RentalForm: React.FC<RentalFormProps> = ({
-  listing,
   startDate,
   endDate,
   onStartDateChange,

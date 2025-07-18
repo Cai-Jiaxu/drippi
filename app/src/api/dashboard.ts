@@ -10,13 +10,26 @@ export class ApiService {
     this.getToken = getToken
   }
 
-  private async makeRequest<T>(endpoint: string, options: RequestInit = {}): Promise<T> {
-    // Get fresh token for each request
-    const token = await this.getToken()
-    
-    if (!token) {
-      throw new Error('No authentication token available')
+  private async waitUntilTokenValid(token: string): Promise<void> {
+    try {
+      const payload = JSON.parse(atob(token.split('.')[1]))
+      const iat = payload.iat
+      const now = Math.floor(Date.now() / 1000)
+      const diff = iat - now
+      if (diff > 0) {
+        console.warn(`Token not valid yet. Waiting ${diff} seconds...`)
+        await new Promise((res) => setTimeout(res, diff * 1000))
+      }
+    } catch (err) {
+      console.warn('Could not parse token for iat:', err)
     }
+  }
+
+  private async makeRequest<T>(endpoint: string, options: RequestInit = {}): Promise<T> {
+    const token = await this.getToken()
+    if (!token) throw new Error('No authentication token available')
+
+    await this.waitUntilTokenValid(token)
 
     const response = await fetch(`${this.baseUrl}${endpoint}`, {
       ...options,
@@ -28,18 +41,19 @@ export class ApiService {
     })
 
     if (!response.ok) {
-      // Try to get response body for more details
       let errorBody = ''
       try {
         errorBody = await response.text()
         console.log('Error response body:', errorBody)
       } catch (e) {
-        console.log('Could not read error response body')
+        console.error('Failed to read error response body:', e)
       }
-      
+
       const errorMessage = `API request failed: ${response.status} ${response.statusText}`
       const error = new Error(errorMessage)
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ;(error as any).status = response.status
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ;(error as any).responseBody = errorBody
       throw error
     }
@@ -49,10 +63,9 @@ export class ApiService {
 
   private async makeDeleteRequest(endpoint: string, options: RequestInit = {}): Promise<void> {
     const token = await this.getToken()
-    
-    if (!token) {
-      throw new Error('No authentication token available')
-    }
+    if (!token) throw new Error('No authentication token available')
+
+    await this.waitUntilTokenValid(token)
 
     const response = await fetch(`${this.baseUrl}${endpoint}`, {
       ...options,
@@ -66,10 +79,10 @@ export class ApiService {
     if (!response.ok) {
       const errorMessage = `API request failed: ${response.status} ${response.statusText}`
       const error = new Error(errorMessage)
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ;(error as any).status = response.status
       throw error
     }
-    return
   }
 
   async fetchMyRentals(): Promise<Rental[]> {

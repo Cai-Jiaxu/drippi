@@ -1,6 +1,5 @@
 //utils.ts
 
-import { UserInfo } from '../types/dashboard'
 
 export const categoryMap: Record<number, string> = {
   1: 'Dress',
