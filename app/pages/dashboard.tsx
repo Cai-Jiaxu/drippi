@@ -50,6 +50,7 @@ interface Outfit {
   size: string
   price_per_day: number
   category: number
+  owner: UserInfo
   images: OutfitImage[]
   rentals?: Rental[]
 }
@@ -338,49 +339,67 @@ export default function Dashboard() {
         )}
 
         {/* RENTER TAB */}
-        {activeTab === 'renter' && (
-          <>
-            {rentals.length === 0 ? (
-              <div className="text-center">
-                <p>No rentals found.</p>
-                <Link href="/listings" className="text-purple-600 underline">Click here to rent an outfit.</Link>
-              </div>
-            ) : (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-                {rentals.map(rental => (
-                  <div key={rental.id} className="bg-white dark:bg-gray-800 p-4 rounded shadow">
-                    <div className="relative aspect-square w-full mb-2 rounded-lg overflow-hidden">
-                      <Image
-                        src={getValidImageUrl(rental.outfit_details.images?.[0]?.image_url)}
-                        alt={rental.outfit_details.title}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                    <h3 className="text-md font-semibold">{rental.outfit_details.title}</h3>
-                    <p className="text-sm text-gray-500 mb-1">{rental.start_date} ➜ {rental.end_date}</p>
-                    <p className="text-sm font-medium">Total: ${calculateTotalPrice(rental.start_date, rental.end_date, rental.outfit_details.price_per_day)}</p>
-                    <span className={`px-2 py-1 mt-1 inline-block text-xs rounded ${getStatusColor(rental.status)}`}>{rental.status.toUpperCase()}</span>
-
-                    {confirmCancelId === rental.id ? (
-                      <div className="mt-2 space-y-2">
-                        <p className="text-sm">Confirm cancel?</p>
-                        <div className="flex gap-2">
-                          <button onClick={() => handleCancelRental(rental.id)} className="flex-1 px-3 py-1 bg-red-600 text-white rounded">Yes</button>
-                          <button onClick={() => setConfirmCancelId(null)} className="flex-1 px-3 py-1 bg-gray-400 text-white rounded">No</button>
-                        </div>
+          {activeTab === 'renter' && (
+            <>
+              {rentals.length === 0 ? (
+                <div className="text-center">
+                  <p>No rentals found.</p>
+                  <Link href="/listings" className="text-purple-600 underline">Click here to rent an outfit.</Link>
+                </div>
+              ) : (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                  {rentals.map(rental => (
+                    <div key={rental.id} className="bg-white dark:bg-gray-800 p-4 rounded shadow">
+                      <div className="relative aspect-square w-full mb-2 rounded-lg overflow-hidden">
+                        <Image
+                          src={getValidImageUrl(rental.outfit_details.images?.[0]?.image_url)}
+                          alt={rental.outfit_details.title}
+                          fill
+                          className="object-cover"
+                        />
                       </div>
-                    ) : (
-                      <button onClick={() => setConfirmCancelId(rental.id)} className="mt-3 w-full py-2 bg-red-600 text-white rounded-lg hover:bg-red-700">
-                        Cancel Rental
-                      </button>
-                    )}
-                  </div>
-                ))}
-              </div>
-            )}
-          </>
-        )}
+                      <h3 className="text-md font-semibold">{rental.outfit_details.title}</h3>
+                      <p className="text-sm text-gray-500 mb-1">{rental.start_date} ➜ {rental.end_date}</p>
+                      <p className="text-sm font-medium">
+                        Total: ${calculateTotalPrice(rental.start_date, rental.end_date, rental.outfit_details.price_per_day)}
+                      </p>
+                      <span className={`px-2 py-1 mt-1 inline-block text-xs rounded ${getStatusColor(rental.status)}`}>
+                        {rental.status.toUpperCase()}
+                      </span>
+
+                      {rental.status === 'approved' && rental.outfit_details.owner ? (
+                        <div className="mt-3 text-sm text-gray-700">
+                          <h4 className="font-semibold mb-1 underline">Owner Contact Details</h4>
+                          <p>
+                            <strong>Telegram:</strong> @{rental.outfit_details.owner.profile?.telegram_handle ?? 'N/A'}
+                          </p>
+                          <p><strong>Phone:</strong> {rental.outfit_details.owner.profile?.phone_number ?? 'N/A'}</p>
+                        </div>
+                      ) : (
+                        confirmCancelId === rental.id ? (
+                          <div className="mt-2 space-y-2">
+                            <p className="text-sm">Confirm cancel?</p>
+                            <div className="flex gap-2">
+                              <button onClick={() => handleCancelRental(rental.id)} className="flex-1 px-3 py-1 bg-red-600 text-white rounded">Yes</button>
+                              <button onClick={() => setConfirmCancelId(null)} className="flex-1 px-3 py-1 bg-gray-400 text-white rounded">No</button>
+                            </div>
+                          </div>
+                        ) : (
+                          <button
+                            onClick={() => setConfirmCancelId(rental.id)}
+                            className="mt-3 w-full py-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
+                          >
+                            Cancel Rental
+                          </button>
+                        )
+                      )}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </>
+          )}
+
       </div>
     </div>
   )
