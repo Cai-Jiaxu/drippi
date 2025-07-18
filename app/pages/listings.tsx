@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
-import { useUser, useAuth } from '@clerk/nextjs'  // Use useUser hook to get the full user object
+import { useUser, useAuth } from '@clerk/nextjs'
 
 interface Listing {
   id: number
@@ -17,6 +17,12 @@ interface Listing {
     id: number
     username: string
   }
+}
+
+interface Rental {
+  id: number
+  outfit: Listing
+  status: string
 }
 
 const categoryMap: Record<number, string> = {
@@ -35,20 +41,20 @@ const categoryMap: Record<number, string> = {
 
 export default function ListingsPage() {
   const [listings, setListings] = useState<Listing[]>([])
+  const [filteredListings, setFilteredListings] = useState<Listing[]>([])
   const [selectedListing, setSelectedListing] = useState<Listing | null>(null)
   const [selectedImageIndex, setSelectedImageIndex] = useState(0)
   const [startDate, setStartDate] = useState('')
   const [endDate, setEndDate] = useState('')
   const [loading, setLoading] = useState(true)
-  const [rentalRequestStatus, setRentalRequestStatus] = useState('') // New state for rental status message
-  const { user } = useUser()  // Use useUser hook to get the full user object
+  const [rentalRequestStatus, setRentalRequestStatus] = useState('')
+  const [userRentals, setUserRentals] = useState<Rental[]>([])
+  const [infoMessage, setInfoMessage] = useState('')
+  const { user } = useUser()
   const router = useRouter()
   const { search } = router.query
   const { getToken } = useAuth()
 
-  const [filteredListings, setFilteredListings] = useState<Listing[]>([])
-
-  // Fetch listings
   useEffect(() => {
     const fetchListings = async () => {
       setLoading(true)
@@ -66,10 +72,26 @@ export default function ListingsPage() {
       }
     }
 
-    fetchListings()
-  }, [])
+    const fetchUserRentals = async () => {
+      try {
+        const API_BASE = process.env.NEXT_PUBLIC_API_URL
+        const token = await getToken()
+        const res = await fetch(`${API_BASE}/api/my-rentals/`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        const data = await res.json()
+        setUserRentals(data)
+      } catch (err) {
+        console.error('Error fetching user rentals:', err)
+      }
+    }
 
-  // Filter listings based on the search term
+    fetchListings()
+    fetchUserRentals()
+  }, [getToken])
+
   useEffect(() => {
     if (search && typeof search === 'string') {
       const searchTerm = search.toLowerCase()
@@ -84,7 +106,7 @@ export default function ListingsPage() {
 
   const getValidImageUrl = (url?: string): string => {
     if (!url) return '/images/placeholder.jpg'
-    return url.startsWith('http://') || url.startsWith('https://') ? url : '/images/placeholder.jpg'
+    return url.startsWith('http') ? url : '/images/placeholder.jpg'
   }
 
   const calculateTotalPrice = () => {
@@ -98,7 +120,19 @@ export default function ListingsPage() {
   const handleRent = async () => {
     if (!selectedListing || !startDate || !endDate) return
     if (startDate > endDate) {
-      alert('End date cannot be before start date.')
+      setInfoMessage('End date cannot be before start date.')
+      return
+    }
+
+    const alreadyRented = userRentals.some(
+      (r) =>
+        r.outfit &&
+        r.outfit.id === selectedListing.id &&
+        (r.status === 'requested' || r.status === 'approved')
+    )
+
+    if (alreadyRented) {
+      setInfoMessage('You have already requested or rented this outfit.')
       return
     }
 
@@ -121,47 +155,31 @@ export default function ListingsPage() {
       })
 
       if (!res.ok) {
-        const text = await res.text()
-        console.error('Rent failed:', text)
-        throw new Error('Failed to rent outfit')
+        const data = await res.json()
+        setInfoMessage(data.detail || 'Failed to rent outfit.')
+        return
       }
 
-      setRentalRequestStatus('Rental request sent! Pending approval.') // Show the message
+      setRentalRequestStatus('Rental request sent! Pending approval.')
       setSelectedListing(null)
       setStartDate('')
       setEndDate('')
       setSelectedImageIndex(0)
+      setInfoMessage('')
 
-      // Hide the message after 5 seconds
       setTimeout(() => {
         setRentalRequestStatus('')
       }, 3500)
-
     } catch (err) {
       console.error('Error during rent:', err)
-      alert('Failed to rent outfit. Try again.')
+      setInfoMessage('Failed to rent outfit. Try again.')
     }
   }
 
-  // Check if the current user is the owner of the listing
   const isOwner =
-    user && selectedListing
-      ? String(user.id) === String(selectedListing.owner.username)
-      : false
+    user && selectedListing ? String(user.id) === String(selectedListing.owner.username) : false
 
-  // Handlers for image navigation
-  const handlePrevImage = () => {
-  if (selectedListing && selectedListing.images) {
-    setSelectedImageIndex((prevIndex) => (selectedListing.images.length === 0 ? 0 : (prevIndex === 0 ? selectedListing.images.length - 1 : prevIndex - 1)))
-    } 
-  }
-
-  const handleNextImage = () => {
-    if (selectedListing && selectedListing.images) {
-      setSelectedImageIndex((prevIndex) => (selectedListing.images.length === 0 ? 0 : (prevIndex === selectedListing.images.length - 1 ? 0 : prevIndex + 1)))
-    }
-  }
-
+  
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-8">
       <h1 className="text-4xl font-bold text-center mb-12 text-purple-700 dark:text-purple-400">
@@ -176,14 +194,19 @@ export default function ListingsPage() {
             <div
               key={listing.id}
               className="bg-white dark:bg-gray-800 rounded-lg shadow hover:shadow-xl cursor-pointer transition"
-              onClick={() => setSelectedListing(listing)} // Open the modal on click
+              onClick={() => {
+                setSelectedListing(listing)
+                setInfoMessage('')
+              }}
             >
               <div className="relative w-full h-48 rounded-t-lg overflow-hidden">
-                <img
+                <Image
                   src={getValidImageUrl(listing.images?.[0]?.image_url)}
                   alt={listing.title}
+                  fill
                   className="object-cover object-center w-full h-full"
                 />
+
               </div>
               <div className="p-4">
                 <h3 className="font-semibold text-lg text-gray-800 dark:text-gray-100">
@@ -200,14 +223,12 @@ export default function ListingsPage() {
         </div>
       )}
 
-      {/* Rental request status */}
       {rentalRequestStatus && (
         <div className="fixed bottom-0 left-0 right-0 bg-green-600 text-white text-center py-2 z-50">
           {rentalRequestStatus}
         </div>
       )}
 
-      {/* Modal */}
       {selectedListing && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 px-4">
           <div className="relative bg-white dark:bg-gray-800 rounded-xl w-full max-w-3xl p-6 sm:p-8 shadow-2xl">
@@ -220,9 +241,7 @@ export default function ListingsPage() {
             </button>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {/* Image + Arrows + Thumbnails */}
               <div className="flex flex-col space-y-4 relative">
-                {/* Image Carousel */}
                 <div className="relative w-full aspect-square bg-gray-100 dark:bg-gray-700 rounded-lg overflow-hidden">
                   <Image
                     src={getValidImageUrl(selectedListing.images[selectedImageIndex]?.image_url)}
@@ -231,17 +250,28 @@ export default function ListingsPage() {
                     className="object-contain object-center"
                   />
                 </div>
-
-                {/* Navigation Arrows */}
-                <div className="absolute top-1/2 left-2 transform -translate-y-1/2 z-10 cursor-pointer text-white" onClick={handlePrevImage}>
+                <div
+                  className="absolute top-1/2 left-2 transform -translate-y-1/2 z-10 cursor-pointer text-white"
+                  onClick={() =>
+                    setSelectedImageIndex((prev) =>
+                      prev === 0 ? selectedListing.images.length - 1 : prev - 1
+                    )
+                  }
+                >
                   <span className="text-3xl">←</span>
                 </div>
-                <div className="absolute top-1/2 right-2 transform -translate-y-1/2 z-10 cursor-pointer text-white" onClick={handleNextImage}>
+                <div
+                  className="absolute top-1/2 right-2 transform -translate-y-1/2 z-10 cursor-pointer text-white"
+                  onClick={() =>
+                    setSelectedImageIndex((prev) =>
+                      prev === selectedListing.images.length - 1 ? 0 : prev + 1
+                    )
+                  }
+                >
                   <span className="text-3xl">→</span>
                 </div>
               </div>
 
-              {/* Info + Form */}
               <div className="flex flex-col justify-between">
                 <div>
                   <h2 className="text-2xl font-bold mb-1 text-purple-700 dark:text-purple-400">
@@ -255,13 +285,19 @@ export default function ListingsPage() {
                       <strong>Size:</strong> {selectedListing.size}
                     </li>
                     <li>
-                      <strong>Price per day:</strong> $ {Number(selectedListing.price_per_day).toFixed(2)}
+                      <strong>Price per day:</strong> ${Number(selectedListing.price_per_day).toFixed(2)}
                     </li>
                     <li>
                       <strong>Category:</strong> {categoryMap[selectedListing.category] || 'Unknown'}
                     </li>
                   </ul>
                 </div>
+
+                {infoMessage && (
+                  <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-2 rounded text-sm mb-4 mt-4">
+                    {infoMessage}
+                  </div>
+                )}
 
                 <div className="mt-6 space-y-4">
                   <div>
@@ -291,20 +327,24 @@ export default function ListingsPage() {
                     />
                   </div>
 
-                  {/* Total Price */}
                   {startDate && endDate && (
                     <div className="text-md font-semibold text-gray-800 dark:text-gray-200 text-center">
                       Total Price: ${calculateTotalPrice().toFixed(2)}
                     </div>
                   )}
 
-                  {/* Rent Now Button */}
                   <button
                     onClick={handleRent}
-                    disabled={isOwner} // Ensuring a boolean is passed
-                    className={`w-full py-3 text-white ${isOwner ? 'bg-gray-400 cursor-not-allowed' : 'bg-green-600 hover:bg-green-700'} rounded-lg text-lg font-semibold shadow`}
+                    disabled={isOwner}
+                    className={`w-full py-3 text-white ${
+                      isOwner
+                        ? 'bg-gray-400 cursor-not-allowed'
+                        : 'bg-green-600 hover:bg-green-700'
+                    } rounded-lg text-lg font-semibold shadow`}
                   >
-                    {isOwner ? 'You cannot rent your own outfit' : 'Rent Now'}
+                    {isOwner
+                      ? 'You cannot rent your own outfit'
+                      : 'Rent Now'}
                   </button>
                 </div>
               </div>

@@ -162,8 +162,26 @@ class RentalViewSet(viewsets.ModelViewSet):
     serializer_class = RentalSerializer
     permission_classes = [permissions.IsAuthenticated]
 
-    def perform_create(self, serializer):
-        serializer.save(renter=self.request.user)
+    def create(self, request, *args, **kwargs):
+        user = request.user
+        outfit_id = request.data.get('outfit')
+
+        existing = Rental.objects.filter(
+            renter=user,
+            outfit_id=outfit_id,
+            status__in=['requested', 'approved']
+        ).exists()
+
+        if existing:
+            return Response(
+                {"detail": "You already have a rental for this outfit."},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save(renter=user)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
 
