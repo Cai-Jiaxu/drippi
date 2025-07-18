@@ -102,6 +102,7 @@ export default function Dashboard() {
     }
   }, [API_BASE, getToken])
 
+  
   const fetchRentals = useCallback(async () => {
     const token = await getToken()
     const res = await fetch(`${API_BASE}/api/my-rentals/`, {
@@ -109,7 +110,8 @@ export default function Dashboard() {
     })
     if (res.ok) {
       const data = await res.json()
-      setRentals(data)
+      const filtered = data.filter((rental: Rental) => rental.status.toLowerCase() !== 'cancelled')
+      setRentals(filtered)
     }
   }, [API_BASE, getToken])
 
@@ -120,6 +122,7 @@ export default function Dashboard() {
       fetchListings()
     }
   }, [activeTab, fetchRentals, fetchListings])
+
   const handleCancelRental = async (rentalId: number) => {
     const token = await getToken()
     const res = await fetch(`${API_BASE}/api/cancel-rental/${rentalId}/`, {
@@ -172,21 +175,21 @@ export default function Dashboard() {
   }
 
   const handleDeleteListing = async (listingId: number) => {
-  const token = await getToken()
-  const res = await fetch(`${API_BASE}/api/delete-listing/${listingId}/`, {
-    method: 'DELETE',
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  })
+    const token = await getToken()
+    const res = await fetch(`${API_BASE}/api/delete-listing/${listingId}/`, {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
 
-  if (res.ok) {
-    setListings((prev) => prev.filter((listing) => listing.id !== listingId))
-    if (selectedListing?.id === listingId) setSelectedListing(null)
-  } else {
-    alert('Failed to delete listing.')
+    if (res.ok) {
+      setListings((prev) => prev.filter((listing) => listing.id !== listingId))
+      if (selectedListing?.id === listingId) setSelectedListing(null)
+    } else {
+      alert('Failed to delete listing.')
+    }
   }
-}
   
 
   return (
