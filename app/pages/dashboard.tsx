@@ -252,38 +252,88 @@ export default function Dashboard() {
             )}
 
             {/* LISTING MODAL */}
-            {selectedListing && (
-              <div className="fixed inset-0 bg-black/60 flex justify-center items-center z-50">
-                <div className="bg-white dark:bg-gray-900 p-6 w-full max-w-2xl rounded-lg relative max-h-[90vh] overflow-y-auto shadow-xl">
-                  <button className="absolute top-4 right-4 text-gray-500" onClick={() => setSelectedListing(null)}><X /></button>
-                  <h2 className="text-xl font-bold mb-4">{selectedListing.title}</h2>
+              {selectedListing && (
+                <div className="fixed inset-0 bg-black/60 flex justify-center items-center z-50">
+                  <div className="bg-white dark:bg-gray-900 p-6 w-full max-w-2xl rounded-lg relative max-h-[90vh] overflow-y-auto shadow-xl">
+                    <button
+                      className="absolute top-4 right-4 text-gray-500"
+                      onClick={() => setSelectedListing(null)}
+                    >
+                      <X />
+                    </button>
+                    <h2 className="text-xl font-bold mb-4">{selectedListing.title}</h2>
 
-                  {selectedListing.rentals?.length === 0 ? (
-                    <p className="text-gray-500">No rental requests.</p>
-                  ) : (
-                    selectedListing.rentals?.map(r => (
-                      <div key={r.id} className="border-t pt-4 mt-4 space-y-1">
-                        <p><strong>Renter:</strong> {formatRenter(r.renter)}</p>
-                        <p><strong>Period:</strong> {r.start_date} ➜ {r.end_date}</p>
-                        <p><strong>Total Price:</strong> ${calculateTotalPrice(r.start_date, r.end_date, selectedListing.price_per_day)}</p>
-                        <p><strong>Status:</strong> <span className={`px-2 py-1 text-xs rounded ${getStatusColor(r.status)}`}>{r.status.toUpperCase()}</span></p>
+                    {selectedListing.rentals?.length === 0 ? (
+                      <p className="text-gray-500">No rental requests.</p>
+                    ) : (
+                      selectedListing.rentals?.map((r) => (
+                        <div key={r.id} className="border-t pt-4 mt-4 space-y-1">
+                          <p>
+                            <strong>Renter:</strong> {formatRenter(r.renter)}
+                          </p>
+                          {/* Added profile info below */}
+                          <p>
+                            <strong>Gender:</strong> {r.renter.profile?.gender ?? 'N/A'}
+                          </p>
+                          <p>
+                            <strong>Telegram:</strong> {r.renter.profile?.telegram_handle ? `@${r.renter.profile.telegram_handle}` : 'N/A'}
+                          </p>
+                          <p>
+                            <strong>Phone:</strong> {r.renter.profile?.phone_number ?? 'N/A'}
+                          </p>
 
-                        {r.status === 'requested' && (
-                          <div className="flex gap-3 mt-2">
-                            <button onClick={() => handleApproveRental(r.id)} className="px-3 py-1 text-sm bg-green-600 text-white rounded">Approve</button>
-                            <button onClick={() => handleRejectRental(r.id)} className="px-3 py-1 text-sm bg-red-600 text-white rounded">Reject</button>
-                          </div>
-                        )}
-                      </div>
-                    ))
-                  )}
+                          <p>
+                            <strong>Period:</strong> {r.start_date} ➜ {r.end_date}
+                          </p>
+                          <p>
+                            <strong>Total Price:</strong> $
+                            {calculateTotalPrice(
+                              r.start_date,
+                              r.end_date,
+                              selectedListing.price_per_day
+                            )}
+                          </p>
+                          <p>
+                            <strong>Status:</strong>{' '}
+                            <span
+                              className={`px-2 py-1 text-xs rounded ${getStatusColor(
+                                r.status
+                              )}`}
+                            >
+                              {r.status.toUpperCase()}
+                            </span>
+                          </p>
 
-                  <button onClick={() => handleDeleteListing(selectedListing.id)} className="mt-6 w-full py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg">
-                    Delete Listing
-                  </button>
+                          {r.status === 'requested' && (
+                            <div className="flex gap-3 mt-2">
+                              <button
+                                onClick={() => handleApproveRental(r.id)}
+                                className="px-3 py-1 text-sm bg-green-600 text-white rounded"
+                              >
+                                Approve
+                              </button>
+                              <button
+                                onClick={() => handleRejectRental(r.id)}
+                                className="px-3 py-1 text-sm bg-red-600 text-white rounded"
+                              >
+                                Reject
+                              </button>
+                            </div>
+                          )}
+                        </div>
+                      ))
+                    )}
+
+                    <button
+                      onClick={() => handleDeleteListing(selectedListing.id)}
+                      className="mt-6 w-full py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg"
+                    >
+                      Delete Listing
+                    </button>
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
+
           </>
         )}
 
